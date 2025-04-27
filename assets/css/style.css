@@ -15,6 +15,7 @@ header .container{
     display: flex;
     justify-content: space-around;
     align-items: center;
+    background-color: #fff;
 }
 .nav{
     width: 80%;
@@ -36,14 +37,30 @@ header .container{
    list-style: none;
 }
 .principal{
-    height: 100%;
+    height: 130%;
     width: 100%;
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)), url(../img/FundoNaruto2.png);
+    background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)),
+    linear-gradient(to top, rgba(0, 0, 0, 1), transparent),
+    url(../img/FundoNaruto2.png);
     background-size: cover;
     background-repeat: no-repeat;
     display: flex;
-    justify-content: start;
-    align-items: center;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+.container .logo img{
+    width: 160px;
+    height: 25px;
+}
+.boxConteudo .logo{
+    display: flex;
+    align-items:start;
+}
+.logo img{
+    width: 300px;
+    height: 100px;
 }
 .boxConteudo{
     display: flex;
@@ -59,7 +76,6 @@ header .container{
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  text-overflow: ellipsis;
   width: 100%;
   font-size: 1rem;
   color: #fff;
@@ -133,7 +149,7 @@ header .container{
 
 /* catalogo */
 .catalogo{
-    height: 80%;
+    height: 60%;
     width: 100%;
     background-color: #000;
     display: flex;
@@ -143,10 +159,12 @@ header .container{
     
 }
 .tittle h1{
+    padding: 0 80px;
     color: #fff;
 }
 .container{
-    height: 80%;
+    
+    height: 100%;
     width: 100%;
     display: flex;
     justify-content: space-around;
@@ -159,6 +177,10 @@ header .container{
     border: 1px solid black;
     height: 300px;
     width: 15%;
+}
+.boxAnime:hover{
+    transition: 1s;
+    opacity: 0.1;
 }
 .boxAnime1{
     background-image: url(../img/darling.jpg);
