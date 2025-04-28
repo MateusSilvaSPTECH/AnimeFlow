@@ -9,6 +9,7 @@ body{
     height: 100vh;
     width: auto;
 }
+
 header .container{
     width: 100%;
     height: 80px;
@@ -43,6 +44,48 @@ header .container{
     linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)),
     linear-gradient(to top, rgba(0, 0, 0, 1), transparent),
     url(../img/FundoNaruto2.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+.principal2{
+    height: 130%;
+    width: 100%;
+    background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)),
+    linear-gradient(to top, rgba(0, 0, 0, 1), transparent),
+    url(../img/fundoDarling.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+.principal3{
+    height: 130%;
+    width: 100%;
+    background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)),
+    linear-gradient(to top, rgba(0, 0, 0, 1), transparent),
+    url(../img/FundoShingeki.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+.principal4{
+    height: 130%;
+    width: 100%;
+    background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)),
+    linear-gradient(to top, rgba(0, 0, 0, 1), transparent),
+    url(../img/fundoDeath.png);
     background-size: cover;
     background-repeat: no-repeat;
     display: flex;
@@ -145,6 +188,13 @@ header .container{
     color: #000;
     font-size: 2rem;
 }
+.redondo{
+    background-color: #000;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+
 
 
 /* catalogo */
@@ -197,4 +247,88 @@ header .container{
     border: 1px solid black;
     height: 300px;
     width: 15%;
+}
+
+/* carrossel */
+.slider{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.slides{
+    width: 400%;
+    height: 79%;
+    display: flex;
+}
+.slides input{
+    display: none;
+}
+
+.slide {
+    width: 25%;
+    position: relative;
+    transition: 2s;
+}
+.slide img{
+    width: 400%;
+}
+ .manual_navegacao{
+   display: none;
+}
+.manual_btn{
+    border: 2px solid black;
+    padding: 5px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 1s;
+}
+.manual_btn:not(:last-child){
+    margin-right: 40px;
+}
+.manual_btn:hover{
+    background-color: aliceblue;
+}
+#input_radio1:checked ~ .first{
+margin-left: 0;
+}
+#input_radio2:checked ~ .first{
+margin-left: -25%;
+}
+#input_radio3:checked ~ .first{
+margin-left: -50%;
+}
+#input_radio4:checked ~ .first{
+margin-left: -75%;
+}
+
+.navegacao_automatica div{
+    display: none;
+
+}
+.navegacao_automatica{
+    position: absolute;
+    width: 800px;
+    margin-top: 360px;
+    display: flex;
+    justify-content: center;
+}
+.navegacao_automatica div:not(:last-child){
+    margin-right: 40px;
+}
+
+#input_radio1:checked ~ .navegacao_automatica .auto_btn1{
+   background-color: #fff;
+}
+
+#input_radio2:checked ~ .navegacao_automatica .auto_btn2{
+   background-color: #fff;
+}
+
+#input_radio3:checked ~ .navegacao_automatica .auto_btn3{
+   background-color: #fff;
+}
+
+#input_radio4:checked ~ .navegacao_automatica .auto_btn4{
+   background-color: #fff;
 }
