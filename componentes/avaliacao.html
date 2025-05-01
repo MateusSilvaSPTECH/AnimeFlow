@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="avaliacao.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <div class="estrelas">
+            <input type="radio" name="estrela" id="input_vazio" value="" checked>
+
+            <label for="estrela_1"><i class="bi opcao bi-star-fill"></i></label>
+            <input type="radio" name="estrela" id="estrela_1" value="1" onclick="verEstrelas()">
+
+            <label for="estrela_2"><i class="bi opcao bi-star-fill"></i></label>
+            <input type="radio" name="estrela" id="estrela_2" value="2" onclick="verEstrelas()">
+
+            <label for="estrela_3"><i class="bi opcao bi-star-fill"></i></label>
+            <input type="radio" name="estrela" id="estrela_3" value="3" onclick="verEstrelas()">
+
+            <label for="estrela_4"><i class="bi opcao bi-star-fill"></i></label>
+            <input type="radio" name="estrela" id="estrela_4" value="4" onclick="verEstrelas()">
+
+            <label for="estrela_5"><i class="bi opcao bi-star-fill"></i></label>
+            <input type="radio" name="estrela" id="estrela_5" value="5" onclick="verEstrelas()">
+        </div>    
+    </form>
+</body>
+</html>
+<script>
+    function verEstrelas(){
+        if(document.getElementById('estrela_1').checked){
+            console.log('peguei o valor 1')
+        }else{
+            console.log('nada')
+        }
+    }
+</script>
+<!-- id="input_vazio"
+id="input_vazio"
+id="input_vazio"
+id="input_vazio"
+id="input_vazio" -->

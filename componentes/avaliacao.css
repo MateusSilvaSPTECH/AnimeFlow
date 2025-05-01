@@ -1,0 +1,14 @@
+:root{
+    --amarelo: #ffcc00;
+    --cinza: #ccc;
+}
+.estrelas input[type=radio]{
+display: none;
+}
+.estrelas label i.opcao.bi-star-fill:before{
+    content: "\F586";
+color: var(--amarelo);
+}
+.estrelas input[type=radio]:checked~label i.bi-star-fill:before{
+    color: var(--cinza);
+    }

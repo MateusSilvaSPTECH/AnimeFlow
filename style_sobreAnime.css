@@ -62,6 +62,9 @@ html, body {
     justify-content: start;
     align-items: center ;
 }
+.avaliacao_anime .boxSistema{
+    width: 20%;
+}
 .avaliacao_anime .bi-star-fill{
     color: #ffee00;
 }
