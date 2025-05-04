@@ -11,4 +11,4 @@ color: var(--amarelo);
 }
 .estrelas input[type=radio]:checked~label i.bi-star-fill:before{
     color: var(--cinza);
-    }
+}

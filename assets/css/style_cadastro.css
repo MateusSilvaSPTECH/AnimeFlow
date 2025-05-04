@@ -61,7 +61,7 @@ body{
 }
 .formulario .btn{
     transition: 1s;
-   width: 400px;
+    width: 400px;
     height: 50px;
     font-weight: bolder;
     font-size: 1.5rem;
@@ -71,6 +71,10 @@ body{
     color: #001f54;
     background-color: #fff;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
 }
 .formulario .btn:hover{
     transition: 1s;
