@@ -9,34 +9,110 @@ body{
     height: 100vh;
     width: auto;
 }
-
-header .container{
+.container{
     width: 100%;
-    height: 60px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background-color: #000;
-}
-.nav{
+    min-height: 100%;
+} 
+nav{
+    background-color: #1a1a1a;
     width: 80%;
+    padding: 10px 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
     color: #fff;
-    padding: 0;
-    margin: 0;
+}
+.logo{
+    width: 120px;
+}
+.user_pic{
+    width: 40px;
+    border-radius: 50%;
+   cursor: pointer; 
+   margin-left: 30px;
+}
+nav ul{
+    width: 100%;
+    text-align: right;
+}
+nav ul li{
+    display: inline-block;
+    list-style: none;
+    margin: 10px 20px;
+}
+nav ul li a{
+    color: #fff;
+    text-decoration: none;
+}
+.sub_menu_wrap{
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 320px;
+    max-height: 0px;
+    transition: max-height 0.5s;
+    z-index: 999;
+    overflow: hidden;
+}
+.sub_menu_wrap.open_menu{
+    max-height: 400px;
+}
+.sub_menu{
+    background-color: #000;
+    padding: 20px;
+    margin: 10px;
+}
+.user_info{
     display: flex;
     align-items: center;
-    justify-content: center;
+}
+.user_info h3{
+    color: #fff;
+    font-weight: 500;
+}
+.user_info img{
+    width: 60px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+.sub_menu hr{
+    border: 0;
+    height: 1px;
+    width: 100%;
+    background-color: #ccc;
+    margin: 15px 0 10px;
+}
 
-}
-.nav ul{
-    width: 50%;
+.sub_menu_link{
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    text-decoration: none;
+    color: #fff;
+    margin: 12px 0;
+    text-align: center;
 }
-.nav ul li{
-   list-style: none;
+.sub_menu_link p{
+    width: 100%;
 }
+.sub_menu_link img{
+    width: 30px;
+    background-color: #e5e5e5;
+    border-radius:50%;
+    padding: 8px;
+    margin-right: 15px;
+}
+.sub_menu_link span{
+    font-size: 22px;
+    transition: transform 0.5s;
+}
+.sub_menu_link:hover span{
+    transform: translateX(5px);
+}
+.sub_menu_link:hover p{
+    font-weight: 600;
+}
+
 .principal{
     height: 130%;
     width: 100%;
@@ -207,7 +283,7 @@ header .container{
 
 /* catalogo */
 .catalogo{
-    height: 100%;
+    min-height: 90%;
     width: 100%;
     background-color: #000;
     display: flex;
@@ -218,6 +294,7 @@ header .container{
 }
 .tittle h1{
     padding: 0 80px;
+    margin-bottom: 30px;
 }
 .container{
     height: 100%;
@@ -386,4 +463,78 @@ margin-left: -75%;
 
 #input_radio4:checked ~ .navegacao_automatica .auto_btn4{
    background-color: #fff;
+}
+/* mostrar tudo */
+.mostrar_tudo .container{
+    min-height: 20vh;
+    width: 100%;
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+.mostrar_tudo .container .img img{
+    margin-top: 50px;
+    height: 200px;
+    width: 200px;
+}
+.mostrar_tudo .container .info{
+    margin-top: 30px;
+    max-width: 40%;
+}
+.mostrar_tudo .container span{
+    font-size: 2rem;
+}
+.mostrar_tudo .container .btn_tudo{
+    margin-top: 30px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+.mostrar_tudo .container a{
+    transition: 1s;
+    width: 10%;
+    height: 40px;
+    background-color: #001f54;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bolder;
+    color: #fff;
+}
+.mostrar_tudo .container a:hover{
+    transition: 1s;
+    width: 10%;
+    height: 40px;
+    background-color: #fff;
+    border: 1px solid #001f54;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bolder;
+    color: #001f54;
+}
+
+/* footer */
+
+footer .container{
+    min-height: 30vh;
+    width: 100%;
+    background-color: #23252b;
+    color: #fff;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
 }

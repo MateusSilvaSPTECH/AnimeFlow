@@ -1,34 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/style_carrosel.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <title>Document</title>
 </head>
+
 <body>
     <header>
         <div class="container">
-            <div class="logo">
-                <img src="assets/img/AnimeFlow.png">
-            </div>
-        <div class="nav">
-            <ul>
-                <li>Inicio</li>
-                <li>Lista de animes</li>
-                <li>Gêneros</li>
-                <li><i class="bi bi-search"></i></li>
-            </ul>
-        </div>
-        <div class="perfil">
-            <div class="redondo"><a href="cadastro.html">C</a></div>
-            <select name="" id="">
-                <option value="">Perfil</option>
-            </select>
-        </div>
-        </div>
+            <nav>
+                <img src="assets/img/AnimeFlow.png" class="logo">
+                <ul>
+                    <li><a href="#">adsasda</a></li>
+                    <li><a href="#">asdas</a></li>
+                    <li><a href="#">dsadasd</a></li>
+                    <li><a href="#">dsadasd</a></li>
+                </ul>
+                <img src="assets/img/d13cb6118a0cbc4eadb8360446927cb9.png" class="user_pic" onclick="mostrarDropDown()">
+
+                <div class="sub_menu_wrap" id="drop_menu">
+                    <div class="sub_menu">
+                        <div class="user_info">
+                            <img src="assets/img/d13cb6118a0cbc4eadb8360446927cb9.png">
+                            <h2>Mateus da silva</h2>
+                        </div>
+                        <hr>
+
+                        <a href="" class="sub_menu_link">
+                            <img src="assets/img/images/profile.png" alt="">
+                            <p>Dashboard</p>
+                            <span>></span>
+                        </a>
+                        <a href="edit_perfil.html" class="sub_menu_link">
+                            <img src="assets/img/images/setting.png" alt="">
+                            <p>Editar Perfil</p>
+                            <span>></span>
+                        </a>
+                        <a href="login.html" class="sub_menu_link">
+                            <img src="assets/img/images/logout.png" alt="">
+                            <p>Logout</p>
+                            <span>></span>
+                        </a>
+                    </div>
+                </div>
+            </nav>
     </header>
     <div class="slider">
         <div class="slides">
@@ -43,13 +62,16 @@
                             <img src="assets/img/logonaruto.png">
                         </div>
                         <div class="legendado">14 Dublado | Legendado</div>
-                        <div class="descricao">Uzumaki Naruto quer ser o melhor ninja de todos. Ele está indo muito bem, mas com o perigo iminente imposto pela misteriosa Akatsuki, Naruto percebe que ele deve treinar mais que nunca e deixa sua vila para um intenso treinamento que o pressiona contra seus limites.</div>
+                        <div class="descricao">Uzumaki Naruto quer ser o melhor ninja de todos. Ele está indo muito bem,
+                            mas com o perigo iminente imposto pela misteriosa Akatsuki, Naruto percebe que ele deve
+                            treinar mais que nunca e deixa sua vila para um intenso treinamento que o pressiona contra
+                            seus limites.</div>
                         <div class="box_btn">
                             <button class="btnConhecer">Conheça tudo sobre o anime</button>
                             <button class="btnSalvar"><i class="bi bi-bookmark"></i></button>
                         </div>
                     </div>
-                    
+
                 </section>
             </div>
             <div class="slide">
@@ -59,13 +81,15 @@
                             <img src="assets/img/logodarling.png">
                         </div>
                         <div class="legendado">12 Dublado | Legendado</div>
-                        <div class="descricao">Os sobreviventes de uma guerra catastrófica contra monstros aglomeram-se em cidades-fortaleza móveis e treinam jovens para defender a humanidade pilotando grandes robôs de batalha chamados Franxx.</div>
+                        <div class="descricao">Os sobreviventes de uma guerra catastrófica contra monstros aglomeram-se
+                            em cidades-fortaleza móveis e treinam jovens para defender a humanidade pilotando grandes
+                            robôs de batalha chamados Franxx.</div>
                         <div class="box_btn">
                             <button class="btnConhecer">Conheça tudo sobre o anime</button>
                             <button class="btnSalvar"><i class="bi bi-bookmark"></i></button>
                         </div>
                     </div>
-                    
+
                 </section>
             </div>
             <div class="slide">
@@ -75,13 +99,17 @@
                             <img src="assets/img/LogoShingekinoKyojin.png">
                         </div>
                         <div class="legendado">18 Dublado | Legendado</div>
-                        <div class="descricao">Eren Jaeger jurou eliminar todos os Titãs, mas em uma batalha desesperada ele se torna aquilo que mais odeia. Com seus novos poderes, ele luta pela liberdade da humanidade, combatendo os monstros que ameaçam seu lar. Mesmo depois de derrotar a Titã Fêmea, Eren não consegue descansar - uma horda de Titãs se aproximam da Muralha Rose e a batalha em nome da humanidade continua!</div>
+                        <div class="descricao">Eren Jaeger jurou eliminar todos os Titãs, mas em uma batalha desesperada
+                            ele se torna aquilo que mais odeia. Com seus novos poderes, ele luta pela liberdade da
+                            humanidade, combatendo os monstros que ameaçam seu lar. Mesmo depois de derrotar a Titã
+                            Fêmea, Eren não consegue descansar - uma horda de Titãs se aproximam da Muralha Rose e a
+                            batalha em nome da humanidade continua!</div>
                         <div class="box_btn">
                             <button class="btnConhecer">Conheça tudo sobre o anime</button>
                             <button class="btnSalvar"><i class="bi bi-bookmark"></i></button>
                         </div>
                     </div>
-                    
+
                 </section>
             </div>
             <div class="slide">
@@ -91,7 +119,9 @@
                             <img src="assets/img/logoDeath.png">
                         </div>
                         <div class="legendado">18 Dublado | Legendado</div>
-                        <div class="descricao">Um inteligente estudante do ensino médio embarca em uma cruzada secreta para eliminar os criminosos do mundo depois de descobrir um caderno capaz de matar qualquer pessoa cujo nome está escrito nele.</div>
+                        <div class="descricao">Um inteligente estudante do ensino médio embarca em uma cruzada secreta
+                            para eliminar os criminosos do mundo depois de descobrir um caderno capaz de matar qualquer
+                            pessoa cujo nome está escrito nele.</div>
                         <div class="box_btn">
                             <button class="btnConhecer">Conheça tudo sobre o anime</button>
                             <button class="btnSalvar"><i class="bi bi-bookmark"></i></button>
@@ -128,11 +158,11 @@
                         <div class="avaliacao">
                             A14 4.5(7.7K)<i class="bi bi-star-fill"></i>
                             <span>5 Temporadas</span>
-                        <span>500 episodios</span>
-                        <div class="btnNav">
-                            <button class="btnSalvar"><i class="bi bi-bookmark"></i></button>
-                            <button class="btnSalvar"><i class="bi bi-play-fill"></i></button>
-                        </div>
+                            <span>500 episodios</span>
+                            <div class="btnNav">
+                                <button class="btnSalvar"><i class="bi bi-bookmark"></i></button>
+                                <button class="btnSalvar"><i class="bi bi-play-fill"></i></button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -152,11 +182,11 @@
                         <div class="avaliacao">
                             A14 4.5(7.7K)<i class="bi bi-star-fill"></i>
                             <span>5 Temporadas</span>
-                        <span>500 episodios</span>
-                        <div class="btnNav">
-                            <button class="btnSalvar"><i class="bi bi-bookmark"></i></button>
-                            <button class="btnSalvar"><i class="bi bi-play-fill"></i></button>
-                        </div>
+                            <span>500 episodios</span>
+                            <div class="btnNav">
+                                <button class="btnSalvar"><i class="bi bi-bookmark"></i></button>
+                                <button class="btnSalvar"><i class="bi bi-play-fill"></i></button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -176,11 +206,11 @@
                         <div class="avaliacao">
                             A14 4.5(7.7K)<i class="bi bi-star-fill"></i>
                             <span>5 Temporadas</span>
-                        <span>500 episodios</span>
-                        <div class="btnNav">
-                            <button class="btnSalvar"><i class="bi bi-bookmark"></i></button>
-                            <button class="btnSalvar"><i class="bi bi-play-fill"></i></button>
-                        </div>
+                            <span>500 episodios</span>
+                            <div class="btnNav">
+                                <button class="btnSalvar"><i class="bi bi-bookmark"></i></button>
+                                <button class="btnSalvar"><i class="bi bi-play-fill"></i></button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -200,11 +230,11 @@
                         <div class="avaliacao">
                             A14 4.5(7.7K)<i class="bi bi-star-fill"></i>
                             <span>5 Temporadas</span>
-                        <span>500 episodios</span>
-                        <div class="btnNav">
-                            <button class="btnSalvar"><i class="bi bi-bookmark"></i></button>
-                            <button class="btnSalvar"><i class="bi bi-play-fill"></i></button>
-                        </div>
+                            <span>500 episodios</span>
+                            <div class="btnNav">
+                                <button class="btnSalvar"><i class="bi bi-bookmark"></i></button>
+                                <button class="btnSalvar"><i class="bi bi-play-fill"></i></button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -215,6 +245,241 @@
             </div>
         </div>
     </section>
+    <section class="catalogo">
+        <div class="tittle">
+            <h1>Conheça os melhores animes da temporada de inverno</h1>
+        </div>
+        <div class="container">
+            <div class="boxAnime">
+                <div class="imgAnime">
+                    <div class="blur"></div>
+                    <div class="conteudoOculto">
+                        <div class="boxTittleAnime">
+                            <span class="tittleAnime">Naruto</span>
+                        </div>
+                        <div class="avaliacao">
+                            A14 4.5(7.7K)<i class="bi bi-star-fill"></i>
+                            <span>5 Temporadas</span>
+                            <span>500 episodios</span>
+                            <div class="btnNav">
+                                <button class="btnSalvar"><i class="bi bi-bookmark"></i></button>
+                                <button class="btnSalvar"><i class="bi bi-play-fill"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="conteudoAnime">
+                    <div class="tittleAnime">Naruto</div>
+                    <div class="traducao">Legendado | Dublado</div>
+                </div>
+            </div>
+
+            <div class="boxAnime1">
+                <div class="imgAnime1">
+                    <div class="blur"></div>
+                    <div class="conteudoOculto">
+                        <div class="boxTittleAnime">
+                            <span class="tittleAnime">Naruto</span>
+                        </div>
+                        <div class="avaliacao">
+                            A14 4.5(7.7K)<i class="bi bi-star-fill"></i>
+                            <span>5 Temporadas</span>
+                            <span>500 episodios</span>
+                            <div class="btnNav">
+                                <button class="btnSalvar"><i class="bi bi-bookmark"></i></button>
+                                <button class="btnSalvar"><i class="bi bi-play-fill"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="conteudoAnime">
+                    <div class="tittleAnime">Naruto</div>
+                    <div class="traducao">Legendado | Dublado</div>
+                </div>
+            </div>
+
+            <div class="boxAnime2">
+                <div class="imgAnime2">
+                    <div class="blur"></div>
+                    <div class="conteudoOculto">
+                        <div class="boxTittleAnime">
+                            <span class="tittleAnime">Naruto</span>
+                        </div>
+                        <div class="avaliacao">
+                            A14 4.5(7.7K)<i class="bi bi-star-fill"></i>
+                            <span>5 Temporadas</span>
+                            <span>500 episodios</span>
+                            <div class="btnNav">
+                                <button class="btnSalvar"><i class="bi bi-bookmark"></i></button>
+                                <button class="btnSalvar"><i class="bi bi-play-fill"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="conteudoAnime">
+                    <div class="tittleAnime">Naruto</div>
+                    <div class="traducao">Legendado | Dublado</div>
+                </div>
+            </div>
+
+            <div class="boxAnime3">
+                <div class="imgAnime3">
+                    <div class="blur"></div>
+                    <div class="conteudoOculto1">
+                        <div class="boxTittleAnime">
+                            <span class="tittleAnime">Naruto</span>
+                        </div>
+                        <div class="avaliacao">
+                            A14 4.5(7.7K)<i class="bi bi-star-fill"></i>
+                            <span>5 Temporadas</span>
+                            <span>500 episodios</span>
+                            <div class="btnNav">
+                                <button class="btnSalvar"><i class="bi bi-bookmark"></i></button>
+                                <button class="btnSalvar"><i class="bi bi-play-fill"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="conteudoAnime">
+                    <div class="tittleAnime">Naruto</div>
+                    <div class="traducao">Legendado | Dublado</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="catalogo">
+        <div class="tittle">
+            <h1>Conheça os melhores animes da temporada de inverno</h1>
+        </div>
+        <div class="container">
+            <div class="boxAnime">
+                <div class="imgAnime">
+                    <div class="blur"></div>
+                    <div class="conteudoOculto">
+                        <div class="boxTittleAnime">
+                            <span class="tittleAnime">Naruto</span>
+                        </div>
+                        <div class="avaliacao">
+                            A14 4.5(7.7K)<i class="bi bi-star-fill"></i>
+                            <span>5 Temporadas</span>
+                            <span>500 episodios</span>
+                            <div class="btnNav">
+                                <button class="btnSalvar"><i class="bi bi-bookmark"></i></button>
+                                <button class="btnSalvar"><i class="bi bi-play-fill"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="conteudoAnime">
+                    <div class="tittleAnime">Naruto</div>
+                    <div class="traducao">Legendado | Dublado</div>
+                </div>
+            </div>
+
+            <div class="boxAnime1">
+                <div class="imgAnime1">
+                    <div class="blur"></div>
+                    <div class="conteudoOculto">
+                        <div class="boxTittleAnime">
+                            <span class="tittleAnime">Naruto</span>
+                        </div>
+                        <div class="avaliacao">
+                            A14 4.5(7.7K)<i class="bi bi-star-fill"></i>
+                            <span>5 Temporadas</span>
+                            <span>500 episodios</span>
+                            <div class="btnNav">
+                                <button class="btnSalvar"><i class="bi bi-bookmark"></i></button>
+                                <button class="btnSalvar"><i class="bi bi-play-fill"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="conteudoAnime">
+                    <div class="tittleAnime">Naruto</div>
+                    <div class="traducao">Legendado | Dublado</div>
+                </div>
+            </div>
+
+            <div class="boxAnime2">
+                <div class="imgAnime2">
+                    <div class="blur"></div>
+                    <div class="conteudoOculto">
+                        <div class="boxTittleAnime">
+                            <span class="tittleAnime">Naruto</span>
+                        </div>
+                        <div class="avaliacao">
+                            A14 4.5(7.7K)<i class="bi bi-star-fill"></i>
+                            <span>5 Temporadas</span>
+                            <span>500 episodios</span>
+                            <div class="btnNav">
+                                <button class="btnSalvar"><i class="bi bi-bookmark"></i></button>
+                                <button class="btnSalvar"><i class="bi bi-play-fill"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="conteudoAnime">
+                    <div class="tittleAnime">Naruto</div>
+                    <div class="traducao">Legendado | Dublado</div>
+                </div>
+            </div>
+
+            <div class="boxAnime3">
+                <div class="imgAnime3">
+                    <div class="blur"></div>
+                    <div class="conteudoOculto1">
+                        <div class="boxTittleAnime">
+                            <span class="tittleAnime">Naruto</span>
+                        </div>
+                        <div class="avaliacao">
+                            A14 4.5(7.7K)<i class="bi bi-star-fill"></i>
+                            <span>5 Temporadas</span>
+                            <span>500 episodios</span>
+                            <div class="btnNav">
+                                <button class="btnSalvar"><i class="bi bi-bookmark"></i></button>
+                                <button class="btnSalvar"><i class="bi bi-play-fill"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="conteudoAnime">
+                    <div class="tittleAnime">Naruto</div>
+                    <div class="traducao">Legendado | Dublado</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="mostrar_tudo">
+        <div class="container">
+            <div class="img">
+                <img src="assets/img/anieecerto.png" alt="">
+            </div>
+            <div class="info">
+                <span>
+                    Ainda não encontrou o que procura? Veja nosso catálogo completo.
+                </span>
+            </div>
+            <div class="btn_tudo">
+                <a href="sobre_anime.html">VER TUDO</a>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <div class="informacoes">
+                <span></span>
+            </div>
+        </div>
+    </footer>
 </body>
+
 </html>
 <script src="assets/js/carrosel.js"></script>
+<script>
+    var sub_menu = document.getElementById("drop_menu");
+    function mostrarDropDown() {
+        console.log('entrei na fuc');
+        sub_menu.classList.toggle("open_menu");
+        console.log('entrei na passei');
+    }
+</script>
