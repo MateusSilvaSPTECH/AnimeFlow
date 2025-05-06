@@ -8,8 +8,113 @@
 html, body {
     height: 100%;
     width: 100%;
-    background-color: #001f54;
+    background-color: #23252b;
 }
+header .container{
+    width: 100%;
+    min-height: 100%;
+} 
+nav{
+    background-color: #23252b;
+    width: 80%;
+    padding: 10px 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    color: #fff;
+}
+.logo{
+    width: 240px;
+}
+.user_pic{
+    width: 40px;
+    border-radius: 50%;
+   cursor: pointer; 
+   margin-left: 30px;
+}
+nav ul{
+    width: 100%;
+    text-align: right;
+}
+nav ul li{
+    display: inline-block;
+    list-style: none;
+    margin: 10px 20px;
+}
+nav ul li a{
+    color: #fff;
+    text-decoration: none;
+}
+.sub_menu_wrap{
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 320px;
+    max-height: 0px;
+    transition: max-height 0.5s;
+    z-index: 999;
+    overflow: hidden;
+}
+.sub_menu_wrap.open_menu{
+    max-height: 400px;
+}
+.sub_menu{
+    background-color: #000;
+    padding: 20px;
+    margin: 10px;
+}
+.user_info{
+    display: flex;
+    align-items: center;
+}
+.user_info h3{
+    color: #fff;
+    font-weight: 500;
+}
+.user_info img{
+    width: 60px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+.sub_menu hr{
+    border: 0;
+    height: 1px;
+    width: 100%;
+    background-color: #ccc;
+    margin: 15px 0 10px;
+}
+
+.sub_menu_link{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #fff;
+    margin: 12px 0;
+    text-align: center;
+}
+.sub_menu_link p{
+    width: 100%;
+}
+.sub_menu_link img{
+    width: 30px;
+    background-color: #e5e5e5;
+    border-radius:50%;
+    padding: 8px;
+    margin-right: 15px;
+}
+.sub_menu_link span{
+    font-size: 22px;
+    transition: transform 0.5s;
+}
+.sub_menu_link:hover span{
+    transform: translateX(5px);
+}
+.sub_menu_link:hover p{
+    font-weight: 600;
+}
+
+/* SOBRE ANIME */
 .container{
     width: 100%;
     height: 100%;
@@ -22,17 +127,12 @@ html, body {
     height: 100%;
     background-color: #000;
 }
-.div{
-    width: 100%;
-    height: 10%;
-}
 .cabecalho_anime{
     width: 100%;
     height: 50%;
     display: flex;
     align-items: center;
     justify-content: space-around;
-    border: 1px solid #fff;
 }
 .cabecalho_anime .img_anime{
     background-image: url(../../assets/img/sakamoto.jpg);
@@ -45,7 +145,6 @@ html, body {
 .cabecalho_anime .informacoes_anime{
     width: 75%;
     height: 100%;
-    border-left: 1px solid #fff;
 }
 .tittle_anime{
     width: 100%;
@@ -60,7 +159,7 @@ html, body {
     padding: 10px;
     display: flex;
     justify-content: start;
-    align-items: center ;
+    align-items: center;
 }
 .avaliacao_anime .boxSistema{
     width: 20%;
@@ -75,18 +174,18 @@ html, body {
     padding: 10px;
     display: flex;
     justify-content: space-around;
-    align-items: center ;
+    align-items: center;
 }
 .categoria_anime{
     width: 100%;
-    height: 39%;
+    height: 30%;
     padding: 10px;
-    border-bottom: 1px solid white;
     display: flex;
     flex-direction: row;
     justify-content: start;
     align-items: start;
     gap: 10px;
+    border-bottom: 1px solid white;
 }
 .categoria_anime span{
     transition: 1s;
@@ -105,13 +204,14 @@ html, body {
     transition: 1s;
     color: #000;
     background-color: #fff;
+    font-weight: bolder;
 }
 .descricao_anime{
     height: 30%;
+    width: 98.5%;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid #fff;
     padding: 10px;
 }
 .trailer_episodeos{
@@ -119,7 +219,7 @@ html, body {
     width: 100%;
     background-color: #000;
     display: flex;
-    border: 1px solid #fff;
+    
 }
 .trailer{
     width: 50%;
@@ -144,7 +244,6 @@ html, body {
     height: 50%;
     width: 100%;
     background-color: #000;
-    border: 1px solid #fff;
     display: flex;
     justify-content: center;
     align-items: start;
@@ -169,7 +268,6 @@ html, body {
     padding: 30px;
     flex-direction: column;
     justify-content: space-between;
-    border: 1px solid #fff;
 }
 .form_comentario textarea{
     height: 60%;
@@ -190,22 +288,39 @@ html, body {
     height: 20%;
     background-color: #fff;
     color: #000;
+    font-weight: bolder;
     border: 1px solid #000;
+}
+.comentario .barra_comentario{
+    margin-top: 20px;
+    border-bottom: 2px solid #fff;
 }
 .listar_comentarios{
     width: 100%;
-    padding: 10px;
     height: auto;
     background-color: #000;
     color: #fff;
-}
+}   
 .tittle_listar_comentarios{
+    margin-left: 10px;
 }
 .boxComentarios{
     display: flex;
     height: 100%;
     width: 100%;
     padding: 10px;
+    gap: 20px;  
+}
+.boxRespostas{
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: 100%;
+    padding: 10px;
+    gap: 20px;  
+}
+.boxRespostas .conteudo{
+    display: flex;
     gap: 20px;
 }
 .imgUser{
@@ -215,10 +330,41 @@ html, body {
     width: 60px;
     height: 60px;
 }
-.descricao_comentario{
-    width: 80%;
-    height: auto;
-    padding: 10px;
-    border: 1px solid #fff; 
+.barra_img{
+    border-right: 2px solid #fff;
 }
-
+.descricao_comentario{
+    width: 85%;
+    height: auto;
+}
+.btn_responder{
+    transition: 1s;
+    width: 10%;
+    background-color: #000;
+    color: #fff;
+    border: 1px solid #fff;
+}
+.btn_responder:hover{
+    transition: 1s;
+    width: 10%;
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #000;
+    font-weight: bolder;
+}
+.informacoes_usuario{
+    display: flex;
+    gap: 20px;
+}
+.tittle_listar_comentarios{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bolder;
+    margin-left: 50px;
+}
+.barra{
+    border-bottom: 2px solid #fff;
+}

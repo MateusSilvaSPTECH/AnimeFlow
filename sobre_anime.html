@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,10 +9,48 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <title>Document</title>
 </head>
+
 <body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="catalogo.html"><img src="assets/img/logoBrancaSemFundo.png" class="logo" ></a>
+                <ul>
+                    <li><a href="#">Categorias</a></li>
+                    <li><a href="#">Temporadas</a></li>
+                    <li><a href="#">Populares</a></li>
+                </ul>
+                <img src="assets/img/d13cb6118a0cbc4eadb8360446927cb9.png" class="user_pic" onclick="mostrarDropDown()">
+
+                <div class="sub_menu_wrap" id="drop_menu">
+                    <div class="sub_menu">
+                        <div class="user_info">
+                            <img src="assets/img/d13cb6118a0cbc4eadb8360446927cb9.png">
+                            <h2>Mateus da silva</h2>
+                        </div>
+                        <hr>
+
+                        <a href="dashboard.html" class="sub_menu_link">
+                            <img src="assets/img/images/profile.png" alt="">
+                            <p>Dashboard</p>
+                            <span>></span>
+                        </a>
+                        <a href="edit_perfil.html" class="sub_menu_link">
+                            <img src="assets/img/images/setting.png" alt="">
+                            <p>Editar Perfil</p>
+                            <span>></span>
+                        </a>
+                        <a href="login.html" class="sub_menu_link">
+                            <img src="assets/img/images/logout.png" alt="">
+                            <p>Logout</p>
+                            <span>></span>
+                        </a>
+                    </div>
+                </div>
+            </nav>
+    </header>
     <div class="container">
         <div class="boxConteudo">
-            <div class="div"></div>
             <div class="cabecalho_anime">
                 <div class="img_anime"></div>
                 <div class="informacoes_anime">
@@ -23,22 +62,22 @@
                         <span class="boxSistema">
                             <div class="estrelas">
                                 <input type="radio" name="estrela" id="input_vazio" value="" checked>
-                    
+
                                 <label for="estrela_1"><i class="bi opcao bi-star-fill"></i></label>
                                 <input type="radio" name="estrela" id="estrela_1" value="1" onclick="verEstrelas()">
-                    
+
                                 <label for="estrela_2"><i class="bi opcao bi-star-fill"></i></label>
                                 <input type="radio" name="estrela" id="estrela_2" value="2" onclick="verEstrelas()">
-                    
+
                                 <label for="estrela_3"><i class="bi opcao bi-star-fill"></i></label>
                                 <input type="radio" name="estrela" id="estrela_3" value="3" onclick="verEstrelas()">
-                    
+
                                 <label for="estrela_4"><i class="bi opcao bi-star-fill"></i></label>
                                 <input type="radio" name="estrela" id="estrela_4" value="4" onclick="verEstrelas()">
-                    
+
                                 <label for="estrela_5"><i class="bi opcao bi-star-fill"></i></label>
                                 <input type="radio" name="estrela" id="estrela_5" value="5" onclick="verEstrelas()">
-                            </div>     
+                            </div>
                         </span>
                         <span>4.5(49.1k)</span>
                     </div>
@@ -53,11 +92,19 @@
                 </div>
             </div>
             <div class="descricao_anime">
-                <span>A história gira em torno de Taro Sakamoto, um assassino lendário que decidiu se aposentar e levar uma vida pacífica como um cidadão comum e dedicado à sua família. Contudo, essa tranquilidade é abalada quando inimigos e antigos aliados de sua época como assassino começam a aparecer em busca de vingança. Para proteger seus entes queridos, Sakamoto é obrigado a usar suas excepcionais habilidades de combate, enfrentando uma série de adversários, enquanto tenta manter a aparência de uma vida comum.</span>
+                <span>A história gira em torno de Taro Sakamoto, um assassino lendário que decidiu se aposentar e levar
+                    uma vida pacífica como um cidadão comum e dedicado à sua família. Contudo, essa tranquilidade é
+                    abalada quando inimigos e antigos aliados de sua época como assassino começam a aparecer em busca de
+                    vingança. Para proteger seus entes queridos, Sakamoto é obrigado a usar suas excepcionais
+                    habilidades de combate, enfrentando uma série de adversários, enquanto tenta manter a aparência de
+                    uma vida comum.</span>
             </div>
             <div class="trailer_episodeos">
                 <div class="trailer">
-                    <iframe src="https://www.youtube.com/embed/f8NOmzN788w?si=iKgb17iQfjo3eo4h" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/f8NOmzN788w?si=iKgb17iQfjo3eo4h"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
                 <div class="episodiosTemps">
                     <h1>12 Episodios</h1>
@@ -71,38 +118,102 @@
                     <span>Deixe seu comentario</span>
                 </div>
                 <div class="form_comentario">
-                        <textarea id=""></textarea>
-                        <button class="btn">Publicar Comentario</button>
+                    <textarea id=""></textarea>
+                    <button class="btn">Publicar Comentario</button>
                 </div>
             </div>
             <div class="listar_comentarios">
                 <div class="tittle_listar_comentarios">
-                    <span>icon countComentarios Comentarios</span>
+                    <span><i class="bi bi-person-circle"></i> 133 Comentarios</span>
                 </div>
+                <div class="barra"></div>
                 <div class="boxComentarios">
                     <div class="imgUser"></div>
+                    <div class="barra_img"></div>
                     <div class="descricao_comentario">
                         <div class="informacoes_usuario">
                             <span>wesley</span>
                             <span>19/09/2019</span>
-                            <button class="btn">Responder</button>
+                            <button class="btn_responder">Responder</button>
                         </div>
                         <div class="comentario">
-                            <span>Esse anime é muito massa Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat, nesciunt fuga! Labore, at voluptatibus dolore ab eos aliquid nesciunt natus laudantium maiores necessitatibus facere ipsum, dolores qui ut, in cum?</span>
+                            <span>Esse anime é muito massa Lorem,lorem ipsum dolor sit amet consectetur adipisicing
+                                elit. Quaerat, nesciunt fuga! Labore, at voluptatibus dolore ab eos aliquid nesciunt
+                                natus laudantium maiores necessitatibus facere ipsum, dolores qui ut, in cum?</span>
+                            <div class="barra_comentario"></div>
+                        </div>
+                        <div class="boxRespostas">
+                            <div class="conteudo">
+                                <div class="imgUser"></div>
+                                <div class="descricao_comentario">
+                                    <div class="informacoes_usuario">
+                                        <span>mateus</span>
+                                        <span>10/19/2020</span>
+                                        <button class="btn_responder">Responder</button>
+                                    </div>
+                                    <div class="comentario">
+                                        <span>era legal no incio, decaiu bastante irmao</span>
+                                        <div class="barra_comentario"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="conteudo">
+                                <div class="imgUser"></div>
+                                <div class="descricao_comentario">
+                                    <div class="informacoes_usuario">
+                                        <span>mateus</span>
+                                        <span>10/19/2020</span>
+                                        <button class="btn_responder">Responder</button>
+                                    </div>
+                                    <div class="comentario">
+                                        <span>era legal no incio, decaiu bastante irmao</span>
+                                        <div class="barra_comentario"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="conteudo">
+                                <div class="imgUser"></div>
+                                <div class="descricao_comentario">
+                                    <div class="informacoes_usuario">
+                                        <span>mateus</span>
+                                        <span>10/19/2020</span>
+                                        <button class="btn_responder">Responder</button>
+                                    </div>
+                                    <div class="comentario">
+                                        <span>era legal no incio, decaiu bastante irmao</span>
+                                        <div class="barra_comentario"></div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <div class="boxComentarios">
+                    <div class="imgUser"></div>
+                    <div class="barra_img"></div>
+                    <div class="descricao_comentario">
+                        <div class="informacoes_usuario">
+                            <span>wesley</span>
+                            <span>19/09/2019</span>
+                            <button class="btn_responder">Responder</button>
+                        </div>
+                        <div class="comentario">
+                            <span>Esse anime é muito massa Lorem,lorem ipsum dolor sit amet consectetur adipisicing
+                                elit. Quaerat, nesciunt fuga! Labore, at voluptatibus dolore ab eos aliquid nesciunt
+                                natus laudantium maiores necessitatibus facere ipsum, dolores qui ut, in cum?</span>
+                            <div class="barra_comentario"></div>
+                        </div>
             </div>
-        </div>
-    </div>
 </body>
+
 </html>
 <script>
-    function verEstrelas(){
-        if(document.getElementById('estrela_1').checked){
+    function verEstrelas() {
+        if (document.getElementById('estrela_1').checked) {
             console.log('peguei o valor 1')
-        }else{
+        } else {
             console.log('nada')
         }
     }
 </script>
+<script src="assets/js/menudropdown.js"></script>
