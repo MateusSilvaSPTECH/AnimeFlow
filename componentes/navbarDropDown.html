@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="navbar.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <img src="images/logo.png" class="logo">
+            <ul>
+                <li><a href="#">adsasda</a></li>
+                <li><a href="#">asdas</a></li>
+                <li><a href="#">dsadasd</a></li>
+                <li><a href="#">dsadasd</a></li>
+            </ul>
+            <img src="images/user.png" class="user_pic" onclick="mostrarDropDown()">
+
+            <div class="sub_menu_wrap" id="drop_menu">
+                <div class="sub_menu">
+                    <div class="user_info">
+                        <img src="images/user.png">
+                        <h2>Mateus da silva</h2>
+                    </div>
+                    <hr>
+
+                    <a href="#" class="sub_menu_link">
+                        <img src="images/profile.png" alt="">
+                        <p>Dashboard</p>
+                        <span>></span>
+                    </a>
+                    <a href="#" class="sub_menu_link">
+                        <img src="images/setting.png" alt="">
+                        <p>Editar Perfil</p>
+                        <span>></span>
+                    </a>
+                    <a href="#" class="sub_menu_link">
+                        <img src="images/logout.png" alt="">
+                        <p>Logout</p>
+                        <span>></span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </div>
+</body>
+</html>
+<script>
+    var sub_menu = document.getElementById("drop_menu");
+    function mostrarDropDown(){
+        sub_menu.classList.toggle("open_menu");
+    }
+</script>
