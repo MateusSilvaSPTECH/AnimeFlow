@@ -3,7 +3,7 @@ var router = express.Router();
 
 var animeController = require("../controllers/animeController");
 
-router.get("/mostrar", function() {
-    animeController.selectAll();
+router.get("/mostrar", function(req, res) {
+    animeController.selectAll(req, res);
 });
 module.exports = router;

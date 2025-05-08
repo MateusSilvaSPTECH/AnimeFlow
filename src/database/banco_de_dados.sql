@@ -85,3 +85,14 @@ VALUES
 ('Isekai');
 
 SELECT * FROM usuario;
+INSERT INTO anime (titulo, descricao, foto, logo, classificacao, traducao) VALUES
+('Naruto', 'Um jovem ninja busca reconhecimento e sonha em se tornar Hokage.', 'naruto.jpg', 'logo_naruto.png', 12, 'Legendado | Dublado'),
+('One Piece', 'Monkey D. Luffy parte em busca do tesouro lendário One Piece.', 'onepiece.jpg', 'logo_onepiece.png', 14, 'Legendado | Dublado'),
+('Attack on Titan', 'Humanidade luta contra titãs devoradores de homens.', 'aot.jpg', 'logo_aot.png', 18, 'Legendado | Dublado'),
+('Death Note', 'Um estudante encontra um caderno com o poder de matar.', 'deathnote.jpg', 'logo_deathnote.png', 16, 'Legendado | Dublado'),
+('Dragon Ball Z', 'Goku defende a Terra de poderosos inimigos intergalácticos.', 'dbz.jpg', 'logo_dbz.png', 10, 'Legendado | Dublado'),
+('Fullmetal Alchemist: Brotherhood', 'Dois irmãos alquimistas buscam a pedra filosofal.', 'fma.jpg', 'logo_fma.png', 16, 'Legendado | Dublado'),
+('Demon Slayer', 'Tanjiro enfrenta demônios após a tragédia em sua família.', 'demonslayer.jpg', 'logo_demonslayer.png', 16, 'Legendado | Dublado'),
+('Jujutsu Kaisen', 'Estudante ganha poderes e luta contra maldições.', 'jjk.jpg', 'logo_jjk.png', 16, 'Legendado | Dublado'),
+('My Hero Academia', 'Em um mundo de heróis, um jovem sem poderes quer ser o melhor.', 'mha.jpg', 'logo_mha.png', 12, 'Legendado | Dublado'),
+('Tokyo Ghoul', 'Um jovem se torna meio-ghoul após um ataque.', 'tokyoghoul.jpg', 'logo_tokyoghoul.png', 18, 'Legendado | Dublado');
