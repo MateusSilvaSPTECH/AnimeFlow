@@ -2,7 +2,7 @@ function chamarAnime(){
 
     fetch("/animes/listarTodos").then(funciona => funciona.json())
     .then(funciona =>{
-        exibirAnimes(funciona);
+        exibirAnimesAll(funciona);
     })
     .catch(erro => {
         console.error('Deu erro:', erro);
@@ -211,35 +211,88 @@ function exibirAnimes(resposta){
     for(var i =0;i<resposta.length;i++){
         id = resposta[i].id
         controle +=1;
+            if(controle<5){
+                 div_container_anime.innerHTML +=
+            `
+            
+                <div class="boxAnime">
+                    <div class="imgAnime">
+                        <img src="../assets/img/image.png">
+                    </div>
+
+                    <div class="blur"></div>
+
+                    <div class="conteudoOculto">
+
+                        <div class="boxTittleAnime">
+                            <span class="tittleAnime">${resposta[i].titulo}</span>
+                        </div>
+
+                        <div class="avaliacao">
+                            A${resposta[i].classificacao} 4.5(7.7K)<i class="bi bi-star-fill"></i>
+                            <span>${resposta[i].traducao}</span>
+                            <span>500 episodios</span>
+
+                            <div class="btnNav">
+                                <a href="sobre_anime.html" class="btnSalvar"><i class="bi bi-bookmark"></i></a> 
+                                <a onclick="sobre_animeid(${resposta[i].id})" class="btnSalvar"><i class="bi bi-play-fill"></i></a>        
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="conteudoAnime">
+                        <div class="tittleAnime">${resposta[i].titulo}</div>
+                        <div class="traducao">${resposta[i].traducao}</div>
+                    </div>
+                </div>
+            `
+            }
+        }
+    
+     
+}
+function exibirAnimesAll(resposta){
+    var controle = 0;
+    for(var i =0;i<resposta.length;i++){
+        id = resposta[i].id
+        controle +=1;
      
 
             div_container_anime.innerHTML +=
             `
             
                 <div class="boxAnime">
-                        <div class="imgAnime">
-                            <div class="blur"></div>
-                            <div class="conteudoOculto">
-                                <div class="boxTittleAnime">
-                                    <span class="tittleAnime">${resposta[i].titulo}</span>
-                                </div>
-                                <div class="avaliacao">
-                                    A${resposta[i].classificacao} 4.5(7.7K)<i class="bi bi-star-fill"></i>
-                                    <span>${resposta[i].traducao}</span>
-                                    <span>500 episodios</span>
-                                    <div class="btnNav">
-                                        <a href="sobre_anime.html" class="btnSalvar"><i class="bi bi-bookmark"></i></a> 
-                                        <a onclick="sobre_animeid(${resposta[i].id})" class="btnSalvar"><i class="bi bi-play-fill"></i></a> 
-                                        
-                                    </div>
-                                </div>
+                    <div class="imgAnime">
+                        <img src="../assets/img/image.png">
+                    </div>
+
+                    <div class="blur"></div>
+
+                    <div class="conteudoOculto">
+
+                        <div class="boxTittleAnime">
+                            <span class="tittleAnime">${resposta[i].titulo}</span>
+                        </div>
+
+                        <div class="avaliacao">
+                            A${resposta[i].classificacao} 4.5(7.7K)<i class="bi bi-star-fill"></i>
+                            <span>${resposta[i].traducao}</span>
+                            <span>500 episodios</span>
+
+                            <div class="btnNav">
+                                <a href="sobre_anime.html" class="btnSalvar"><i class="bi bi-bookmark"></i></a> 
+                                <a onclick="sobre_animeid(${resposta[i].id})" class="btnSalvar"><i class="bi bi-play-fill"></i></a>        
                             </div>
                         </div>
-                        <div class="conteudoAnime">
-                            <div class="tittleAnime">${resposta[i].titulo}</div>
-                            <div class="traducao">${resposta[i].traducao}</div>
-                        </div>
+
                     </div>
+
+                    <div class="conteudoAnime">
+                        <div class="tittleAnime">${resposta[i].titulo}</div>
+                        <div class="traducao">${resposta[i].traducao}</div>
+                    </div>
+                </div>
             `
         }
     

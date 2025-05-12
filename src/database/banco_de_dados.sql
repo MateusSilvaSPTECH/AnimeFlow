@@ -133,4 +133,4 @@ VALUES
  'black_clover.jpg', 'black_clover_logo.png', 12, 'Legendado | Dublado', 'Outono', '2017-10-03', 170, 1);
 
 SELECT * FROM anime WHERE estacao = 'Outono';
-SELECT * FROM anime;
+SELECT * FROM usuario;
