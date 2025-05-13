@@ -108,91 +108,16 @@ function selectIdAnime(id){
                     <span>Deixe seu comentario</span>
                 </div>
                 <div class="form_comentario">
-                    <textarea id=""></textarea>
-                    <button class="btn">Publicar Comentario</button>
+                  <textarea id="input_descricao"></textarea>
+                    <button class="btn" onclick="cadastrarComentario()">Publicar Comentario</button>
                 </div>
             </div>
-            <div class="listar_comentarios">
+            <div class="listar_comentarios" id="comentarios">
                 <div class="tittle_listar_comentarios">
                     <span><i class="bi bi-person-circle"></i> 133 Comentarios</span>
                 </div>
                 <div class="barra"></div>
-                <div class="boxComentarios">
-                    <div class="imgUser"></div>
-                    <div class="barra_img"></div>
-                    <div class="descricao_comentario">
-                        <div class="informacoes_usuario">
-                            <span>wesley</span>
-                            <span>19/09/2019</span>
-                            <button class="btn_responder">Responder</button>
-                        </div>
-                        <div class="comentario">
-                            <span>Esse anime é muito massa Lorem,lorem ipsum dolor sit amet consectetur adipisicing
-                                elit. Quaerat, nesciunt fuga! Labore, at voluptatibus dolore ab eos aliquid nesciunt
-                                natus laudantium maiores necessitatibus facere ipsum, dolores qui ut, in cum?</span>
-                            <div class="barra_comentario"></div>
-                        </div>
-                        <div class="boxRespostas">
-                            <div class="conteudo">
-                                <div class="imgUser"></div>
-                                <div class="descricao_comentario">
-                                    <div class="informacoes_usuario">
-                                        <span>mateus</span>
-                                        <span>10/19/2020</span>
-                                        <button class="btn_responder">Responder</button>
-                                    </div>
-                                    <div class="comentario">
-                                        <span>era legal no incio, decaiu bastante irmao</span>
-                                        <div class="barra_comentario"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="conteudo">
-                                <div class="imgUser"></div>
-                                <div class="descricao_comentario">
-                                    <div class="informacoes_usuario">
-                                        <span>mateus</span>
-                                        <span>10/19/2020</span>
-                                        <button class="btn_responder">Responder</button>
-                                    </div>
-                                    <div class="comentario">
-                                        <span>era legal no incio, decaiu bastante irmao</span>
-                                        <div class="barra_comentario"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="conteudo">
-                                <div class="imgUser"></div>
-                                <div class="descricao_comentario">
-                                    <div class="informacoes_usuario">
-                                        <span>mateus</span>
-                                        <span>10/19/2020</span>
-                                        <button class="btn_responder">Responder</button>
-                                    </div>
-                                    <div class="comentario">
-                                        <span>era legal no incio, decaiu bastante irmao</span>
-                                        <div class="barra_comentario"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="boxComentarios">
-                    <div class="imgUser"></div>
-                    <div class="barra_img"></div>
-                    <div class="descricao_comentario">
-                        <div class="informacoes_usuario">
-                            <span>wesley</span>
-                            <span>19/09/2019</span>
-                            <button class="btn_responder">Responder</button>
-                        </div>
-                        <div class="comentario">
-                            <span>Esse anime é muito massa Lorem,lorem ipsum dolor sit amet consectetur adipisicing
-                                elit. Quaerat, nesciunt fuga! Labore, at voluptatibus dolore ab eos aliquid nesciunt
-                                natus laudantium maiores necessitatibus facere ipsum, dolores qui ut, in cum?</span>
-                            <div class="barra_comentario"></div>
-                        </div>
+            
             </div>
         `
     }

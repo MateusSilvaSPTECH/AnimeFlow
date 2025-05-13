@@ -59,7 +59,7 @@ CREATE TABLE favoritar(
 CREATE TABLE comentario(
 	id INT PRIMARY KEY AUTO_INCREMENT,
     descricao VARCHAR(255),
-    dataComentario DATETIME,
+    dataComentario DATETIME ,
     fk_anime INT,
     fk_usuario INT,
     id_resposta INT,
@@ -134,3 +134,7 @@ VALUES
 
 SELECT * FROM anime WHERE estacao = 'Outono';
 SELECT * FROM usuario;
+
+SELECT * FROM comentario;
+alter table comentario MODIFY column dataComentario DATETIME DEFAULT CURRENT_TIMESTAMP();
+
