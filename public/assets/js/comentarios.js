@@ -67,7 +67,14 @@ function exibirComentarios(funciona){
      var id_usuario = sessionStorage.ID_USUARIO;
 
        if(funciona.length == 0){
-        comentarios.innerHTML = `Escreva algo`;
+        comentarios.innerHTML = `
+ <div class="comentario-container">
+  <h3>Nenhum comentário ainda</h3>
+  <p>Seja o primeiro a compartilhar sua opinião ou deixar uma mensagem!</p>
+  <span class="icone-comentario">💬</span>
+</div>
+
+`;
        }else{
          funciona.forEach( async item => {  
             console.log(item.id)

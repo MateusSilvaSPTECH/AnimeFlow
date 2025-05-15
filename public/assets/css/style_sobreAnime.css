@@ -368,3 +368,23 @@ nav ul li a{
 .barra{
     border-bottom: 2px solid #fff;
 }
+
+.comentario-container {
+  padding: 20px;
+  border: 1px dashed #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+
+.comentario-container h3 {
+  color: #555;
+}
+
+.comentario-container p {
+  color: #888;
+}
+
+.icone-comentario {
+  font-size: 2rem;
+}
