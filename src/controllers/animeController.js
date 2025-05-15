@@ -5,7 +5,13 @@ animeModel.selectAll().then(
         console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
         console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`); // transforma JSON em String
         res.json(resultadoAutenticar)
-    })
+    }).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
 }
 
 function selectTemporada(req, res){
@@ -15,7 +21,13 @@ function selectTemporada(req, res){
             console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
             console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`); // transforma JSON em String
             res.json(resultadoAutenticar)
-        })
+        }).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
     }
 function selectIdAnime(req, res){
     var id = req.params.id;
@@ -24,11 +36,32 @@ function selectIdAnime(req, res){
             console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
             console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`); // transforma JSON em String
             res.json(resultadoAutenticar)
-        })
+        }).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
     }
-
+function selectCategoriaAnime(req, res){
+    var id = req.params.id;
+    animeModel.selectCategoriaAnime(id).then(
+        function (resultadoAutenticar) {
+            console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
+            console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`); // transforma JSON em String
+            res.json(resultadoAutenticar)
+        }).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
 module.exports = {
     selectAll,
     selectTemporada,
-    selectIdAnime
+    selectIdAnime,
+    selectCategoriaAnime
 }

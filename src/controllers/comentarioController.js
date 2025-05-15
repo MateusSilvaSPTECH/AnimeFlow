@@ -20,8 +20,27 @@ function cadastrar(req, res) {
                 }
             );
 }
+function deletarComentario(req,res){
+        var id = req.params.id;
+        comentarioModel.deletarComentario(id)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o delete! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+}
 function selectAllComentarios(req, res) {
-        comentarioModel.selectAllComentarios()
+    var fk_anime = req.params.id_anime;
+        comentarioModel.selectAllComentarios(fk_anime)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -37,8 +56,27 @@ function selectAllComentarios(req, res) {
                 }
             );
 }
+
+function countComentarios(req,res){
+     var fk_anime = req.params.id_anime;
+    comentarioModel.countComentarios(fk_anime).then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o COUNT COMENTARIO! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+}
 module.exports = {
     cadastrar,
-    selectAllComentarios
-
+    selectAllComentarios,
+    countComentarios,
+    deletarComentario
 }

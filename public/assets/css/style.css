@@ -310,19 +310,24 @@ nav ul li a{
     justify-content: space-around;
     align-items: center;
 }
-.boxAnime, .boxAnime1, .boxAnime2, .boxAnime3 {
-    height: 400px;
-    width: 20%;
+
+.boxAnime{
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 20rem;
+    width: 15%;
+    background-color: blue;
 }
 
-.imgAnime, .imgAnime1, .imgAnime2, .imgAnime3 {
-    background-size: contain;
-    background-repeat: no-repeat;
+.imgAnime, .imgAnime img{
+    position: absolute;
     height: 100%;
     width: 100%;
+    z-index: 0;
 }
-
 .imgAnime {
      background-image: url(../img/image.png);
      }

@@ -10,7 +10,7 @@
     <title>Document</title>
 </head>
 
-<body onload="selectIdAnime(sessionStorage.ID_ANIME),selectAllComentarios()">
+<body onload="selectIdAnime(sessionStorage.ID_ANIME),selectAllComentarios(),getCountComentarios(),getCategoriasAnime()">
     <header>
         <div class="container">
             <nav>
@@ -81,13 +81,8 @@
                         </span>
                         <span>4.5(49.1k)</span>
                     </div>
-                    <div class="categoria_anime">
-                        <span>Ação</span>
-                        <span>Aventura</span>
-                        <span>Fantasia</span>
-                        <span>Legendado</span>
-                        <span>Magia</span>
-                        <span>Shounen</span>
+                   <div class="categoria_anime" id="categoria">
+                    
                     </div>
                 </div>
             </div>
@@ -123,7 +118,7 @@
                 </div>
             </div>
             <div class="listar_comentarios" id="comentarios">
-                
+                  <div id="lixeira"></div>
             </div>
 </body>
 

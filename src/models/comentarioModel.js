@@ -11,16 +11,40 @@ function cadastrar(descricao, fk_anime, fk_usuario) {
     return database.executar(instrucaoSql);
 }
 
-function selectAllComentarios() {
+function selectAllComentarios(fk_anime) {
     console.log("ACESSEI O Comentario MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function selectAll():");
     
     var instrucaoSql = `
-        SELECT * FROM comentario;
+        SELECT c.*, u.nome FROM comentario as c
+        JOIN usuario as u
+        ON u.id = c.fk_usuario
+        WHERE fk_anime = ${fk_anime};
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
+function countComentarios(fk_anime){
+    console.log("ACESSEI O Comentario MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function count():");
+        var instrucaoSql = 
+        `
+            SELECT COUNT(descricao) as contagem FROM comentario
+            WHERE fk_anime = ${fk_anime};
+        `;
+        console.log("Executando a instrução SQL: \n" + instrucaoSql);
+        return database.executar(instrucaoSql);
+}
+function deletarComentario(id){
+    console.log("ACESSEI O Comentario MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function count():");
+        var instrucaoSql = 
+        `
+           DELETE FROM comentario WHERE id = ${id};
+        `;
+        console.log("Executando a instrução SQL: \n" + instrucaoSql);
+        return database.executar(instrucaoSql);
+}
 module.exports = {
     cadastrar,
-    selectAllComentarios
+    selectAllComentarios,
+    countComentarios,
+    deletarComentario
 };

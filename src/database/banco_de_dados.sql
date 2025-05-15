@@ -138,3 +138,81 @@ SELECT * FROM usuario;
 SELECT * FROM comentario;
 alter table comentario MODIFY column dataComentario DATETIME DEFAULT CURRENT_TIMESTAMP();
 
+SELECT COUNT(descricao) FROM comentario;
+CREATE TABLE anime_categoria(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    fk_categoria INT,
+    fk_anime INT,
+    CONSTRAINT chkFkCategoria_catAnime
+    FOREIGN KEY(fk_categoria) REFERENCES categoria(id),
+    CONSTRAINT chkFkAnime_catAnime
+    FOREIGN KEY(fk_anime) REFERENCES anime(id)
+);
+
+INSERT INTO anime_categoria (fk_anime, fk_categoria)
+VALUES
+-- Naruto
+(1, 1),  -- Ação
+(1, 2),  -- Aventura
+(1, 13), -- Shounen
+(1, 12), -- Sobrenatural
+-- Death Note
+(2, 6),  -- Ficção Científica
+(2, 7),  -- Mistério
+(2, 4),  -- Drama
+(2, 12), -- Sobrenatural
+-- Fullmetal Alchemist: Brotherhood
+(3, 1),  -- Ação
+(3, 2),  -- Aventura
+(3, 5),  -- Fantasia
+(3, 4),  -- Drama
+(3, 13), -- Shounen
+-- One Punch Man
+(4, 1),  -- Ação
+(4, 3),  -- Comédia
+(4, 13), -- Shounen
+(4, 6),  -- Ficção Científica
+-- Tokyo Ghoul
+(5, 1),  -- Ação
+(5, 4),  -- Drama
+(5, 11), -- Terror
+(5, 12), -- Sobrenatural
+-- Bleach
+(6, 1),  -- Ação
+(6, 2),  -- Aventura
+(6, 12), -- Sobrenatural
+(6, 13), -- Shounen
+-- Dragon Ball Z
+(7, 1),  -- Ação
+(7, 2),  -- Aventura
+(7, 5),  -- Fantasia
+(7, 13), -- Shounen
+-- Sword Art Online
+(8, 1),  -- Ação
+(8, 5),  -- Fantasia
+(8, 6),  -- Ficção Científica
+(8, 15), -- Isekai
+(8, 8),  -- Romance
+-- Fairy Tail
+(9, 1),  -- Ação
+(9, 2),  -- Aventura
+(9, 5),  -- Fantasia
+(9, 13), -- Shounen
+(9, 3),  -- Comédia
+-- Black Clover
+(10, 1),  -- Ação
+(10, 2),  -- Aventura
+(10, 5),  -- Fantasia
+(10, 13); -- Shounen
+
+SELECT a.titulo,c.nome_categoria FROM anime_categoria as ac
+JOIN anime as a 
+ON a.id = ac.fk_anime
+JOIN categoria as c
+ON c.id = ac.fk_categoria WHERE a.id = 1;
+
+use animeFlow;
+select * from comentario;
+select * from usuario;
+DELETE FROM comentario WHERE id = 6;
+

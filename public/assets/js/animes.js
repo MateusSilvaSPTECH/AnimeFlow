@@ -29,7 +29,6 @@ function selectTemporada(){
     });
 }
 function selectIdAnime(id){
-    id
     fetch(`/animes/listarIdAnime/${id}`,{
         method: "GET",
         headers: {
@@ -74,13 +73,8 @@ function selectIdAnime(id){
                         </span>
                         <span>4.5(49.1k)</span>
                     </div>
-                    <div class="categoria_anime">
-                        <span>Ação</span>
-                        <span>Aventura</span>
-                        <span>Fantasia</span>
-                        <span>Legendado</span>
-                        <span>Magia</span>
-                        <span>Shounen</span>
+                    <div class="categoria_anime" id="categoria">
+                    
                     </div>
                 </div>
             </div>
@@ -113,8 +107,8 @@ function selectIdAnime(id){
                 </div>
             </div>
             <div class="listar_comentarios" id="comentarios">
-                <div class="tittle_listar_comentarios">
-                    <span><i class="bi bi-person-circle"></i> 133 Comentarios</span>
+                <div class="tittle_listar_comentarios" id="countComentarios">
+                    <span><i class="bi bi-person-circle"></i> Comentarios</span>
                 </div>
                 <div class="barra"></div>
             
@@ -223,11 +217,24 @@ function exibirAnimesAll(resposta){
     
      
 }
-function mostrarSobreAnime(id){
-
-}
 function zerarId()
 {
     sessionStorage.ID_ANIME = undefined;
     window.location.href = `catalogo.html`
+}
+function getCategoriasAnime(){
+    var id = sessionStorage.ID_ANIME;
+     fetch(`/animes/listarAnimeCategoria/${id}`).then(funciona => funciona.json())
+    .then(funciona =>{
+        for(var i=0;i<funciona.length;i++){
+            console.log(funciona[i].nome_categoria)
+            categoria.innerHTML += 
+        `
+            <span>${funciona[i].nome_categoria}</span>
+        `
+        }
+    })
+    .catch(erro => {
+        console.error('Deu erro:', erro);
+    });
 }
