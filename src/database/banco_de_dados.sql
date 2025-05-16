@@ -135,8 +135,11 @@ VALUES
 SELECT * FROM anime WHERE estacao = 'Outono';
 SELECT * FROM usuario;
 
+use animeFlow;
 SELECT * FROM comentario;
+
 alter table comentario MODIFY column dataComentario DATETIME DEFAULT CURRENT_TIMESTAMP();
+
 
 SELECT COUNT(descricao) FROM comentario;
 CREATE TABLE anime_categoria(
@@ -214,5 +217,5 @@ ON c.id = ac.fk_categoria WHERE a.id = 1;
 use animeFlow;
 select * from comentario;
 select * from usuario;
-DELETE FROM comentario WHERE id = 6;
+DELETE FROM comentario WHERE id = 3;
 

@@ -16,4 +16,8 @@ router.get("/selectCountComentarios/:id_anime", function(req, res) {
 router.delete("/deletarComentario/:id", function(req, res) {
     comentarioController.deletarComentario(req, res);
 });
+
+router.post("/cadastrarRespostaComentario", function(req,res){
+    comentarioController.cadastrarResposta(req,res);
+})
 module.exports = router;
