@@ -148,7 +148,7 @@ function exibirAnimes(resposta){
             
                 <div class="boxAnime">
                     <div class="imgAnime">
-                        <img src="../assets/img/image.png">
+                         <img src="../assets/img/fotoAnime/${resposta[i].foto}">
                     </div>
 
                     <div class="blur"></div>
@@ -188,14 +188,14 @@ function exibirAnimesAll(resposta){
     for(var i =0;i<resposta.length;i++){
         id = resposta[i].id
         controle +=1;
-     
+        console.log(resposta[i].foto)
 
             div_container_anime.innerHTML +=
             `
             
                 <div class="boxAnime">
                     <div class="imgAnime">
-                        <img src="../assets/img/image.png">
+                        <img src="../assets/img/fotoAnime/${resposta[i].foto}">
                     </div>
 
                     <div class="blur"></div>

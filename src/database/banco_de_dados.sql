@@ -94,7 +94,7 @@ INSERT INTO anime (titulo, descricao, foto, logo, classificacao, traducao, estac
 VALUES 
 ('Naruto', 
  'Naruto Uzumaki é um jovem ninja que sonha em se tornar o Hokage da Vila da Folha. Com a raposa de nove caudas selada dentro de si, ele enfrenta desafios intensos e busca o reconhecimento dos outros.',
- 'naruto.jpg', 'naruto_logo.png', 12, 'Dublado', 'Outono', '2002-10-03', 220, 1),
+ 'naruto.png', 'naruto_logo.png', 12, 'Dublado', 'Outono', '2002-10-03', 220, 1),
 
 ('Death Note', 
  'Light Yagami encontra um caderno sobrenatural que permite matar qualquer pessoa ao escrever seu nome. Ele inicia uma cruzada contra o crime, mas é confrontado pelo brilhante detetive L.',
@@ -132,7 +132,7 @@ VALUES
  'Asta nasceu sem magia em um mundo onde ela é tudo. Mesmo assim, ele sonha em se tornar o Rei Mago. Com seu grimório raro, enfrenta desafios constantes para provar seu valor e proteger o reino.',
  'black_clover.jpg', 'black_clover_logo.png', 12, 'Legendado | Dublado', 'Outono', '2017-10-03', 170, 1);
 
-SELECT * FROM anime WHERE estacao = 'Outono';
+SELECT * FROM anime;
 SELECT * FROM usuario;
 
 use animeFlow;

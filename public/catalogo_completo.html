@@ -73,3 +73,12 @@
 </html>
 <script src="assets/js/menudropdown.js"></script>
 <script src="assets/js/animes.js"></script>
+<script>
+    var nomeUsuario = sessionStorage.NOME_USUARIO;
+    window.onload = ()=>{
+         const foto = sessionStorage.FOTO_USUARIO;
+         img_user_session.src = `assets/img/imgUpload/${foto}`;
+         img_user_session2.src = `assets/img/imgUpload/${foto}`;
+        nome_usuario.innerHTML = `${nomeUsuario}`;
+    }
+</script>

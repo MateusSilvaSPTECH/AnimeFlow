@@ -19,12 +19,12 @@
                     <li><a href="#">Temporadas</a></li>
                     <li><a href="#">Populares</a></li>
                 </ul>
-                <img src="assets/img/d13cb6118a0cbc4eadb8360446927cb9.png" class="user_pic" onclick="mostrarDropDown()">
+                <img src="" id="img_user_session" class="user_pic" onclick="mostrarDropDown()" width="60" height="40">
 
                 <div class="sub_menu_wrap" id="drop_menu">
                     <div class="sub_menu">
                         <div class="user_info">
-                            <img src="assets/img/d13cb6118a0cbc4eadb8360446927cb9.png">
+                            <img src="assets/img/d13cb6118a0cbc4eadb8360446927cb9.png" id="img_user_session2">
                             <h2 id="nome_usuario"></h2>
                         </div>
                         <hr>
@@ -39,7 +39,7 @@
                             <p>Editar Perfil</p>
                             <span>></span>
                         </a>
-                        <a href="login.html" class="sub_menu_link">
+                        <a onclick="limparSessao()" class="sub_menu_link">
                             <img src="assets/img/images/logout.png" alt="">
                             <p>Logout</p>
                             <span>></span>
@@ -184,10 +184,14 @@
 <script src="assets/js/carrosel.js"></script>
 <script src="assets/js/menudropdown.js"></script>
 <script src="assets/js/animes.js"></script>
+<script src="assets/js/usuario.js"></script>
 <script>
     var nomeUsuario = sessionStorage.NOME_USUARIO;
     console.log(nomeUsuario)
     window.onload = ()=>{
+         const foto = sessionStorage.FOTO_USUARIO;
+         img_user_session.src = `assets/img/imgUpload/${foto}`;
+         img_user_session2.src = `assets/img/imgUpload/${foto}`;
         selectEstacao();
         nome_usuario.innerHTML = `${nomeUsuario}`;
     }

@@ -24,14 +24,6 @@ function selectIdAnime(id){
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
-function selectTemporada(temporada){
-    console.log("acessei o selectTemporada")
-    var instrucaoSql = `
-    SELECT * FROM anime WHERE estacao = '${temporada}'
-    `;
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
-    return database.executar(instrucaoSql);
-}
 function selectCategoriaAnime(id){
     console.log("acessei o selectCategoriaAnime")
     var instrucaoSql = `

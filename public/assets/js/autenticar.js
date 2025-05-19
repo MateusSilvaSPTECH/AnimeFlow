@@ -26,6 +26,7 @@ function autenticar() {
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.ID_USUARIO = json.id;
+                    sessionStorage.FOTO_USUARIO = json.foto;
                     setTimeout(function () {
                         window.location = "./catalogo.html";
                     }, 1000); // apenas para exibir o loading

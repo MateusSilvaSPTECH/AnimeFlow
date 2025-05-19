@@ -26,3 +26,7 @@ function dadosUsuario(id){
         console.error('Deu erro:', erro);
     });
 }
+function limparSessao() {
+    sessionStorage.clear();
+    window.location = "../index.html";
+}
