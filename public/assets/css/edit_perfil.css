@@ -5,11 +5,11 @@
     margin: 0;
     font-family: 'Inter';
     color: #fff;
-    background-color: black;
 }
 body{
     height: 100vh;
     width: 100%;
+    background-color: black;
 }
 .container{
     height: 100%;
@@ -102,4 +102,28 @@ body{
     height: 40px;
     border: none;
     margin-top: 10px;
+}
+.img_user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.img_user img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s ease;
+  border: 3px solid #ccc;
+}
+
+.img_user img:hover {
+  opacity: 0.8;
+  border-color: #007bff;
+}
+
+.img_user input[type="file"] {
+  display: none;
 }

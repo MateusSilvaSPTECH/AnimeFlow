@@ -8,10 +8,10 @@ function selectAll(){
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
-function selectTemporada(temporada){
+function selectEstacao(estacao){
     console.log("acessei o selectTemporada")
     var instrucaoSql = `
-    SELECT * FROM anime WHERE estacao = '${temporada}'
+    SELECT * FROM anime WHERE estacao = '${estacao}'
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -46,7 +46,7 @@ function selectCategoriaAnime(id){
 }
 module.exports = {
     selectAll,
-    selectTemporada,
+    selectEstacao,
     selectIdAnime,
     selectCategoriaAnime
 };

@@ -1,5 +1,4 @@
 function chamarAnime(){
-
     fetch("/animes/listarTodos").then(funciona => funciona.json())
     .then(funciona =>{
         exibirAnimesAll(funciona);
@@ -10,9 +9,22 @@ function chamarAnime(){
       
     }
 
-function selectTemporada(){
-    var temporada = `Outono`;
-    fetch(`/animes/listarPorTemporada/${temporada}`,{
+function selectEstacao(){
+    const data = new Date();
+    const mesAtual = Number(data.getMonth()+1);
+    console.log(mesAtual)
+    var estacao = ``
+    if(mesAtual>=3 || mesAtual<=5){
+        estacao = "Primavera"
+    }else if(mesAtual>=6|| mesAtual<=8){
+        estacao = "Verão"
+    }else if(mesAtual>=9 || mesAtual<=11){
+        estacao = "Outono"
+    }else{
+        estacao = "Inverno"
+    }
+    console.log(estacao)
+    fetch(`/animes/listarPorEstacao/${estacao}`,{
         method: "GET",
         headers: {
             "Content-Type" : 'application/json'
@@ -39,7 +51,7 @@ function selectIdAnime(id){
     ).then(funciona => funciona.json())
     .then(funciona =>{
     console.log(funciona)
-    funciona.forEach( async item => {
+    funciona.forEach( item => {
         div_sobre_anime.innerHTML =
         `
             <div class="boxConteudo">
@@ -106,10 +118,10 @@ function selectIdAnime(id){
                     <button class="btn" onclick="cadastrarComentario()">Publicar Comentario</button>
                 </div>
             </div>
+            <div class="tittle_listar_comentarios" id="countComentarios">
+                <span><i class="bi bi-person-circle"></i> Comentarios</span>
+            </div>
             <div class="listar_comentarios" id="comentarios">
-                <div class="tittle_listar_comentarios" id="countComentarios">
-                    <span><i class="bi bi-person-circle"></i> Comentarios</span>
-                </div>
                 <div class="barra"></div>
             
             </div>

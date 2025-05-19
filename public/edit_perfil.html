@@ -1,41 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/edit_perfil.css">
     <title>Document</title>
 </head>
-<body>
+
+<body onload="dadosUsuario(sessionStorage.ID_USUARIO)">
     <div class="container">
 
         <div class="ttitle">
             <h1>Edite seu perfil</h1>
         </div>
-        
+
         <div class="box_informacoes">
             <div class="img_user">
-                <img src="assets/img/d13cb6118a0cbc4eadb8360446927cb9.png">
+                <label for="foto">
+                    <img src="" id="img" alt="Foto do usuário" />
+                </label>
+                <input name="foto" id="foto" type="file" accept="image/*" />
             </div>
             <div class="form">
-                    
-                        <label for="">Nome</label>
-                        <input type="text" placeholder="" id="">
-                    
-                        <label for="">Email</label>
-                        <input type="text" placeholder="" id="">
-                    
-                        <label for="">Senha</label>
-                        <input type="text" placeholder="" id="">
-                    
+
+                <label for="">Nome</label>
+                <input name="nome" id="nome" value="" type="text" />
+
+                <label for="">Email</label>
+                <input name="email" id="email" type="url" />
+
+                <label for="">Senha</label>
+                <input type="text" name="senha" id="senha">
+
             </div>
         </div>
 
         <div class="btn">
-            <a href="edit_perfil.html">Save</a>
+            <a onclick="enviar()">Save</a>
             <a href="catalogo.html">Cancel</a>
         </div>
 
     </div>
 </body>
+
 </html>
+<script src="assets/js/usuario.js"></script>
+<script>
+    function enviar() {
+        const formData = new FormData();
+
+        var fotoFile = foto.files[0]
+        var fotoAtual = sessionStorage.FOTO_USUARIO;
+        formData.append('foto', fotoFile ? fotoFile : fotoAtual)
+        formData.append('nome', nome.value)
+        formData.append('email', email.value)
+        formData.append('senha', senha.value)
+        formData.append('id', sessionStorage.ID_USUARIO)
+        formData.append('fotoAntiga', sessionStorage.FOTO_USUARIO)
+
+        fetch("/usuarios/atualizar", {
+            method: "PUT",
+            body: formData
+        }).then(res => {
+            if (res.ok) {
+                alert("Atualizado com sucesso!");
+                dadosUsuario(sessionStorage.ID_USUARIO);
+            }
+        })
+            .catch(err => {
+                console.log(err);
+            })
+    }
+foto.addEventListener('change', function () {
+  const arquivo = foto.files[0];
+
+  if (arquivo) {
+    const reader = new FileReader();
+
+    reader.onload = function (e) {
+      img.src = e.target.result;
+    };
+
+    reader.readAsDataURL(arquivo);
+  }
+});
+</script>

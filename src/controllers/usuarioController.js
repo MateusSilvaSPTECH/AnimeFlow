@@ -67,8 +67,36 @@ function cadastrar(req, res) {
             );
     }
 }
+function atualizar(req, res) {
+  const foto = req.file ? req.file.filename : req.body.fotoAntiga;
+  const {nome, email,senha,id} = req.body
+  const usuario = { nome, email,senha, foto,id }
+   usuarioModel.atualizar(usuario)
+  .then(resultado => {
+    res.status(201).send("Usuario atualizado com sucesso");
+  }).catch(err => {
+    res.status(500).send(err);
+  });
+}
+function selectDadosbyId(req, res) {
+     var id = req.params.id;
+   usuarioModel.selectDadosbyId(id).then(
+           function (resultadoAutenticar) {
+               console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
+               console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`); // transforma JSON em String
+               res.json(resultadoAutenticar)
+           }).catch(
+                   function (erro) {
+                       console.log(erro);
+                       console.log("\nHouve um erro ao trazer dados do usuario por id! Erro: ", erro.sqlMessage);
+                       res.status(500).json(erro.sqlMessage);
+                   }
+               );
+}
 
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    atualizar,
+    selectDadosbyId
 }

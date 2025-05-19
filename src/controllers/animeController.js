@@ -14,9 +14,9 @@ animeModel.selectAll().then(
             );
 }
 
-function selectTemporada(req, res){
-    var temporada = req.params.temporada;
-    animeModel.selectTemporada(temporada).then(
+function selectEstacao(req, res){
+    var estacao = req.params.estacao;
+    animeModel.selectEstacao(estacao).then(
         function (resultadoAutenticar) {
             console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
             console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`); // transforma JSON em String
@@ -61,7 +61,7 @@ function selectCategoriaAnime(req, res){
     }
 module.exports = {
     selectAll,
-    selectTemporada,
+    selectEstacao,
     selectIdAnime,
     selectCategoriaAnime
 }

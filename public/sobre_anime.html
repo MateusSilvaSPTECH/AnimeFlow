@@ -10,7 +10,7 @@
     <title>Document</title>
 </head>
 
-<body onload="selectIdAnime(sessionStorage.ID_ANIME),selectAllComentarios(),getCountComentarios(),getCategoriasAnime()">
+<body onload="selectIdAnime(sessionStorage.ID_ANIME),getCategoriasAnime(),getCountComentarios(),selectAllComentarios()">
     <header>
         <div class="container">
             <nav>
@@ -21,7 +21,6 @@
                     <li><a href="#">Populares</a></li>
                 </ul>
                 <img src="assets/img/d13cb6118a0cbc4eadb8360446927cb9.png" class="user_pic" onclick="mostrarDropDown()">
-
                 <div class="sub_menu_wrap" id="drop_menu">
                     <div class="sub_menu">
                         <div class="user_info">
@@ -29,7 +28,6 @@
                             <h2>Mateus da silva</h2>
                         </div>
                         <hr>
-
                         <a href="dashboard.html" class="sub_menu_link">
                             <img src="assets/img/images/profile.png" alt="">
                             <p>Dashboard</p>
@@ -51,75 +49,8 @@
     </header>
     <div class="container" id="div_sobre_anime">
         <div class="boxConteudo">
-            <div class="cabecalho_anime">
-                <div class="img_anime"></div>
-                <div class="informacoes_anime">
-                    <div class="tittle_anime">
-                        <h1>Sakamoto Days</h1>
-                        <span>2025</span>
-                    </div>
-                    <div class="avaliacao_anime">
-                        <span class="boxSistema">
-                            <div class="estrelas">
-                                <input type="radio" name="estrela" id="input_vazio" value="" checked>
-
-                                <label for="estrela_1"><i class="bi opcao bi-star-fill"></i></label>
-                                <input type="radio" name="estrela" id="estrela_1" value="1" onclick="verEstrelas()">
-
-                                <label for="estrela_2"><i class="bi opcao bi-star-fill"></i></label>
-                                <input type="radio" name="estrela" id="estrela_2" value="2" onclick="verEstrelas()">
-
-                                <label for="estrela_3"><i class="bi opcao bi-star-fill"></i></label>
-                                <input type="radio" name="estrela" id="estrela_3" value="3" onclick="verEstrelas()">
-
-                                <label for="estrela_4"><i class="bi opcao bi-star-fill"></i></label>
-                                <input type="radio" name="estrela" id="estrela_4" value="4" onclick="verEstrelas()">
-
-                                <label for="estrela_5"><i class="bi opcao bi-star-fill"></i></label>
-                                <input type="radio" name="estrela" id="estrela_5" value="5" onclick="verEstrelas()">
-                            </div>
-                        </span>
-                        <span>4.5(49.1k)</span>
-                    </div>
-                   <div class="categoria_anime" id="categoria">
-                        
-                    </div>
-                </div>
-            </div>
-            <div class="descricao_anime">
-                <span>A história gira em torno de Taro Sakamoto, um assassino lendário que decidiu se aposentar e levar
-                    uma vida pacífica como um cidadão comum e dedicado à sua família. Contudo, essa tranquilidade é
-                    abalada quando inimigos e antigos aliados de sua época como assassino começam a aparecer em busca de
-                    vingança. Para proteger seus entes queridos, Sakamoto é obrigado a usar suas excepcionais
-                    habilidades de combate, enfrentando uma série de adversários, enquanto tenta manter a aparência de
-                    uma vida comum.</span>
-            </div>
-            <div class="trailer_episodeos">
-                <div class="trailer">
-                    <!-- <iframe src="https://www.youtube.com/embed/f8NOmzN788w?si=iKgb17iQfjo3eo4h"
-                        title="YouTube video player" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> -->
-                </div>
-                <div class="episodiosTemps">
-                    <h1>12 Episodios</h1>
-                    <h1>1 Temporada</h1>
-                </div>
-            </div>
-            <!-- <div class="carrosel"></div> -->
-            <div class="publicar_comentarios">
-                <div class="tittle">
-                    <span><i class="bi bi-chat-fill"></i></span>
-                    <span>Deixe seu comentario</span>
-                </div>
-                <div class="form_comentario">
-                    <textarea id="input_descricao"></textarea>
-                    <button class="btn" onclick="cadastrarComentario()">Publicar Comentario</button>
-                </div>
-            </div>
-            <div class="listar_comentarios" id="comentarios">
-                  <div id="lixeira"></div>
-            </div>
+            
+        </div>
 </body>
 
 </html>
@@ -135,3 +66,4 @@
 <script src="assets/js/menudropdown.js"></script>
 <script src="assets/js/animes.js"></script>
 <script src="assets/js/comentarios.js"></script>
+<script src="assets/js/avaliacao.js"></script>

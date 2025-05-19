@@ -219,3 +219,16 @@ select * from comentario;
 select * from usuario;
 DELETE FROM comentario WHERE id = 3;
 
+      SELECT 
+    c.id AS id_comentario,
+    c.descricao AS descricao_comentario,
+    c.dataComentario,
+    c.id_resposta,
+    c.fk_usuario,
+    u.nome
+    FROM comentario c
+    JOIN usuario u ON c.fk_usuario = u.id
+    WHERE c.fk_anime = 2;
+
+
+select * from usuario where id = 1;

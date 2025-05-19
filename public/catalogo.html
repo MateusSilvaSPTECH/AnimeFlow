@@ -9,7 +9,7 @@
     <title>Document</title>
 </head>
 
-<body onload="selectTemporada()">
+<body>
     <header>
         <div class="container">
             <nav>
@@ -25,7 +25,7 @@
                     <div class="sub_menu">
                         <div class="user_info">
                             <img src="assets/img/d13cb6118a0cbc4eadb8360446927cb9.png">
-                            <h2 id="nomeUsuario">Mateus da silva</h2>
+                            <h2 id="nome_usuario"></h2>
                         </div>
                         <hr>
 
@@ -184,3 +184,11 @@
 <script src="assets/js/carrosel.js"></script>
 <script src="assets/js/menudropdown.js"></script>
 <script src="assets/js/animes.js"></script>
+<script>
+    var nomeUsuario = sessionStorage.NOME_USUARIO;
+    console.log(nomeUsuario)
+    window.onload = ()=>{
+        selectEstacao();
+        nome_usuario.innerHTML = `${nomeUsuario}`;
+    }
+</script>
