@@ -237,3 +237,13 @@ select ROUND(AVG(a.valor),1) AS "media",COUNT(a.valor) AS "quantidade" from aval
 JOIN anime as an
 ON an.id = a.fk_anime
 WHERE a.fk_anime = 2;
+
+select * from anime_categoria;
+
+use animeFlow;
+select a.titulo,c.nome_categoria from anime as a
+JOIN anime_categoria as ac
+ON ac.fk_anime = a.id
+JOIN categoria as c
+ON c.id = ac.fk_categoria
+WHERE c.id = 1;

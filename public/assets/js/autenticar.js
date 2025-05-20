@@ -1,8 +1,8 @@
 function autenticar() {
         //aguardar();
 
-        var email = email_input.value;
-        var senha = senha_input.value;
+        var email = input_email.value;
+        var senha = input_senha.value;
         console.log(email);
         console.log(senha);
         fetch("/usuarios/autenticar", {

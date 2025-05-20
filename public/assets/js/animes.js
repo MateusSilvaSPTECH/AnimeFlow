@@ -258,3 +258,5 @@ function getCategoriasAnime(){
         console.error('Deu erro:', erro);
     });
 }
+
+

@@ -6,6 +6,9 @@ var animeController = require("../controllers/animeController");
 router.get("/listarTodos", function(req, res) {
     animeController.selectAll(req, res);
 });
+router.get("/listarTodosPorCategoria/:id_categoria", function(req, res) {
+    animeController.selectAllPorCategoria(req, res);
+});
 router.get("/listarPorEstacao/:estacao", function(req, res) {
     animeController.selectEstacao(req, res);
 });

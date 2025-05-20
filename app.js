@@ -20,8 +20,9 @@ var usuarioRouter = require("./src/routes/usuarios");
 var avisosRouter = require("./src/routes/avisos");
 var animeRouter = require("./src/routes/animes");
 var comentarioRouter = require("./src/routes/comentarios");
-var categoriaRouter = require("./src/routes/categoria_anime");
+var categoriaAnimeRouter = require("./src/routes/categoria_anime");
 var avaliacaoRouter = require("./src/routes/avaliacao");
+var categoriaRouter = require("./src/routes/categoria");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -34,8 +35,9 @@ app.use("/usuarios", usuarioRouter);
 app.use("/avisos", avisosRouter);
 app.use("/animes",animeRouter);
 app.use("/comentarios",comentarioRouter);
-app.use("/categoria_anime",categoriaRouter);
+app.use("/categoria_anime",categoriaAnimeRouter);
 app.use("/avaliacao",avaliacaoRouter);
+app.use("/categorias",categoriaRouter);
 
 
 app.listen(PORTA_APP, function () {

@@ -19,7 +19,7 @@ function selectAvaliacao(){
         console.log(dados)
          mediaCountAvaliacao.innerHTML = 
         `
-            ${dados[0].media}(${dados[0].quantidade})<i class="bi opcao bi-star-fill"></i>
+            ${dados[0].media}(${dados[0].quantidade})
         `;
     })
 }

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/style_categoria.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="catalogo.html"><img src="assets/img/logoBrancaSemFundo.png" class="logo" ></a>
+                <ul>
+                    <li><a href="#">Categorias</a></li>
+                    <li><a href="#">Temporadas</a></li>
+                    <li><a href="#">Populares</a></li>
+                </ul>
+                <img src="" id="img_user_session" class="user_pic" onclick="mostrarDropDown()" width="60" height="40">
+
+                <div class="sub_menu_wrap" id="drop_menu">
+                    <div class="sub_menu">
+                        <div class="user_info">
+                            <img src="assets/img/d13cb6118a0cbc4eadb8360446927cb9.png" id="img_user_session2">
+                            <h2 id="nome_usuario"></h2>
+                        </div>
+                        <hr>
+
+                        <a href="dashboard.html" class="sub_menu_link">
+                            <img src="assets/img/images/profile.png" alt="">
+                            <p>Dashboard</p>
+                            <span>></span>
+                        </a>
+                        <a href="edit_perfil.html" class="sub_menu_link">
+                            <img src="assets/img/images/setting.png" alt="">
+                            <p>Editar Perfil</p>
+                            <span>></span>
+                        </a>
+                        <a onclick="limparSessao()" class="sub_menu_link">
+                            <img src="assets/img/images/logout.png" alt="">
+                            <p>Logout</p>
+                            <span>></span>
+                        </a>
+                    </div>
+                </div>
+            </nav>
+    </header>
+    <div class="container">
+        <section id="box_categoria">
+           
+        </section>
+    </div>
+    <footer>
+            <div class="container">
+                <div class="logo_footer">
+                    <a href="catalogo.html"><img src="assets/img/logoBrancaSemFundo.png" class="logo" ></a>
+                </div>
+                <hr>
+                <div class="informacoes">
+                    <a href="categorias.html">Categorias</a>
+                    <a href="#">Temporadas</a>
+                    <a href="#">Populares</a>
+                </div>
+            </div>
+    </footer>
+</body>
+</html>
+<script src="assets/js/categoria.js"></script>
+<script src="assets/js/menudropdown.js"></script>
+<script>
+    var nomeUsuario = sessionStorage.NOME_USUARIO;
+    console.log(nomeUsuario)
+    window.onload = ()=>{
+        getCategoriasAll();
+          const foto = sessionStorage.FOTO_USUARIO;
+         img_user_session.src = `assets/img/imgUpload/${foto}`;
+         img_user_session2.src = `assets/img/imgUpload/${foto}`;
+
+        nome_usuario.innerHTML = `${nomeUsuario}`;
+    }
+</script>
