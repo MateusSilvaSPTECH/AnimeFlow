@@ -15,14 +15,13 @@
             <form class="formulario" action="">
                 <div class="formInput">
                     <span>Email:</span>
-                   <input type="text" id="email_input">
+                   <input type="email" id="input_email" placeholder="teste@teste.com" oninput="validarEmail()">
                 </div>
-
                 <div class="formInput">
                     <span>Senha:</span>
-                    <input type="text" id="senha_input">
+                    <input type="text" id="input_senha" placeholder="*********" oninput="validarPassword()">
                 </div>
-                <a class="btn" onclick="autenticar()">Entrar</a>
+                <a class="btn" onclick="validarLogin()">Entrar</a>
             </form>
             <div class="navCadastro">
                 <span>Não possui cadastro em nosso site? <a href="cadastro.html">Cadastre-se</a> </span>
@@ -32,3 +31,66 @@
 </body>
 </html>
 <script src="assets/js/autenticar.js"></script>
+<script>
+    function validarEmail(){
+        var email = input_email.value;
+        if(email.length>0){
+            if(email.includes('@') && email.endsWith('.com')){
+                input_email.style.border = '1px solid green';
+            }else{
+                input_email.style.border = '1px solid red';
+            }
+        }else{
+                input_email.style.border = '1px solid red';
+        }
+    }
+    function validarPassword(){
+        var senha = input_senha.value;
+        var senhaMaiuscula = senha.toUpperCase();
+        var senhaMinuscula = senha.toLowerCase();
+        var senhaExclamacao = senha.includes('!');
+        var senhaArroba = senha.includes('@');
+        var senhaSifrao = senha.includes('$');
+        var senhaPorcetagem = senha.includes('%');
+        var senhaEcomercial = senha.includes('&');
+        var senhaAsteristico = senha.includes('*');
+        var senhaUnderline = senha.includes('_');
+        var senhaNumero = false;
+        var letraMaiuscula = false;
+        var letraMinusculo = false;
+
+        if(senha != senhaMaiuscula){    
+            letraMinusculo = true;
+        }else{
+            letraMinusculo = false;
+        }
+
+        if(senha != senhaMinuscula){    
+            letraMaiuscula = true;
+        }else{
+            letraMaiuscula = false;
+        }
+        for(var i=0;i<10;i++){
+            if(senha.includes(i)){
+            senhaNumero = true;
+            break;
+        }
+        }
+        if(senha.length>0){
+            if(senhaNumero && letraMaiuscula && letraMinusculo &&  (senhaArroba || senhaExclamacao || senhaSifrao || senhaPorcetagem || senhaEcomercial || senhaAsteristico || senhaUnderline)){
+                input_senha.style.border = '1px solid green';
+            }else{
+                input_senha.style.border = '1px solid red';
+            }
+        }else{
+                input_senha.style.border = '1px solid red';
+        }
+    }
+    function validarLogin(){
+       if(input_senha.style.border =='1px solid green' && input_email.style.border == '1px solid green'){
+            autenticar();
+       }else{
+        alert('Preencha todos os campos corretamente');
+       }
+    }
+</script>

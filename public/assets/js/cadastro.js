@@ -13,5 +13,12 @@ function cadastrar() {
                 emailServer : email,
                 senhaServer : senha
             })
-        });
+        }).then(funciona => funciona.json())
+        .then(funciona=>{
+            console.log(funciona)
+            if(funciona.affectedRows>0){
+                console.log("olha eu ai")
+                 window.location.href = 'login.html'
+            }
+        })
 }

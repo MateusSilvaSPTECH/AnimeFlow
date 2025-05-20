@@ -8,7 +8,6 @@
 </head>
 <body>
     <div class="container">
-
         <div class="boxFormulario">
             <div class="tittle">
                 <h1>Explore universos mágicos e inesquecíveis!</h1>
@@ -16,19 +15,19 @@
             <form class="formulario" action="">
                 <div class="formInput">
                     <span>Username:</span>
-                    <input type="text" id="input_username">
+                    <input type="text" id="input_username" placeholder="NomeUsuario" oninput="validarUsername()">
                 </div>
 
                 <div class="formInput">
                     <span>Email:</span>
-                   <input type="text" id="input_email">
+                   <input type="text" id="input_email" placeholder="teste@teste.com" oninput="validarEmail()">
                 </div>
 
                 <div class="formInput">
                     <span>Senha:</span>
-                    <input type="text" id="input_senha" placeholder="******">
+                    <input type="text" id="input_senha" placeholder="*********" oninput="validarPassword()">
                 </div>
-                <a  class="btn" onclick="cadastrar()">Cadastra-se</a>
+                <a  class="btn" onclick="validarCadastro()">Cadastra-se</a>
             </form>
             <div class="navLogin">
                 <span>Ja possui cadastro em nosso site? <a href="login.html">Logar</a> </span>
@@ -38,3 +37,75 @@
 </body>
 </html>
 <script src="assets/js/cadastro.js"></script>
+<script>
+   
+    function validarUsername(){
+        var nome = input_username.value;
+            if(nome.length > 0){
+             input_username.style.border = '1px solid green';
+            }else{
+             input_username.style.border = '1px solid red';
+            }   
+    }
+    function validarEmail(){
+        var email = input_email.value;
+        if(email.length>0){
+            if(email.includes('@') && email.endsWith('.com')){
+                input_email.style.border = '1px solid green';
+            }else{
+                input_email.style.border = '1px solid red';
+            }
+        }else{
+                input_email.style.border = '1px solid red';
+        }
+    }
+    function validarPassword(){
+        var senha = input_senha.value;
+        var senhaMaiuscula = senha.toUpperCase();
+        var senhaMinuscula = senha.toLowerCase();
+        var senhaExclamacao = senha.includes('!');
+        var senhaArroba = senha.includes('@');
+        var senhaSifrao = senha.includes('$');
+        var senhaPorcetagem = senha.includes('%');
+        var senhaEcomercial = senha.includes('&');
+        var senhaAsteristico = senha.includes('*');
+        var senhaUnderline = senha.includes('_');
+        var senhaNumero = false;
+        var letraMaiuscula = false;
+        var letraMinusculo = false;
+
+        if(senha != senhaMaiuscula){    
+            letraMinusculo = true;
+        }else{
+            letraMinusculo = false;
+        }
+
+        if(senha != senhaMinuscula){    
+            letraMaiuscula = true;
+        }else{
+            letraMaiuscula = false;
+        }
+        for(var i=0;i<10;i++){
+            if(senha.includes(i)){
+            senhaNumero = true;
+            break;
+        }
+        }
+        if(senha.length>0){
+            if(senhaNumero && letraMaiuscula && letraMinusculo &&  (senhaArroba || senhaExclamacao || senhaSifrao || senhaPorcetagem || senhaEcomercial || senhaAsteristico || senhaUnderline)){
+                input_senha.style.border = '1px solid green';
+            }else{
+                input_senha.style.border = '1px solid red';
+            }
+        }else{
+                input_senha.style.border = '1px solid red';
+        }
+    }
+    function validarCadastro(){
+       if(input_senha.style.border =='1px solid green' && input_email.style.border == '1px solid green' &&  input_username.style.border == '1px solid green'){
+            cadastrar();
+       }else{
+        alert('Preencha todos os campos corretamente')
+       }
+    }
+</script>
