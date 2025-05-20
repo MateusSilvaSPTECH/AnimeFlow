@@ -23,6 +23,7 @@ function selectEstacao(){
     }else{
         estacao = "Inverno"
     }
+    estacao = "Outono"
     console.log(estacao)
     fetch(`/animes/listarPorEstacao/${estacao}`,{
         method: "GET",
@@ -34,7 +35,7 @@ function selectEstacao(){
     ).then(funciona => funciona.json())
     
     .then(funciona =>{
-        exibirAnimes(funciona);
+        exibirAnimes(estacao,funciona);
     })
     .catch(erro => {
         console.error('Deu erro:', erro);
@@ -56,7 +57,9 @@ function selectIdAnime(id){
         `
             <div class="boxConteudo">
             <div class="cabecalho_anime">
-                <div class="img_anime"></div>
+                 <div class="imgAnime">
+                         <img src="../assets/img/fotoAnime/${item.foto}">
+                </div>
                 <div class="informacoes_anime">
                     <div class="tittle_anime">
                         <h1>${item.titulo}</h1>
@@ -83,7 +86,7 @@ function selectIdAnime(id){
                                 <input type="radio" name="estrela" id="estrela_5" value="5" onclick="verEstrelas()">
                             </div>
                         </span>
-                        <span>4.5(49.1k)</span>
+                        <span id="mediaCountAvaliacao"></span>
                     </div>
                     <div class="categoria_anime" id="categoria">
                     
@@ -137,12 +140,17 @@ function sobre_animeid(id){
     sessionStorage.ID_ANIME = id;
         window.location.href = `sobre_anime.html`
 }
-function exibirAnimes(resposta){
+function exibirAnimes(estacao,resposta){
     var controle = 0;
     for(var i =0;i<resposta.length;i++){
         id = resposta[i].id
+        console.log(resposta[i])
         controle +=1;
             if(controle<5){
+                console.log(estacao)
+                h1Estacao.innerHTML = `
+                    Conheça os melhores animes da temporada de ${estacao}
+                `;
                  div_container_anime.innerHTML +=
             `
             
@@ -162,7 +170,7 @@ function exibirAnimes(resposta){
                         <div class="avaliacao">
                             A${resposta[i].classificacao} 4.5(7.7K)<i class="bi bi-star-fill"></i>
                             <span>${resposta[i].traducao}</span>
-                            <span>500 episodios</span>
+                            <span>${resposta[i].episodeo} episodios</span>
 
                             <div class="btnNav">
                                 <a href="sobre_anime.html" class="btnSalvar"><i class="bi bi-bookmark"></i></a> 
@@ -193,9 +201,9 @@ function exibirAnimesAll(resposta){
             div_container_anime.innerHTML +=
             `
             
-                <div class="boxAnime">
+                 <div class="boxAnime">
                     <div class="imgAnime">
-                        <img src="../assets/img/fotoAnime/${resposta[i].foto}">
+                         <img src="../assets/img/fotoAnime/${resposta[i].foto}">
                     </div>
 
                     <div class="blur"></div>
@@ -209,7 +217,7 @@ function exibirAnimesAll(resposta){
                         <div class="avaliacao">
                             A${resposta[i].classificacao} 4.5(7.7K)<i class="bi bi-star-fill"></i>
                             <span>${resposta[i].traducao}</span>
-                            <span>500 episodios</span>
+                            <span>${resposta[i].episodeo} episodios</span>
 
                             <div class="btnNav">
                                 <a href="sobre_anime.html" class="btnSalvar"><i class="bi bi-bookmark"></i></a> 
@@ -224,7 +232,7 @@ function exibirAnimesAll(resposta){
                         <div class="traducao">${resposta[i].traducao}</div>
                     </div>
                 </div>
-            `
+                `
         }
     
      
@@ -236,7 +244,7 @@ function zerarId()
 }
 function getCategoriasAnime(){
     var id = sessionStorage.ID_ANIME;
-     fetch(`/animes/listarAnimeCategoria/${id}`).then(funciona => funciona.json())
+     fetch(`/categoria_anime/listarAnimeCategoria/${id}`).then(funciona => funciona.json())
     .then(funciona =>{
         for(var i=0;i<funciona.length;i++){
             console.log(funciona[i].nome_categoria)

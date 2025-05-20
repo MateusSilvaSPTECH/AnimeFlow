@@ -12,7 +12,4 @@ router.get("/listarPorEstacao/:estacao", function(req, res) {
 router.get("/listarIdAnime/:id", function(req, res) {
     animeController.selectIdAnime(req, res);
 });
-router.get("/listarAnimeCategoria/:id",function(req,res){
-    animeController.selectCategoriaAnime(req,res);
-})
 module.exports = router;

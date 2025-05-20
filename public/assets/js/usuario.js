@@ -9,8 +9,12 @@ function dadosUsuario(id){
     ).then(dados => dados.json())
     
     .then(dados =>{
-         if (dados.length > 0) {
+
+        console.log(dados)
+        if (dados.length > 0) {
+        console.log("entrei no if ")
         const usuario = dados[0];
+        console.log(usuario)
         caminho_img = "assets/img/imgUpload/"+usuario.foto;
         nome.value = usuario.nome;
         email.value = usuario.email;
@@ -23,6 +27,7 @@ function dadosUsuario(id){
       }
     })
     .catch(erro => {
+        console.log("entrei no erro")
         console.error('Deu erro:', erro);
     });
 }

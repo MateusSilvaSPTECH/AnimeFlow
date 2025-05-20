@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <title>Document</title>
 </head>
-<body onload="chamarAnime()">
+<body>
     <header>
         <div class="container">
             <nav>
@@ -17,13 +17,13 @@
                     <li><a href="#">Temporadas</a></li>
                     <li><a href="#">Populares</a></li>
                 </ul>
-                <img src="assets/img/d13cb6118a0cbc4eadb8360446927cb9.png" class="user_pic" onclick="mostrarDropDown()">
+                  <img src="" id="img_user_session" class="user_pic" onclick="mostrarDropDown()" width="60" height="40">
 
                 <div class="sub_menu_wrap" id="drop_menu">
                     <div class="sub_menu">
                         <div class="user_info">
-                            <img src="assets/img/d13cb6118a0cbc4eadb8360446927cb9.png">
-                            <h2>Mateus da silva</h2>
+                          <img src="assets/img/d13cb6118a0cbc4eadb8360446927cb9.png" id="img_user_session2">
+                            <h2 id="nome_usuario"></h2>
                         </div>
                         <hr>
 
@@ -76,6 +76,7 @@
 <script>
     var nomeUsuario = sessionStorage.NOME_USUARIO;
     window.onload = ()=>{
+        chamarAnime();
          const foto = sessionStorage.FOTO_USUARIO;
          img_user_session.src = `assets/img/imgUpload/${foto}`;
          img_user_session2.src = `assets/img/imgUpload/${foto}`;

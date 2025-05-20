@@ -10,7 +10,7 @@
     <title>Document</title>
 </head>
 
-<body onload="selectIdAnime(sessionStorage.ID_ANIME),getCategoriasAnime(),getCountComentarios(),selectAllComentarios()">
+<body>
     <header>
         <div class="container">
             <nav>
@@ -20,12 +20,12 @@
                     <li><a href="#">Temporadas</a></li>
                     <li><a href="#">Populares</a></li>
                 </ul>
-                <img src="assets/img/d13cb6118a0cbc4eadb8360446927cb9.png" class="user_pic" onclick="mostrarDropDown()">
+                <img src="" id="img_user_session" class="user_pic" onclick="mostrarDropDown()" width="60" height="40">
                 <div class="sub_menu_wrap" id="drop_menu">
                     <div class="sub_menu">
                         <div class="user_info">
-                            <img src="assets/img/d13cb6118a0cbc4eadb8360446927cb9.png">
-                            <h2>Mateus da silva</h2>
+                            <img src="assets/img/d13cb6118a0cbc4eadb8360446927cb9.png" id="img_user_session2">
+                            <h2 id="nome_usuario"></h2>
                         </div>
                         <hr>
                         <a href="dashboard.html" class="sub_menu_link">
@@ -54,16 +54,22 @@
 </body>
 
 </html>
-<script>
-    function verEstrelas() {
-        if (document.getElementById('estrela_1').checked) {
-            console.log('peguei o valor 1')
-        } else {
-            console.log('nada')
-        }
-    }
-</script>
+<script src="assets/js/avaliacao.js"></script>
 <script src="assets/js/menudropdown.js"></script>
 <script src="assets/js/animes.js"></script>
 <script src="assets/js/comentarios.js"></script>
 <script src="assets/js/avaliacao.js"></script>
+<script>
+    var nomeUsuario = sessionStorage.NOME_USUARIO;
+    window.onload = ()=>{
+            selectIdAnime(sessionStorage.ID_ANIME);
+            getCategoriasAnime();
+            getCountComentarios();
+            selectAllComentarios();        
+            selectAvaliacao();
+        const foto = sessionStorage.FOTO_USUARIO;
+        img_user_session.src = `assets/img/imgUpload/${foto}`;
+        img_user_session2.src = `assets/img/imgUpload/${foto}`;
+        nome_usuario.innerHTML = `${nomeUsuario}`;
+    }
+</script>

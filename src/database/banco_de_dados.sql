@@ -38,7 +38,7 @@ CREATE TABLE categoria_anime(
 );
 CREATE TABLE avaliacao(
 	id INT PRIMARY KEY AUTO_INCREMENT,
-    valor DECIMAL(4,2),
+    valor INT,
     fk_anime INT,
     fk_usuario INT,
     CONSTRAINT chkFkAnime_avaliacao 
@@ -232,3 +232,8 @@ DELETE FROM comentario WHERE id = 3;
 
 
 select * from usuario where id = 1;
+
+select ROUND(AVG(a.valor),1) AS "media",COUNT(a.valor) AS "quantidade" from avaliacao as a
+JOIN anime as an
+ON an.id = a.fk_anime
+WHERE a.fk_anime = 2;

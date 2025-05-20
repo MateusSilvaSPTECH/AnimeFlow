@@ -21,7 +21,8 @@ function selectAllComentarios(fk_anime) {
     c.dataComentario,
     c.id_resposta,
     c.fk_usuario,
-    u.nome
+    u.nome,
+    u.foto
     FROM comentario c
     JOIN usuario u ON c.fk_usuario = u.id
     WHERE c.fk_anime = ${fk_anime};
