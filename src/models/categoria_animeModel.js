@@ -3,7 +3,7 @@ var database = require("../database/config")
 function selectCategoriaAnime(id){
     console.log("acessei o selectCategoriaAnime")
     var instrucaoSql = `
-    SELECT  c.nome_categoria FROM anime_categoria as ac
+    SELECT  ac.fk_categoria,c.nome_categoria FROM anime_categoria as ac
     JOIN anime as a 
     ON a.id = ac.fk_anime
     JOIN categoria as c

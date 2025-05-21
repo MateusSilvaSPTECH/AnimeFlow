@@ -10,7 +10,9 @@ function cadastrarAvaliacao(valorAvalicao) {
                 id_anime : sessionStorage.ID_ANIME,
                 id_usuario : sessionStorage.ID_USUARIO
             })
-        });
+        }).then(()=>{
+                selectAvaliacao();  
+            });
 }
 function updateAvaliacao(valorAvalicao) {
     console.log('chamou atualizar');
@@ -24,7 +26,9 @@ function updateAvaliacao(valorAvalicao) {
                 id_anime : sessionStorage.ID_ANIME,
                 id_usuario : sessionStorage.ID_USUARIO
             })
-        });
+        }).then(()=>{
+                    selectAvaliacao();  
+            });
 }
  var fks_usuarios = [];
 function selectAvaliacao(){
@@ -80,7 +84,7 @@ function selectAvaliacao(){
              break;
             }
         }
-        console.log('O achouid esta como'+achouId);
+
         if(achouId){
             updateAvaliacao(valorAvalicao);
         }else{

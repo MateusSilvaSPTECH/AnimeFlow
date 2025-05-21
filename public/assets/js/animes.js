@@ -1,7 +1,45 @@
 function chamarAnime(){
-    fetch("/animes/listarTodos").then(funciona => funciona.json())
-    .then(funciona =>{
-        exibirAnimesAll(funciona);
+    fetch("/animes/listarTodos").then(resposta => resposta.json())
+    .then(resposta =>{
+        var controle = 0;
+    for(var i =0;i<resposta.length;i++){
+        id = resposta[i].id
+        controle +=1;
+        console.log(resposta[i].foto)
+
+            div_container_anime.innerHTML +=
+            `
+            
+                 <div class="boxAnime">
+                    <div class="imgAnime">
+                         <img src="../assets/img/fotoAnime/${resposta[i].foto}">
+                    </div>
+
+                    <div class="blur"></div>
+
+                    <div class="conteudoOculto">
+
+                        <div class="boxTittleAnime">
+                            <span class="tittleAnime">${resposta[i].titulo}</span>
+                        </div>
+
+                        <div class="avaliacao">
+                            A${resposta[i].classificacao} 4.5(7.7K)<i class="bi bi-star-fill"></i>
+                            <span>${resposta[i].traducao}</span>
+                            <span>${resposta[i].episodeo} episodios</span>
+                            <div class="btnNav">
+                                <a href="sobre_anime.html" class="btnSalvar"><i class="bi bi-bookmark"></i></a> 
+                                <a onclick="sobre_animeid(${resposta[i].id})" class="btnSalvar"><i class="bi bi-play-fill"></i></a>        
+                            </div>
+                        </div>
+                    </div>
+                    <div class="conteudoAnime">
+                        <div class="tittleAnime">${resposta[i].titulo}</div>
+                        <div class="traducao">${resposta[i].traducao}</div>
+                    </div>
+                </div>
+                `
+        }
     })
     .catch(erro => {
         console.error('Deu erro:', erro);
@@ -37,10 +75,9 @@ function selectEstacao(){
          var controle = 0;
     for(var i =0;i<resposta.length;i++){
         id = resposta[i].id
-        console.log(resposta[i])
+        console.log(resposta[i]);
         controle +=1;
             if(controle<5){
-                console.log(estacao)
                 h1Estacao.innerHTML = `
                     Conheça os melhores animes da temporada de ${estacao}
                 `;
@@ -56,7 +93,8 @@ function selectEstacao(){
                             <span class="tittleAnime">${resposta[i].titulo}</span>
                         </div>
                         <div class="avaliacao">
-                            A${resposta[i].classificacao} 4.5(7.7K)<i class="bi bi-star-fill"></i>
+                            A${resposta[i].classificacao}<br>
+                            <span>${resposta[i].soma}(${resposta[i].quantidade})<i class="bi bi-star-fill"></i></span>
                             <span>${resposta[i].traducao}</span>
                             <span>${resposta[i].episodeo} episodios</span>
 
@@ -80,6 +118,7 @@ function selectEstacao(){
         console.error('Deu erro:', erro);
     });
 }
+
 function selectPopulares(){
     fetch(`/animes/listarPopulares`,{
         method: "GET",
@@ -109,7 +148,8 @@ function selectPopulares(){
                             <span class="tittleAnime">${resposta[i].titulo}</span>
                         </div>
                         <div class="avaliacao">
-                            A${resposta[i].classificacao} 4.5(7.7K)<i class="bi bi-star-fill"></i>
+                            A${resposta[i].classificacao}<br>
+                            <span>${resposta[i].soma}(${resposta[i].quantidade})<i class="bi bi-star-fill"></i></span>
                             <span>${resposta[i].traducao}</span>
                             <span>${resposta[i].episodeo} episodios</span>
 
@@ -138,9 +178,7 @@ function selectIdAnime(id){
         headers: {
             "Content-Type" : 'application/json'
         }
-    }
-        
-    ).then(funciona => funciona.json())
+    }).then(funciona => funciona.json())
     .then(funciona =>{
     console.log(funciona)
     funciona.forEach( item => {
@@ -203,7 +241,7 @@ function selectIdAnime(id){
                     <h1>${item.temporada} Temporada</h1>
                 </div>
             </div>
-            <!-- <div class="carrosel"></div> -->
+           
             <div class="publicar_comentarios">
                 <div class="tittle">
                     <span><i class="bi bi-chat-fill"></i></span>
@@ -234,66 +272,22 @@ function sobre_animeid(id){
         window.location.href = `sobre_anime.html`
 }
 
-function exibirAnimesAll(resposta){
-    var controle = 0;
-    for(var i =0;i<resposta.length;i++){
-        id = resposta[i].id
-        controle +=1;
-        console.log(resposta[i].foto)
 
-            div_container_anime.innerHTML +=
-            `
-            
-                 <div class="boxAnime">
-                    <div class="imgAnime">
-                         <img src="../assets/img/fotoAnime/${resposta[i].foto}">
-                    </div>
-
-                    <div class="blur"></div>
-
-                    <div class="conteudoOculto">
-
-                        <div class="boxTittleAnime">
-                            <span class="tittleAnime">${resposta[i].titulo}</span>
-                        </div>
-
-                        <div class="avaliacao">
-                            A${resposta[i].classificacao} 4.5(7.7K)<i class="bi bi-star-fill"></i>
-                            <span>${resposta[i].traducao}</span>
-                            <span>${resposta[i].episodeo} episodios</span>
-
-                            <div class="btnNav">
-                                <a href="sobre_anime.html" class="btnSalvar"><i class="bi bi-bookmark"></i></a> 
-                                <a onclick="sobre_animeid(${resposta[i].id})" class="btnSalvar"><i class="bi bi-play-fill"></i></a>        
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="conteudoAnime">
-                        <div class="tittleAnime">${resposta[i].titulo}</div>
-                        <div class="traducao">${resposta[i].traducao}</div>
-                    </div>
-                </div>
-                `
-        }
-    
-     
-}
 function zerarId()
 {
     sessionStorage.ID_ANIME = undefined;
-    window.location.href = `catalogo.html`
+    window.location.href = `catalogo.html`;
 }
 function getCategoriasAnime(){
     var id = sessionStorage.ID_ANIME;
      fetch(`/categoria_anime/listarAnimeCategoria/${id}`).then(funciona => funciona.json())
     .then(funciona =>{
+        console.log(funciona)
         for(var i=0;i<funciona.length;i++){
             console.log(funciona[i].nome_categoria)
             categoria.innerHTML += 
         `
-            <span>${funciona[i].nome_categoria}</span>
+             <a onclick="redirecionaAnimeCategoria(${funciona[i].fk_categoria})"><span>${funciona[i].nome_categoria}</span></a>
         `
         }
     })

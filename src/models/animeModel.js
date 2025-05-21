@@ -24,7 +24,24 @@ function selectAllPorCategoria(id_categoria){
 function selectEstacao(estacao){
     console.log("acessei o selectTemporada")
     var instrucaoSql = `
-    SELECT * FROM anime WHERE estacao = '${estacao}'
+   
+SELECT a.id,
+        a.titulo,
+        a.descricao,
+        a.foto,
+        a.logo,
+        a.classificacao,
+        a.traducao,
+        a.estacao,
+        a.dataLancamento,
+        a.episodeo,
+        a.temporada,
+        ROUND(AVG(ac.valor),1) AS "soma",
+        COUNT(ac.valor) AS "quantidade" FROM anime as a 
+        JOIN avaliacao as ac 
+        ON ac.fk_anime = a.id
+        GROUP BY a.id,a.titulo,a.descricao,a.foto,a.logo,a.classificacao,a.traducao,a.estacao,a.dataLancamento,a.episodeo,a.temporada
+        HAVING estacao = '${estacao}';
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -51,6 +68,8 @@ function selectPopulares(){
         a.dataLancamento,
         a.episodeo,
         a.temporada,
+        ROUND(AVG(ac.valor),1) AS "soma",
+        COUNT(ac.valor) AS "quantidade",
         SUM(ac.valor) AS "Valor_popularidade" FROM anime as a 
         JOIN avaliacao as ac 
         ON ac.fk_anime = a.id
