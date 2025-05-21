@@ -7,6 +7,9 @@ var avaliacaoController = require("../controllers/avaliacaoController");
 router.post("/cadastrarAvaliacao", function (req, res) {
     avaliacaoController.cadastrarAvaliacao(req, res);
 });
+router.put("/updateAvaliacao", function (req, res) {
+    avaliacaoController.updateAvaliacao(req, res);
+});
 router.get("/selectAvaliacao/:id_anime", function (req, res) {
     avaliacaoController.selectAvaliacao(req, res);
 });

@@ -37,9 +37,33 @@ function selectIdAnime(id){
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
+function selectPopulares(){
+    console.log("acessei o select populares")
+    var instrucaoSql = `
+    SELECT a.id,
+        a.titulo,
+        a.descricao,
+        a.foto,
+        a.logo,
+        a.classificacao,
+        a.traducao,
+        a.estacao,
+        a.dataLancamento,
+        a.episodeo,
+        a.temporada,
+        SUM(ac.valor) AS "Valor_popularidade" FROM anime as a 
+        JOIN avaliacao as ac 
+        ON ac.fk_anime = a.id
+        GROUP BY a.id,a.titulo,a.descricao,a.foto,a.logo,a.classificacao,a.traducao,a.estacao,a.dataLancamento,a.episodeo,a.temporada
+        ORDER BY SUM(ac.valor) DESC;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
 module.exports = {
     selectAll,
     selectEstacao,
     selectIdAnime,
-    selectAllPorCategoria
+    selectAllPorCategoria,
+    selectPopulares
 };

@@ -176,3 +176,9 @@ footer .informacoes a{
     font-size: 1rem;
     color: #fff;
 }
+.noAnimeMessage {
+    font-size: 1.5em;
+    color: #999;
+    text-align: center;
+    margin-top: 20px;
+}

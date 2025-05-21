@@ -134,14 +134,23 @@ nav ul li a{
     align-items: center;
     justify-content: space-around;
 }
-.cabecalho_anime .img_anime{
-    background-image: url(../../assets/img/sakamoto.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
+.boxAnime{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 20rem;
     width: 15%;
-    height: 90%;
-    border: 1px solid #fff;
+    background-color: blue;
 }
+.imgAnime, .imgAnime img{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 0;
+}
+
 .cabecalho_anime .informacoes_anime{
     width: 75%;
     height: 100%;

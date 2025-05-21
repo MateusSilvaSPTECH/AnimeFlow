@@ -72,8 +72,25 @@ function selectAnimebyCategoria(id_categoria){
                     `
             }
         }else{
-             h1categoria.innerHTML = `Animes com a categoria ${resposta[i].nome_categoria}`;
-              div_container_anime.innerHTML +=`Não existem animes com essa categoria`;
+          
+            div_container_anime.innerHTML += `
+            <div class="noAnimeMessage">
+                <section class="mostrar_tudo">
+                    <div class="container">
+                        <div class="img">
+                            <img src="assets/img/anieecerto.png" alt="">
+                        </div>
+                        <div class="info">
+                            <span>
+                                Infelizmente não temos animes com essa categoria, Veja nosso catálogo completo.
+                            </span>
+                        </div>
+                        <div class="btn_tudo">
+                            <a href="catalogo_completo.html">VER TUDO</a>
+                        </div>
+                    </div>
+                </section>
+            </div>`;
         }
     })
     .catch(erro => {

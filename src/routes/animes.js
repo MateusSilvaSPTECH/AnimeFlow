@@ -15,4 +15,7 @@ router.get("/listarPorEstacao/:estacao", function(req, res) {
 router.get("/listarIdAnime/:id", function(req, res) {
     animeController.selectIdAnime(req, res);
 });
+router.get("/listarPopulares", function(req, res) {
+    animeController.selectPopulares(req, res);
+});
 module.exports = router;

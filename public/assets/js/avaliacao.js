@@ -1,5 +1,5 @@
 function cadastrarAvaliacao(valorAvalicao) {
-    console.log('chamou');
+    console.log('chamou cadastrar');
         fetch("/avaliacao/cadastrarAvaliacao", {
             method: "POST",
             headers: {
@@ -12,19 +12,46 @@ function cadastrarAvaliacao(valorAvalicao) {
             })
         });
 }
+function updateAvaliacao(valorAvalicao) {
+    console.log('chamou atualizar');
+        fetch("/avaliacao/updateAvaliacao", {
+            method: "PUT",
+            headers: {
+                "Content-Type" : 'application/json'
+            },
+            body: JSON.stringify ({
+                valorAvalicao : valorAvalicao,
+                id_anime : sessionStorage.ID_ANIME,
+                id_usuario : sessionStorage.ID_USUARIO
+            })
+        });
+}
+ var fks_usuarios = [];
 function selectAvaliacao(){
     var id_anime = sessionStorage.ID_ANIME;
+   
     fetch(`avaliacao/selectAvaliacao/${id_anime}`).then(dados => dados.json())
     .then(dados =>{
         console.log(dados)
+        var qtdAvaliacao = 0;
+        var media = 0;
+        for(var i=0;i<dados.length;i++){
+            media += Number(dados[i].soma);
+            qtdAvaliacao += Number(dados[i].quantidade);
+            fks_usuarios[i] = dados[i].fk_usuario;
+        }
+        media = media/qtdAvaliacao;
          mediaCountAvaliacao.innerHTML = 
         `
-            ${dados[0].media}(${dados[0].quantidade})
+            ${media.toFixed(1)}(${qtdAvaliacao})
         `;
-    })
+
+    });
 }
     function verEstrelas() {
+        var id_usuario = sessionStorage.ID_USUARIO;
         var valorAvalicao = 0;
+        var achouId = false;
         if (document.getElementById('estrela_1').checked) {
             console.log('peguei o valor 1');
             valorAvalicao = 1;
@@ -45,5 +72,18 @@ function selectAvaliacao(){
                 valorAvalicao = 5;
         }
 
-        cadastrarAvaliacao(valorAvalicao);
+         for(var i=0;i<fks_usuarios.length;i++){
+            console.log(fks_usuarios[i]);
+            console.log(id_usuario)
+            if(fks_usuarios[i] == id_usuario){
+            achouId = true;
+             break;
+            }
+        }
+        console.log('O achouid esta como'+achouId);
+        if(achouId){
+            updateAvaliacao(valorAvalicao);
+        }else{
+            cadastrarAvaliacao(valorAvalicao);
+        }
     }

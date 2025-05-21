@@ -32,10 +32,101 @@ function selectEstacao(){
         }
     }
         
-    ).then(funciona => funciona.json())
+    ).then(resposta => resposta.json())
+    .then(resposta =>{
+         var controle = 0;
+    for(var i =0;i<resposta.length;i++){
+        id = resposta[i].id
+        console.log(resposta[i])
+        controle +=1;
+            if(controle<5){
+                console.log(estacao)
+                h1Estacao.innerHTML = `
+                    Conheça os melhores animes da temporada de ${estacao}
+                `;
+                 div_container_anime.innerHTML +=
+            `
+                <div class="boxAnime">
+                    <div class="imgAnime">
+                         <img src="../assets/img/fotoAnime/${resposta[i].foto}">
+                    </div>
+                    <div class="blur"></div>
+                    <div class="conteudoOculto">
+                        <div class="boxTittleAnime">
+                            <span class="tittleAnime">${resposta[i].titulo}</span>
+                        </div>
+                        <div class="avaliacao">
+                            A${resposta[i].classificacao} 4.5(7.7K)<i class="bi bi-star-fill"></i>
+                            <span>${resposta[i].traducao}</span>
+                            <span>${resposta[i].episodeo} episodios</span>
+
+                            <div class="btnNav">
+                                <a href="sobre_anime.html" class="btnSalvar"><i class="bi bi-bookmark"></i></a> 
+                                <a onclick="sobre_animeid(${resposta[i].id})" class="btnSalvar"><i class="bi bi-play-fill"></i></a>        
+                            </div>
+                        </div>
+                    </div>
+                    <div class="conteudoAnime">
+                        <div class="tittleAnime">${resposta[i].titulo}</div>
+                        <div class="traducao">${resposta[i].traducao}</div>
+                    </div>
+                </div>
+            `
+            }
+        }
     
-    .then(funciona =>{
-        exibirAnimes(estacao,funciona);
+    })
+    .catch(erro => {
+        console.error('Deu erro:', erro);
+    });
+}
+function selectPopulares(){
+    fetch(`/animes/listarPopulares`,{
+        method: "GET",
+        headers: {
+            "Content-Type" : 'application/json'
+        }
+    }).then(resposta => resposta.json())
+    .then(resposta =>{
+        var controle = 0;
+        for(var i =0;i<resposta.length;i++){
+        id = resposta[i].id
+        console.log(resposta[i])
+        controle +=1;
+            if(controle<5){
+                h1Popularidade.innerHTML = `
+                    Conheça os animes mais populares entre nossos usuarios
+                `;
+                 div_container_anime_popularidade.innerHTML +=
+            `
+                <div class="boxAnime">
+                    <div class="imgAnime">
+                         <img src="../assets/img/fotoAnime/${resposta[i].foto}">
+                    </div>
+                    <div class="blur"></div>
+                    <div class="conteudoOculto">
+                        <div class="boxTittleAnime">
+                            <span class="tittleAnime">${resposta[i].titulo}</span>
+                        </div>
+                        <div class="avaliacao">
+                            A${resposta[i].classificacao} 4.5(7.7K)<i class="bi bi-star-fill"></i>
+                            <span>${resposta[i].traducao}</span>
+                            <span>${resposta[i].episodeo} episodios</span>
+
+                            <div class="btnNav">
+                                <a href="sobre_anime.html" class="btnSalvar"><i class="bi bi-bookmark"></i></a> 
+                                <a onclick="sobre_animeid(${resposta[i].id})" class="btnSalvar"><i class="bi bi-play-fill"></i></a>        
+                            </div>
+                        </div>
+                    </div>
+                    <div class="conteudoAnime">
+                        <div class="tittleAnime">${resposta[i].titulo}</div>
+                        <div class="traducao">${resposta[i].traducao}</div>
+                    </div>
+                </div>
+            `
+            }
+        }
     })
     .catch(erro => {
         console.error('Deu erro:', erro);
@@ -57,9 +148,11 @@ function selectIdAnime(id){
         `
             <div class="boxConteudo">
             <div class="cabecalho_anime">
-                 <div class="imgAnime">
+                <div class="boxAnime">
+                    <div class="imgAnime">
                          <img src="../assets/img/fotoAnime/${item.foto}">
-                </div>
+                    </div>
+                    </div>
                 <div class="informacoes_anime">
                     <div class="tittle_anime">
                         <h1>${item.titulo}</h1>
@@ -106,8 +199,8 @@ function selectIdAnime(id){
                         referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> -->
                 </div>
                 <div class="episodiosTemps">
-                    <h1>12 Episodios</h1>
-                    <h1>1 Temporada</h1>
+                    <h1>${item.episodeo} Episodios</h1>
+                    <h1>${item.temporada} Temporada</h1>
                 </div>
             </div>
             <!-- <div class="carrosel"></div> -->
@@ -140,57 +233,7 @@ function sobre_animeid(id){
     sessionStorage.ID_ANIME = id;
         window.location.href = `sobre_anime.html`
 }
-function exibirAnimes(estacao,resposta){
-    var controle = 0;
-    for(var i =0;i<resposta.length;i++){
-        id = resposta[i].id
-        console.log(resposta[i])
-        controle +=1;
-            if(controle<5){
-                console.log(estacao)
-                h1Estacao.innerHTML = `
-                    Conheça os melhores animes da temporada de ${estacao}
-                `;
-                 div_container_anime.innerHTML +=
-            `
-            
-                <div class="boxAnime">
-                    <div class="imgAnime">
-                         <img src="../assets/img/fotoAnime/${resposta[i].foto}">
-                    </div>
 
-                    <div class="blur"></div>
-
-                    <div class="conteudoOculto">
-
-                        <div class="boxTittleAnime">
-                            <span class="tittleAnime">${resposta[i].titulo}</span>
-                        </div>
-
-                        <div class="avaliacao">
-                            A${resposta[i].classificacao} 4.5(7.7K)<i class="bi bi-star-fill"></i>
-                            <span>${resposta[i].traducao}</span>
-                            <span>${resposta[i].episodeo} episodios</span>
-
-                            <div class="btnNav">
-                                <a href="sobre_anime.html" class="btnSalvar"><i class="bi bi-bookmark"></i></a> 
-                                <a onclick="sobre_animeid(${resposta[i].id})" class="btnSalvar"><i class="bi bi-play-fill"></i></a>        
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="conteudoAnime">
-                        <div class="tittleAnime">${resposta[i].titulo}</div>
-                        <div class="traducao">${resposta[i].traducao}</div>
-                    </div>
-                </div>
-            `
-            }
-        }
-    
-     
-}
 function exibirAnimesAll(resposta){
     var controle = 0;
     for(var i =0;i<resposta.length;i++){
