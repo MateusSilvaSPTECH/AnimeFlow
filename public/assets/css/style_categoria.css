@@ -14,12 +14,9 @@ body{
     height: 100%;
     display: flex;
 }
-.container{
-    width: 100%;
-    height: 100%;   
-}
+
 section{
-   width: 100%;
+    width: 100%;
     height: 100%;
     background-color: #000;
     display: flex;
@@ -38,8 +35,11 @@ section{
     height: 15%;
     width: 15%;
     background-color: blue;
+    cursor: pointer;
 }
-
+.tittleAnime{
+    font-size: 1rem;
+}
 
 nav{
     background-color: #23252b;

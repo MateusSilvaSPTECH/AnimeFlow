@@ -44,6 +44,9 @@ function selectAvaliacao(){
             qtdAvaliacao += Number(dados[i].quantidade);
             fks_usuarios[i] = dados[i].fk_usuario;
         }
+               if(isNaN(media)){
+            media = 0;
+         }
         media = media/qtdAvaliacao;
          mediaCountAvaliacao.innerHTML = 
         `

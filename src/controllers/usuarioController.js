@@ -57,12 +57,21 @@ function cadastrar(req, res) {
                 }
             ).catch(
                 function (erro) {
-                    console.log(erro);
+                    if(erro.code == 'ER_DUP_ENTRY'){
+                        res.status(500).json(erro.code);
+                        console.log(
+                            "\nErro de duplicata de email! Erro: ",
+                            erro.sqlMessage
+                        );
+                        res.status(500).json(erro.sqlMessage);
+                    }else{
+                        console.log(erro);
                     console.log(
                         "\nHouve um erro ao realizar o cadastro! Erro: ",
                         erro.sqlMessage
                     );
                     res.status(500).json(erro.sqlMessage);
+                    }
                 }
             );
     }

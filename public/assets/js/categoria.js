@@ -7,21 +7,15 @@ function getCategoriasAll(){
         }
     ).then(resposta => resposta.json())
     .then( resposta => {
+        var html = `<div class="row">`;
         for(var i=0; i<resposta.length;i++){
             console.log(resposta[i])
-        box_categoria.innerHTML += `
-        <div class="boxCategoria" id="box_categorias">
-        <div class="blur"></div>
-        <div class="conteudoOculto">
-        <div class="boxTittleAnime">
-        <button class="tittleAnime" onclick="redirecionaAnimeCategoria(${resposta[i].id})">
-                        <span>${resposta[i].nome_categoria}</span>
-                        </button>
-                    </div>
-                </div>
-                </div>
-        `;
+        html += ` 
+                <a class="tittleAnime" onclick="redirecionaAnimeCategoria(${resposta[i].id})">${resposta[i].nome_categoria}</a>
+            `;
         }
+        html += `</div>`;
+        categorias.innerHTML = html;
     })
 }
 function redirecionaAnimeCategoria(id_categoria){

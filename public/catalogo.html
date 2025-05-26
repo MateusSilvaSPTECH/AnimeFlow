@@ -15,8 +15,8 @@
             <nav>
                 <a onclick="zerarId()"><img src="assets/img/logoBrancaSemFundo.png" class="logo" ></a>
                 <ul>
-                    <li><a href="categorias.html">Categorias</a></li>
-                    <li><a href="#">Temporadas</a></li>
+                    <li><a onclick="mostrarCategorias()">Categorias</a></li>
+                    <li><a onclick="mostrarestacoes()">Temporadas</a></li>
                     <li><a href="#">Populares</a></li>
                 </ul>
                 <img src="" id="img_user_session" class="user_pic" onclick="mostrarDropDown()" width="60" height="40">
@@ -44,6 +44,27 @@
                             <p>Logout</p>
                             <span>></span>
                         </a>
+                    </div>
+                </div>
+                
+                <div class="sub_menu_categoria" id="drop_menu_categoria">
+                    <div class="sub_menu">
+                        <div class="tittle">
+                        <h3>Categorias:</h3>
+                        </div>
+                        <div class="categoria_info" id="categorias">
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="sub_menu_estacao" id="drop_menu_estacao">
+                    <div class="sub_menu">
+                        <div class="tittle">
+                        <h3>Estações:</h3>
+                        </div>
+                        <div class="estacao_info" id="estacoes">
+                            
+                        </div>
                     </div>
                 </div>
             </nav>
@@ -195,6 +216,7 @@
 <script src="assets/js/menudropdown.js"></script>
 <script src="assets/js/animes.js"></script>
 <script src="assets/js/usuario.js"></script>
+<script src="assets/js/categoria.js"></script>
 <script>
     var nomeUsuario = sessionStorage.NOME_USUARIO;
     console.log(nomeUsuario)
@@ -202,7 +224,9 @@
          const foto = sessionStorage.FOTO_USUARIO;
          img_user_session.src = `assets/img/imgUpload/${foto}`;
          img_user_session2.src = `assets/img/imgUpload/${foto}`;
+        getCategoriasAll();
         selectEstacao();
+         getEstacoesAll();
         selectPopulares();
         nome_usuario.innerHTML = `${nomeUsuario}`;
     }

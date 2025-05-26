@@ -1,6 +1,6 @@
 CREATE DATABASE animeFlow;
-use animeFlow; 
-
+USE animeFlow;
+SELECT * FROM anime;
 CREATE TABLE anime(
  id INT PRIMARY KEY AUTO_INCREMENT,
  titulo VARCHAR(45),
@@ -27,15 +27,6 @@ CREATE TABLE categoria(
 	id INT PRIMARY KEY AUTO_INCREMENT,
     nome_categoria VARCHAR(25)
 );
-CREATE TABLE categoria_anime(
-	id INT PRIMARY KEY AUTO_INCREMENT,
-    fk_anime INT,
-    fk_categoria INT,
-    CONSTRAINT chkFkAnime 
-    FOREIGN KEY(fk_anime) REFERENCES anime(id),
-    CONSTRAINT chkFkCategoria 
-    FOREIGN KEY(fk_categoria) REFERENCES categoria(id)
-);
 CREATE TABLE avaliacao(
 	id INT PRIMARY KEY AUTO_INCREMENT,
     valor INT,
@@ -49,8 +40,8 @@ CREATE TABLE avaliacao(
 CREATE TABLE favoritar(
 	id INT PRIMARY KEY AUTO_INCREMENT,
     status_favorito BOOLEAN,
-    fk_anime INT UNIQUE,
-    fk_usuario INT UNIQUE,
+    fk_anime INT,
+    fk_usuario INT,
     CONSTRAINT chkFkAnime_favoritar
     FOREIGN KEY(fk_anime) REFERENCES anime(id),
     CONSTRAINT chkFkUsuario_favoritar
@@ -257,4 +248,88 @@ VALUES
 -- Solo Leveling
 (25, 1), (25, 2), (25, 5), (25, 13);
 
-use animeFlow;
+INSERT INTO usuario (nome, email, senha) VALUES 
+('Felipe Macedo', 'felipe@email.com', '123456'),
+('Vinicius Silva', 'vinicius@email.com', '123456'),
+('Moises', 'moises@email.com', '123456'),
+('Gabriel', 'gabriel@email.com', '123456'),
+('Hugo Carvalho', 'hugo@email.com', '123456');
+
+-- aVVALIAÇÕES
+INSERT INTO avaliacao (valor, fk_usuario, fk_anime) VALUES 
+(5, 1, 1),
+(4, 1, 2),
+(3, 1, 3),
+(2, 1, 4),
+(1, 1, 5),
+(3, 2, 1),
+(5, 2, 2),
+(2, 2, 3),
+(1, 2, 4),
+(4, 2, 5),
+(2, 3, 1),
+(3, 3, 2),
+(4, 3, 3),
+(5, 3, 4),
+(1, 3, 5),
+(1, 4, 1),
+(2, 4, 2),
+(3, 4, 3),
+(4, 4, 4),
+(5, 4, 5),
+(4, 5, 1),
+(1, 5, 2),
+(5, 5, 3),
+(3, 5, 4),
+(2, 5, 5);
+
+-- Comentarios
+INSERT INTO comentario (descricao, fk_usuario, fk_anime) VALUES
+('Simplesmente incrível, do início ao fim!', 1, 1),
+('Muito bom, só achei o final um pouco corrido.', 1, 2),
+('É mediano, mas tem bons momentos.', 1, 3),
+('Não me prendeu muito, enredo fraco.', 1, 4),
+('Infelizmente, não gostei de quase nada.', 1, 5),
+('Tem pontos bons, mas faltou algo.', 2, 1),
+('Obra-prima! Emocionante e bem animado.', 2, 2),
+('Personagens mal desenvolvidos.', 2, 3),
+('Não recomendo, me decepcionou.', 2, 4),
+('Boa trama e ótima direção de arte.', 2, 5),
+('Não me agradou, mas reconheço a produção.', 3, 1),
+('Nada demais, mas dá pra assistir.', 3, 2),
+('Gostei bastante dos personagens.', 3, 3),
+('Obra sensacional, recomendo muito!', 3, 4),
+('Não consegui passar do segundo episódio.', 3, 5),
+('Muito fraco, não me convenceu.', 4, 1),
+('Esperava mais pelo hype.', 4, 2),
+('Legal, mas nada memorável.', 4, 3),
+('Gostei do ritmo e da trilha sonora.', 4, 4),
+('Sensacional, um dos meus favoritos!', 4, 5),
+('Bem dirigido, com bons momentos.', 5, 1),
+('Não entendi o hype em torno disso.', 5, 2),
+('Fantástico, enredo envolvente!', 5, 3),
+('Gostei, mas poderia ser melhor.', 5, 4),
+('Fraco, mas teve algumas cenas boas.', 5, 5);
+
+
+use animeFlow; 
+    SELECT DISTINCT
+        a.id,
+        a.titulo,
+        a.descricao,
+        a.foto,
+        a.logo,
+        a.classificacao,
+        a.traducao,
+        a.estacao,
+        a.dataLancamento,
+        a.episodeo,
+        a.temporada
+        from anime as a
+        JOIN anime_categoria as ac
+        ON ac.fk_anime = a.id
+        JOIN categoria as c
+        ON c.id = ac.fk_categoria
+        WHERE a.estacao = 'Inverno'
+        GROUP BY a.id,a.titulo,a.descricao,a.foto,a.logo,
+        a.classificacao,a.traducao,a.estacao,a.dataLancamento,a.episodeo,a.temporada
