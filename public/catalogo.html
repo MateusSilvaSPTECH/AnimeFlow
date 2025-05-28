@@ -88,7 +88,7 @@
                             seus limites.</div>
                         <div class="box_btn">
                             <a onclick="sobre_animeid(1)" class="btnConhecer">Conheça tudo sobre o anime</a> 
-                            <a onclick="verificarFavorito(1)" class="btnSalvar"><i class="bi bi-bookmark" id="favorito"></i></a> 
+                            <a onclick="verificarFavorito(1)" class="btnSalvar"><i class="bi bi-bookmark" id="favorito1"></i></a> 
                         </div>
                     </div>
 
@@ -106,7 +106,7 @@
                             robôs de batalha chamados Franxx.</div>
                         <div class="box_btn">
                             <a onclick="sobre_animeid(18)"class="btnConhecer">Conheça tudo sobre o anime</a> 
-                            <a onclick="verificarFavorito(18)" class="btnSalvar"><i class="bi bi-bookmark" id="favorito2"></i></a> 
+                            <a onclick="verificarFavorito(18)" class="btnSalvar"><i class="bi bi-bookmark" id="favorito18"></i></a> 
                         </div>
                     </div>
                 </section>
@@ -125,7 +125,7 @@
                             batalha em nome da humanidade continua!</div>
                         <div class="box_btn">
                             <a onclick="sobre_animeid(11)" class="btnConhecer">Conheça tudo sobre o anime</a> 
-                            <a onclick="verificarFavorito(11)" class="btnSalvar"><i class="bi bi-bookmark" id="favorito3"></i></a> 
+                            <a onclick="verificarFavorito(11)" class="btnSalvar"><i class="bi bi-bookmark" id="favorito11"></i></a> 
                         </div>
                     </div>
 
@@ -143,7 +143,7 @@
                             pessoa cujo nome está escrito nele.</div>
                         <div class="box_btn">
                             <a onclick="sobre_animeid(2)" class="btnConhecer">Conheça tudo sobre o anime</a> 
-                            <a onclick="verificarFavorito(2)" class="btnSalvar"><i class="bi bi-bookmark"></i></a> 
+                            <a onclick="verificarFavorito(2)" class="btnSalvar"><i class="bi bi-bookmark" id="favorito2"></i></a> 
                         </div>
                     </div>
                 </section>
@@ -226,10 +226,10 @@
         img_user_session.src = `assets/img/imgUpload/${foto}`;
         img_user_session2.src = `assets/img/imgUpload/${foto}`;
         getCategoriasAll();
-        selectAnimesFavoritosByUsuario();
         selectEstacao();
         getEstacoesAll();
         selectPopulares();
+        selectAnimesFavoritosByUsuario();
         nome_usuario.innerHTML = `${nomeUsuario}`;
     }
 </script>

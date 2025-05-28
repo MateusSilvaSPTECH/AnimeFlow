@@ -44,7 +44,14 @@ function selectAnimesFavoritosByUsuario() {
             for(var i=0;i<dados.length;i++){
                 console.log('entrei no anime com id',dados[i].fk_anime)
                 console.log(dados[i].status_favorito);
-                dados[i].status_favorito == true ? document.getElementsByClassName("bi-bookmark")[i].style.color = 'yellow' : document.getElementsByClassName("bi-bookmark")[i].style.color = 'white';
+                var idAnime = dados[i].fk_anime;
+                var icone = document.getElementById(`favorito${idAnime}`);
+                var favorito = dados[i].status_favorito;
+                if (icone) {
+                    icone.style.color = favorito ? 'yellow' : 'white';
+                } else {
+                    console.warn(`Elemento com id favorito${idAnime} não encontrado`);
+                }
             }
         });
 }
