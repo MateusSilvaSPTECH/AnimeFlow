@@ -1,5 +1,7 @@
 CREATE DATABASE animeFlow;
 USE animeFlow;
+select * from favoritar WHERE fk_usuario = 7 and fk_anime = 1;
+UPDATE favoritar SET status_favorito = false WHERE fk_usuario = 7 and fk_anime = 1;
 SELECT * FROM anime;
 CREATE TABLE anime(
  id INT PRIMARY KEY AUTO_INCREMENT,
@@ -47,6 +49,7 @@ CREATE TABLE favoritar(
     CONSTRAINT chkFkUsuario_favoritar
     FOREIGN KEY(fk_usuario) REFERENCES usuario(id)
 );
+
 CREATE TABLE comentario(
 	id INT PRIMARY KEY AUTO_INCREMENT,
     descricao VARCHAR(255),

@@ -69,7 +69,7 @@
                 </div>
             </nav>
     </header>
-    <div class="slider">
+    <div class="slider" class="modal-overlay" onclick="fecharDropDown()">
         <div class="slides">
             <input type="radio" name="radio-btn" id="input_radio1">
             <input type="radio" name="radio-btn" id="input_radio2">
@@ -88,7 +88,7 @@
                             seus limites.</div>
                         <div class="box_btn">
                             <a onclick="sobre_animeid(1)" class="btnConhecer">Conheça tudo sobre o anime</a> 
-                            <a href="sobre_anime.html" class="btnSalvar"><i class="bi bi-bookmark"></i></a> 
+                            <a onclick="verificarFavorito(1)" class="btnSalvar"><i class="bi bi-bookmark"></i></a> 
                         </div>
                     </div>
 
@@ -217,17 +217,20 @@
 <script src="assets/js/animes.js"></script>
 <script src="assets/js/usuario.js"></script>
 <script src="assets/js/categoria.js"></script>
+<script src="assets/js/favoritar.js"></script>
 <script>
     var nomeUsuario = sessionStorage.NOME_USUARIO;
     console.log(nomeUsuario)
+    
     window.onload = ()=>{
-         const foto = sessionStorage.FOTO_USUARIO;
-         img_user_session.src = `assets/img/imgUpload/${foto}`;
-         img_user_session2.src = `assets/img/imgUpload/${foto}`;
+        const foto = sessionStorage.FOTO_USUARIO;
+        img_user_session.src = `assets/img/imgUpload/${foto}`;
+        img_user_session2.src = `assets/img/imgUpload/${foto}`;
         getCategoriasAll();
         selectEstacao();
-         getEstacoesAll();
+        getEstacoesAll();
         selectPopulares();
+        selectAnimesFavoritosByUsuario();
         nome_usuario.innerHTML = `${nomeUsuario}`;
     }
 </script>
