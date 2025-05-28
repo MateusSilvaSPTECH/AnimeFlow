@@ -1,8 +1,5 @@
 CREATE DATABASE animeFlow;
 USE animeFlow;
-select * from favoritar WHERE fk_usuario = 7 and fk_anime = 1;
-UPDATE favoritar SET status_favorito = false WHERE fk_usuario = 7 and fk_anime = 1;
-SELECT * FROM anime;
 CREATE TABLE anime(
  id INT PRIMARY KEY AUTO_INCREMENT,
  titulo VARCHAR(45),
@@ -49,6 +46,8 @@ CREATE TABLE favoritar(
     CONSTRAINT chkFkUsuario_favoritar
     FOREIGN KEY(fk_usuario) REFERENCES usuario(id)
 );
+SELECT *  FROM favoritar;
+UPDATE favoritar set status_favorito = false WHERE fk_usuario = 6 and fk_anime = 1;
 
 CREATE TABLE comentario(
 	id INT PRIMARY KEY AUTO_INCREMENT,
@@ -315,24 +314,17 @@ INSERT INTO comentario (descricao, fk_usuario, fk_anime) VALUES
 ('Fraco, mas teve algumas cenas boas.', 5, 5);
 
 
-use animeFlow; 
-    SELECT DISTINCT
-        a.id,
-        a.titulo,
-        a.descricao,
-        a.foto,
-        a.logo,
-        a.classificacao,
-        a.traducao,
-        a.estacao,
-        a.dataLancamento,
-        a.episodeo,
-        a.temporada
-        from anime as a
-        JOIN anime_categoria as ac
-        ON ac.fk_anime = a.id
-        JOIN categoria as c
-        ON c.id = ac.fk_categoria
-        WHERE a.estacao = 'Inverno'
-        GROUP BY a.id,a.titulo,a.descricao,a.foto,a.logo,
-        a.classificacao,a.traducao,a.estacao,a.dataLancamento,a.episodeo,a.temporada
+use animeFlow;
+ -- kpi 1
+SELECT TRUNCATE(AVG(valor),2) FROM avaliacao where fk_usuario = 6;
+ -- kpi 2
+SELECT COUNT(id) FROM comentario where fk_usuario = 6;
+-- kpi 3
+SELECT COUNT(id) FROM favoritar where fk_usuario = 6 AND status_favorito = 1;
+-- grafico de pizza
+-- grafico de linha
+
+SELECT * FROM categoria;
+use animeFlow;
+select * from favoritar;
+SELECT * FROM anime;

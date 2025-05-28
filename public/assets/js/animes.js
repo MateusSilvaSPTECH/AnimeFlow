@@ -5,6 +5,7 @@ function chamarAnime(){
     for(var i =0;i<resposta.length;i++){
         id = resposta[i].id
         controle +=1;
+        
         console.log(resposta[i].foto)
 
             div_container_anime.innerHTML +=
@@ -28,8 +29,8 @@ function chamarAnime(){
                             <span>${resposta[i].traducao}</span>
                             <span>${resposta[i].episodeo} episodios</span>
                             <div class="btnNav">
-                                <a href="sobre_anime.html" class="btnSalvar"><i class="bi bi-bookmark"></i></a> 
-                                <a onclick="sobre_animeid(${resposta[i].id})" class="btnSalvar"><i class="bi bi-play-fill"></i></a>        
+                                <a onclick="verificarFavorito(${resposta[i].id})" class="btnSalvar"><i class="bi bi-bookmark"></i></a> 
+                                <a onclick="sobre_animeid(${resposta[i].id})" class="btnSalvar"><i class="bi bi-play-fill"></i></a>    
                             </div>
                         </div>
                     </div>
@@ -99,7 +100,7 @@ function selectEstacao(){
                             <span>${resposta[i].episodeo} episodios</span>
 
                             <div class="btnNav">
-                                <a href="sobre_anime.html" class="btnSalvar"><i class="bi bi-bookmark"></i></a> 
+                                <a onclick="verificarFavorito(${resposta[i].id})" class="btnSalvar"><i class="bi bi-bookmark"></i></a> 
                                 <a onclick="sobre_animeid(${resposta[i].id})" class="btnSalvar"><i class="bi bi-play-fill"></i></a>        
                             </div>
                         </div>
@@ -112,7 +113,6 @@ function selectEstacao(){
             `
             }
         }
-    
     })
     .catch(erro => {
         console.error('Deu erro:', erro);
@@ -154,7 +154,7 @@ function selectPopulares(){
                             <span>${resposta[i].episodeo} episodios</span>
 
                             <div class="btnNav">
-                                <a href="sobre_anime.html" class="btnSalvar"><i class="bi bi-bookmark"></i></a> 
+                                <a onclick="verificarFavorito(${resposta[i].id})" class="btnSalvar"><i class="bi bi-bookmark"></i></a> 
                                 <a onclick="sobre_animeid(${resposta[i].id})" class="btnSalvar"><i class="bi bi-play-fill"></i></a>        
                             </div>
                         </div>
@@ -348,7 +348,7 @@ function selectAnimebyEstacao(){
                                 <span>${resposta[i].episodeo} episodios</span>
 
                                 <div class="btnNav">
-                                    <a href="sobre_anime.html" class="btnSalvar"><i class="bi bi-bookmark"></i></a> 
+                                    <a onclick="${verificarFavorito(resposta[i].id)}" class="btnSalvar"><i class="bi bi-bookmark"></i></a> 
                                     <a onclick="sobre_animeid(${resposta[i].id})" class="btnSalvar"><i class="bi bi-play-fill"></i></a>        
                                 </div>
                             </div>

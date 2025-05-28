@@ -7,7 +7,7 @@ router.post("/favoritarAnime", function (req, res) {
     favoritorController.favoritarAnime(req, res);
 });
 router.put("/updateFavoritarAnime", function (req, res) {
-    favoritorController.favoritarAnime(req, res);
+    favoritorController.updateFavoritarAnime(req, res);
 });
 router.get("/selectAnimesFavortitosById/:id_usuario", function (req, res) {
     favoritorController.selectAnimesFavoritosByUsuario(req, res);

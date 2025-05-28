@@ -12,22 +12,18 @@ function dadosUsuario(id){
 
         console.log(dados)
         if (dados.length > 0) {
-        console.log("entrei no if ")
         const usuario = dados[0];
-        console.log(usuario)
         caminho_img = "assets/img/imgUpload/"+usuario.foto;
         nome.value = usuario.nome;
         email.value = usuario.email;
         senha.value = usuario.senha;
         img.src = caminho_img;
-        
         sessionStorage.EMAIL_USUARIO = usuario.email;
         sessionStorage.NOME_USUARIO = usuario.nome;
         sessionStorage.FOTO_USUARIO = usuario.foto ? usuario.foto : 'padrao.png'; 
       }
     })
     .catch(erro => {
-        console.log("entrei no erro")
         console.error('Deu erro:', erro);
     });
 }

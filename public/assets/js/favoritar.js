@@ -10,23 +10,27 @@ function favoritarAnime(id_anime) {
                 id_usuario : sessionStorage.ID_USUARIO
             })
         }).then(()=>{
-            console.log("cadastrou")
+            console.log("cadastrou");
+            selectAnimesFavoritosByUsuario();
             });
 }
 
-function updateFavoritarAnime(id_anime) {
+function updateFavoritarAnime(id_usuario,id_anime,statusAtual) {
+    console.log("dentro do update")
+    console.log(statusAtual)
         fetch("/favoritar/updateFavoritarAnime", {
             method: "PUT",
             headers: {
                 "Content-Type" : 'application/json'
             },
             body: JSON.stringify ({
-                status_favorito : true,
+                status_favorito : statusAtual,
                 id_anime : id_anime,
-                id_usuario : sessionStorage.ID_USUARIO
+                id_usuario : id_usuario
             })
         }).then(()=>{
-            console.log("cadastrou")
+            console.log("ATUALIZOU");
+            selectAnimesFavoritosByUsuario();
             });
 }
 
@@ -35,7 +39,13 @@ function selectAnimesFavoritosByUsuario() {
         fetch(`/favoritar/selectAnimesFavortitosById/${id_usuario}`, {
         }).then(dados => dados.json())
         .then(dados =>{
-            console.log(dados);
+            
+
+            for(var i=0;i<dados.length;i++){
+                console.log('entrei no anime com id',dados[i].fk_anime)
+                console.log(dados[i].status_favorito);
+                dados[i].status_favorito == true ? document.getElementsByClassName("bi-bookmark")[i].style.color = 'yellow' : document.getElementsByClassName("bi-bookmark")[i].style.color = 'white';
+            }
         });
 }
 
@@ -46,12 +56,9 @@ function verificarFavorito(id_anime){
         .then(dados =>{
             if(dados.length>0){
                console.log("tenho que atualizar papae")
-               var statusAtual = false;
-                if(dados[0].status_favorito == true){
+               var statusAtual = true;
+                if(dados[0].status_favorito == 1){
                     console.log("se for true");
-                    statusAtual = true;
-                }else{
-                    console.log("se for false");
                     statusAtual = false;
                 }
                 updateFavoritarAnime(id_usuario,id_anime,statusAtual);

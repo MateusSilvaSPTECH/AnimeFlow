@@ -173,6 +173,10 @@ nav ul li a{
 .avaliacao_anime .bi-star-fill{
     color: #ffee00;
 }
+.bi-bookmark{
+    color: #fff;
+    font-size: 2rem;
+}
 .avaliacao_anime span{
     width: 8%;
     font-size: 1.5rem;

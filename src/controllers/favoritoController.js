@@ -30,7 +30,7 @@ function updateFavoritarAnime(req, res) {
     console.log(status_favorito);
     console.log(id_anime);
     console.log(id_usuario);
-        favoritoModel.favoritarAnime(status_favorito, id_anime, id_usuario)
+        favoritoModel.updateFavoritarAnime(status_favorito, id_anime, id_usuario)
             .then(
                 function (resultado) {
                     res.json(resultado);

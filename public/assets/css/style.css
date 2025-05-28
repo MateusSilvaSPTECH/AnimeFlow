@@ -380,6 +380,10 @@ nav ul li a{
     color: #000;
     font-size: 2rem;
 }
+.bi-bookmark{
+    color: #fff;
+    font-size: 2rem;
+}
 
 .redondo{
     background-color: #fff;
@@ -458,7 +462,7 @@ nav ul li a{
     height: 100%;
     background: black;
     opacity: 0;
-    transition: 1s;
+    transition: 0.3s;
     z-index: 1;
 }
 

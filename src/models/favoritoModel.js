@@ -19,7 +19,7 @@ function updateFavoritarAnime(status_favorito, id_anime, id_usuario) {
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     var instrucaoSql = `
-        INSERT INTO favoritar(status_favorito,fk_anime,fk_usuario) VALUES (${status_favorito}, '${id_anime}', '${id_usuario}');
+        UPDATE favoritar SET status_favorito = ${status_favorito} WHERE fk_usuario = ${id_usuario} and fk_anime = ${id_anime};
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
