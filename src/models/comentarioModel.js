@@ -41,6 +41,15 @@ function countComentarios(fk_anime){
         console.log("Executando a instrução SQL: \n" + instrucaoSql);
         return database.executar(instrucaoSql);
 }
+function countComentariosUsuario(id_suario){
+    console.log("ACESSEI O Comentario MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function count():");
+        var instrucaoSql = 
+        `
+          SELECT COUNT(id) as contador FROM comentario where fk_usuario = ${id_suario};
+        `;
+        console.log("Executando a instrução SQL: \n" + instrucaoSql);
+        return database.executar(instrucaoSql);
+}
 function deletarComentario(id){
     console.log("ACESSEI O Comentario MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function count():");
         var instrucaoSql = 
@@ -64,5 +73,6 @@ module.exports = {
     selectAllComentarios,
     countComentarios,
     deletarComentario,
-    cadastrarResposta
+    cadastrarResposta,
+    countComentariosUsuario
 };

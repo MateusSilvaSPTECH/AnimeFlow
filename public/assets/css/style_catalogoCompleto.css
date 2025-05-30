@@ -247,3 +247,47 @@ footer .informacoes a{
     font-size: 1rem;
     color: #fff;
 }
+
+.btnSalvar{
+    background-color: transparent;
+    color: #001f54;
+    font-weight: bolder;
+    text-align: center;
+    width: 60px;
+    height: 60px;
+    outline: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+
+}
+.btnSalvar:hover{
+    transition: 1s;
+    color: #fff;
+    border: 2px solid #fff;
+    font-weight: bolder;
+    text-align: center;
+    width: 60px;
+    height: 60px;
+    outline: none;
+    cursor: pointer;
+}
+.bi-star-fill{
+    color: #fff;
+    font-size: 1rem;
+}
+.bi-play-fill{
+    color: #fff;
+    font-size: 2rem;
+}
+
+.bi-search{
+    color: #000;
+    font-size: 2rem;
+}
+.bi-bookmark{
+    color: #fff;
+    font-size: 2rem;
+}

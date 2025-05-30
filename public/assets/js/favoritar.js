@@ -36,21 +36,17 @@ function updateFavoritarAnime(id_usuario,id_anime,statusAtual) {
 
 function selectAnimesFavoritosByUsuario() {
     var id_usuario = sessionStorage.ID_USUARIO;
-        fetch(`/favoritar/selectAnimesFavortitosById/${id_usuario}`, {
+        fetch(`/favoritar/selectAnimesFavoritosById/${id_usuario}`, {
         }).then(dados => dados.json())
         .then(dados =>{
-            
-
             for(var i=0;i<dados.length;i++){
-                console.log('entrei no anime com id',dados[i].fk_anime)
-                console.log(dados[i].status_favorito);
                 var idAnime = dados[i].fk_anime;
                 var icone = document.getElementById(`favorito${idAnime}`);
                 var favorito = dados[i].status_favorito;
                 if (icone) {
                     icone.style.color = favorito ? 'yellow' : 'white';
                 } else {
-                    console.warn(`Elemento com id favorito${idAnime} não encontrado`);
+                    console.log(`Elemento com id favorito${idAnime} não encontrado`);
                 }
             }
         });
@@ -58,22 +54,24 @@ function selectAnimesFavoritosByUsuario() {
 
 function verificarFavorito(id_anime){
    var id_usuario = sessionStorage.ID_USUARIO;
-        fetch(`/favoritar/verificarAnimesFavoritosUsuario/${id_usuario}/${id_anime}`, {
-        }).then(dados => dados.json())
-        .then(dados =>{
-            if(dados.length>0){
-               console.log("tenho que atualizar papae")
-               var statusAtual = true;
-                if(dados[0].status_favorito == 1){
-                    console.log("se for true");
-                    statusAtual = false;
-                }
-                updateFavoritarAnime(id_usuario,id_anime,statusAtual);
-            }else{
-                favoritarAnime(id_anime);
-            }
-        });
-    
+   const icone = document.getElementById(`favorito${id_anime}`);
+    console.log(id_anime);
+    console.log(id_usuario)
+   fetch(`/favoritar/verificarAnimesFavoritosUsuario/${id_usuario}/${id_anime}`)
+   .then(dados => dados.json())
+   .then(dados =>{
+    console.log(dados);
+       if(dados.length > 0){
+           var statusAtual = !dados[0].status_favorito;
+           updateFavoritarAnime(id_usuario, id_anime, statusAtual);
+           console.log(icone.id)
+           icone.style.color = statusAtual ? 'yellow' : 'white';
+       } else {
+           favoritarAnime(id_anime);
+           icone.style.color = 'yellow';
+       }
+   });
 }
+
 
 

@@ -11,26 +11,24 @@ function chamarAnime(){
             div_container_anime.innerHTML +=
             `
             
-                 <div class="boxAnime">
+                <div class="boxAnime">
                     <div class="imgAnime">
                          <img src="../assets/img/fotoAnime/${resposta[i].foto}">
                     </div>
-
                     <div class="blur"></div>
-
                     <div class="conteudoOculto">
-
                         <div class="boxTittleAnime">
                             <span class="tittleAnime">${resposta[i].titulo}</span>
                         </div>
-
                         <div class="avaliacao">
-                            A${resposta[i].classificacao} 4.5(7.7K)<i class="bi bi-star-fill"></i>
+                            A${resposta[i].classificacao}<br>
+                            <span>${resposta[i].soma}(${resposta[i].quantidade})<i class="bi bi-star-fill"></i></span>
                             <span>${resposta[i].traducao}</span>
                             <span>${resposta[i].episodeo} episodios</span>
+
                             <div class="btnNav">
                                 <a onclick="verificarFavorito(${resposta[i].id})" class="btnSalvar"><i class="bi bi-bookmark" id="favorito${resposta[i].id}"></i></a> 
-                                <a onclick="sobre_animeid(${resposta[i].id})" class="btnSalvar"><i class="bi bi-play-fill"></i></a>    
+                                <a onclick="sobre_animeid(${resposta[i].id})" class="btnSalvar"><i class="bi bi-play-fill"></i></a>        
                             </div>
                         </div>
                     </div>
@@ -62,7 +60,7 @@ function selectEstacao(){
     }else{
         estacao = "Inverno"
     }
-    estacao = "Outono"
+    estacao = "Primavera"
     console.log(estacao)
     fetch(`/animes/listarPorEstacao/${estacao}`,{
         method: "GET",
@@ -113,6 +111,7 @@ function selectEstacao(){
             `
             }
         }
+        selectAnimesFavoritosByUsuario();
     })
     .catch(erro => {
         console.error('Deu erro:', erro);
@@ -261,7 +260,9 @@ function selectIdAnime(id){
             </div>
         `
     }
+    
     );
+    
     })
     .catch(erro => {
         console.error('Deu erro:', erro);

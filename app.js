@@ -24,6 +24,7 @@ var categoriaAnimeRouter = require("./src/routes/categoria_anime");
 var avaliacaoRouter = require("./src/routes/avaliacao");
 var categoriaRouter = require("./src/routes/categoria");
 var favoritaRouter = require("./src/routes/favoritar");
+var dashRouter = require("./src/routes/dashboard");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -40,6 +41,7 @@ app.use("/categoria_anime",categoriaAnimeRouter);
 app.use("/avaliacao",avaliacaoRouter);
 app.use("/categorias",categoriaRouter);
 app.use("/favoritar",favoritaRouter);
+app.use("/dashboard",dashRouter);
 
 
 app.listen(PORTA_APP, function () {

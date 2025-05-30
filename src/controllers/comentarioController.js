@@ -74,6 +74,23 @@ function countComentarios(req,res){
                 }
             );
 }
+function countComentariosUsuario(req,res){
+     var id_usuario = req.params.id_usuario;
+    comentarioModel.countComentariosUsuario(id_usuario).then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o COUNT COMENTARIO! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+}
 function cadastrarResposta(req, res) {
         var descricao = req.body.descricao;
         var fk_anime = req.body.id_anime;
@@ -100,5 +117,6 @@ module.exports = {
     selectAllComentarios,
     countComentarios,
     deletarComentario,
-    cadastrarResposta
+    cadastrarResposta,
+    countComentariosUsuario
 }

@@ -3,7 +3,24 @@ var database = require("../database/config")
 function selectAll(){
     console.log("acessei o selctall")
     var instrucaoSql = `
-    SELECT * FROM anime
+    SELECT a.id,
+        a.titulo,
+        a.descricao,
+        a.foto,
+        a.logo,
+        a.classificacao,
+        a.traducao,
+        a.estacao,
+        a.dataLancamento,
+        a.episodeo,
+        a.temporada,
+        ROUND(AVG(ac.valor),1) AS "soma",
+        COUNT(ac.valor) AS "quantidade"
+        FROM anime as a 
+        LEFT JOIN avaliacao as ac 
+        ON ac.fk_anime = a.id
+        GROUP BY a.id,a.titulo,a.descricao,a.foto,a.logo,a.classificacao,a.traducao,a.estacao,a.dataLancamento,a.episodeo,a.temporada
+        
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -76,7 +93,7 @@ SELECT a.id,
         FROM anime as a 
         LEFT JOIN avaliacao as ac 
         ON ac.fk_anime = a.id
-        WHERE a.estacao = 'Outono'
+        WHERE a.estacao = '${estacao}'
         GROUP BY a.id,a.titulo,a.descricao,a.foto,a.logo,a.classificacao,a.traducao,a.estacao,a.dataLancamento,a.episodeo,a.temporada
         
     `;

@@ -77,10 +77,28 @@ function verificarAnimesFavoritosUsuario(req, res) {
                    }
                );
 }
+function countFavoritosUsuario(req,res){
+    var id_usuario = req.params.id_usuario;
+    favoritoModel.countFavoritosUsuario(id_usuario).then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o COUNT COMENTARIO! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+}
 
 module.exports = {
     favoritarAnime,
     selectAnimesFavoritosByUsuario,
     verificarAnimesFavoritosUsuario,
-    updateFavoritarAnime
+    updateFavoritarAnime,
+    countFavoritosUsuario
 }

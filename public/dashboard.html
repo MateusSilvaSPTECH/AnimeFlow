@@ -3,9 +3,179 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/style_dashboard.css">
     <title>Document</title>
 </head>
 <body>
-    
+     <header>
+        <div class="container">
+            <nav>
+                <a onclick="zerarId()"><img src="assets/img/logoBrancaSemFundo.png" class="logo" ></a>
+                <ul>
+                    <li><a onclick="mostrarCategorias()">Categorias</a></li>
+                    <li><a onclick="mostrarestacoes()">Temporadas</a></li>
+                    <li><a href="#">Populares</a></li>
+                </ul>
+                <img src="" id="img_user_session" class="user_pic" onclick="mostrarDropDown()" width="60" height="40">
+
+                <div class="sub_menu_wrap" id="drop_menu">
+                    <div class="sub_menu">
+                        <div class="user_info">
+                            <img src="assets/img/d13cb6118a0cbc4eadb8360446927cb9.png" id="img_user_session2">
+                            <h2 id="nome_usuario"></h2>
+                        </div>
+                        <hr>
+
+                        <a href="dashboard.html" class="sub_menu_link">
+                            <img src="assets/img/images/profile.png" alt="">
+                            <p>Dashboard</p>
+                            <span>></span>
+                        </a>
+                        <a href="edit_perfil.html" class="sub_menu_link">
+                            <img src="assets/img/images/setting.png" alt="">
+                            <p>Editar Perfil</p>
+                            <span>></span>
+                        </a>
+                        <a onclick="limparSessao()" class="sub_menu_link">
+                            <img src="assets/img/images/logout.png" alt="">
+                            <p>Logout</p>
+                            <span>></span>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="sub_menu_categoria" id="drop_menu_categoria">
+                    <div class="sub_menu">
+                        <div class="tittle">
+                        <h3>Categorias:</h3>
+                        </div>
+                        <div class="categoria_info" id="categorias">
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="sub_menu_estacao" id="drop_menu_estacao">
+                    <div class="sub_menu">
+                        <div class="tittle">
+                        <h3>Estações:</h3>
+                        </div>
+                        <div class="estacao_info" id="estacoes">
+                            
+                        </div>
+                    </div>
+                </div>
+            </nav>
+    </header>
+    <div class="dashboard-container">
+    <div class="kpis">
+      <div class="boxKpi">
+        <h4>Média das avaliações</h4>
+        <span id="kpi_mediaAvaliacao"></span>
+      </div>
+      <div class="boxKpi">
+        <h4>Quantidade de comentarios</h4>
+        <span id="kpi_contagemComentarios"></span>
+      </div>
+      <div class="boxKpi">
+        <h4>Número de animes favoritos</h4>
+        <span id="kpi_contagemFavoritos"></span>
+      </div>
+      <div class="boxKpi">
+        <h4>Likes</h4>
+        <span>87</span>
+      </div>
+    </div>
+
+    <div class="graficos">
+      <div class="graficoPizza">
+        <h4>Categorias favoritas</h4>
+        <canvas id="graficoPizza"></canvas>
+      </div>
+      <div class="graficoLinha">
+        <h4>Tempo de Login</h4>
+        <canvas id="graficoLinha"></canvas>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
+<script src="assets/js/carrosel.js"></script>
+<script src="assets/js/menudropdown.js"></script>
+<script src="assets/js/dashboard.js"></script>
+<script src="assets/js/animes.js"></script>
+<script src="assets/js/usuario.js"></script>
+<script src="assets/js/categoria.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    var nomeUsuario = sessionStorage.NOME_USUARIO;
+    console.log(nomeUsuario)
+    
+    window.onload = ()=>{
+        const foto = sessionStorage.FOTO_USUARIO;
+        img_user_session.src = `assets/img/imgUpload/${foto}`;
+        img_user_session2.src = `assets/img/imgUpload/${foto}`;
+        mediaAvaliacao();
+        getCategoriasAll();
+        getEstacoesAll();
+        countComentariosUser();
+        countFavoritosUser();
+        categoriasFavoritos();
+        nome_usuario.innerHTML = `${nomeUsuario}`;
+    }
+
+    function categoriasFavoritos(){
+    var lista_media = [];
+    var lista_categoria = [];
+    var id_usuario = sessionStorage.ID_USUARIO;
+    fetch(`dashboard/listaCategoriasFavoritas/${id_usuario}`,{
+        method: "GET",
+        headers: {
+            "Content-Type" : 'application/json'
+        }
+    }).then(dados => dados.json())
+    .then(dados =>{
+        console.log(dados);
+        for(var i=0;i<dados.length;i++){
+            lista_categoria[i] = dados[i].nome_categoria;
+            lista_media[i] = dados[i].media;
+        }
+        console.log(lista_categoria);
+        console.log(lista_media);
+        const ctx = document.getElementById('graficoPizza').getContext('2d');
+        const meuGraficoPizza = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: lista_categoria,
+            datasets: [{
+            label: 'Estrelas na categoria',
+            data: lista_media,
+            backgroundColor: [
+                '#4E79A7',
+                '#F28E2B',
+                '#E15759 ',
+                '#76B7B2',
+                '#59A14F'
+            ]
+            }]
+        }
+        });
+    });
+}
+ const ctx2 = document.getElementById('graficoLinha').getContext('2d');
+    const meuGraficoLinha = new Chart(ctx2, {
+      type: 'line',
+      data: {
+        labels: ['Tempo em minutos'],
+        datasets: [{
+          label: 'Tempo de login na sessão atual',
+          data: [10,60],
+          backgroundColor: [
+            'red',
+            'pink',
+            'black'
+          ]
+        }]
+      }
+    });
+  </script>

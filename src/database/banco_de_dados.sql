@@ -1,5 +1,7 @@
 CREATE DATABASE animeFlow;
 USE animeFlow;
+
+
 CREATE TABLE anime(
  id INT PRIMARY KEY AUTO_INCREMENT,
  titulo VARCHAR(45),
@@ -322,6 +324,15 @@ SELECT COUNT(id) FROM comentario where fk_usuario = 6;
 -- kpi 3
 SELECT COUNT(id) FROM favoritar where fk_usuario = 6 AND status_favorito = 1;
 -- grafico de pizza
+SELECT c.nome_categoria,AVG(av.valor) as media FROM categoria as c
+JOIN anime_categoria as ac ON c.id = ac.fk_categoria
+JOIN anime as a ON ac.fk_anime = a.id
+JOIN avaliacao as av ON av.fk_anime = a.id
+JOIN usuario as u ON u.id = av.fk_usuario
+WHERE u.id = 1 
+GROUP BY c.nome_categoria 
+ORDER BY media DESC LIMIT 5;
+
 -- grafico de linha
 
 SELECT * FROM categoria;
