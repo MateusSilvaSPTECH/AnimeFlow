@@ -27,6 +27,13 @@ function autenticar() {
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.ID_USUARIO = json.id;
                     sessionStorage.FOTO_USUARIO = json.foto;
+                    var data = new Date();
+                    var horas =  data.getHours();
+                    var minutos = data.getMinutes();
+                    var segundos = data.getSeconds();
+                    var listaTempo = [horas,minutos,segundos];
+                    var sessao_atual = listaTempo;
+                    sessionStorage.TEMPO_COMECO = sessao_atual;
                     setTimeout(function () {
                         window.location = "./catalogo.html";
                     }, 1000); // apenas para exibir o loading

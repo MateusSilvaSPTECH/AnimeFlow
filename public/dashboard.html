@@ -109,7 +109,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
     var nomeUsuario = sessionStorage.NOME_USUARIO;
-    console.log(nomeUsuario)
+    
     
     window.onload = ()=>{
         const foto = sessionStorage.FOTO_USUARIO;
@@ -121,6 +121,7 @@
         countComentariosUser();
         countFavoritosUser();
         categoriasFavoritos();
+        sessaoAtual();
         nome_usuario.innerHTML = `${nomeUsuario}`;
     }
 
@@ -135,13 +136,12 @@
         }
     }).then(dados => dados.json())
     .then(dados =>{
-        console.log(dados);
+        
         for(var i=0;i<dados.length;i++){
             lista_categoria[i] = dados[i].nome_categoria;
             lista_media[i] = dados[i].media;
         }
-        console.log(lista_categoria);
-        console.log(lista_media);
+  
         const ctx = document.getElementById('graficoPizza').getContext('2d');
         const meuGraficoPizza = new Chart(ctx, {
         type: 'pie',
@@ -149,7 +149,7 @@
             labels: lista_categoria,
             datasets: [{
             label: 'Estrelas na categoria',
-            data: lista_media,
+            data: lista_media,  
             backgroundColor: [
                 '#4E79A7',
                 '#F28E2B',
@@ -158,24 +158,71 @@
                 '#59A14F'
             ]
             }]
-        }
+        },
+        plugins: [ChartDataLabels],
+        datalabels: {
+        color: 'white'
+      }
         });
     });
 }
- const ctx2 = document.getElementById('graficoLinha').getContext('2d');
-    const meuGraficoLinha = new Chart(ctx2, {
-      type: 'line',
-      data: {
-        labels: ['Tempo em minutos'],
-        datasets: [{
-          label: 'Tempo de login na sessão atual',
-          data: [10,60],
-          backgroundColor: [
-            'red',
-            'pink',
-            'black'
-          ]
-        }]
-      }
-    });
+    
+function sessaoAtual(){
+  var lista = [];
+  var sessao1 = sessionStorage.TEMPO_COMECO;
+  lista = sessao1.split(',');
+  for(var i =0;i<lista.length;i++){
+    lista[i] = Number(lista[i])
+  }
+  var hora =  lista[0] * 60;
+  var minutos = lista[1];
+  var segundos = lista[2]/60;
+  var total_minutos_usuario = hora+minutos;
+  var data = new Date();
+  var horas_atual =  Number(data.getHours());
+  horas_atual = horas_atual*60;
+  var minutos_atual = Number(data.getMinutes());
+  var segundos_atual = Number(data.getSeconds());
+  segundos_atual = segundos/60;
+  var total_minutos_atual = horas_atual+minutos_atual+segundos_atual;
+  diferenca = total_minutos_atual - total_minutos_usuario;  
+  return diferenca;
+}
+  var sessao1 = sessionStorage.TEMPO_COMECO;
+  lista = sessao1.split(',');
+  for(var i =0;i<lista.length;i++){
+    lista[i] = Number(lista[i])
+  }
+  var usuario_logou = `${lista[0]}:${lista[1]}:${lista[2]}`;
+
+  var data = new Date();
+  var horas_at =  Number(data.getHours());
+  var minutos_at = Number(data.getMinutes());
+  var segundos_at = Number(data.getSeconds());
+  var hora_atual = `${horas_at}:${minutos_at}:${segundos_at}`;
+
+var lista_exibir = [];
+function atualizar(){
+  var diferenca = sessaoAtual();
+  lista_exibir.push(diferenca);
+}
+setInterval(() => atualizar(), 3000)
+const ctx2 = document.getElementById('graficoLinha').getContext('2d');
+ const meuGraficoLinha = new Chart(ctx2, {
+   type: 'line',
+   data: {
+     labels: [usuario_logou,hora_atual],
+     data:lista_exibir,
+     datasets: [{
+       label: 'Tempo de login na sessão atual',
+       data: lista_exibir,
+       backgroundColor: [
+         'black'
+       ]
+     }]
+   }
+ }); 
+
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.0/dist/chart.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
