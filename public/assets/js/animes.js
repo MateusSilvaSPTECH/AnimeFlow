@@ -1,16 +1,15 @@
-function chamarAnime(){
+function chamarAnime() {
     fetch("/animes/listarTodos").then(resposta => resposta.json())
-    .then(resposta =>{
-        var controle = 0;
-    for(var i =0;i<resposta.length;i++){
-        id = resposta[i].id
-        controle +=1;
-        
-        console.log(resposta[i].foto)
+        .then(resposta => {
+            var controle = 0;
+            for (var i = 0; i < resposta.length; i++) {
+                id = resposta[i].id
+                controle += 1;
 
-            div_container_anime.innerHTML +=
-            `
-            
+                console.log(resposta[i].foto)
+
+                div_container_anime.innerHTML +=
+                    `
                 <div class="boxAnime">
                     <div class="imgAnime">
                          <img src="../assets/img/fotoAnime/${resposta[i].foto}">
@@ -38,50 +37,48 @@ function chamarAnime(){
                     </div>
                 </div>
                 `
-        }
-    })
-    .catch(erro => {
-        console.error('Deu erro:', erro);
-    });
-      
-    }
+            }
+        })
+        .catch(erro => {
+            console.error('Deu erro:', erro);
+        });
 
-function selectEstacao(){
+}
+
+function selectEstacao() {
     const data = new Date();
-    const mesAtual = Number(data.getMonth()+1);
+    const mesAtual = Number(data.getMonth() + 1);
     console.log(mesAtual)
     var estacao = ``
-    if(mesAtual>=3 || mesAtual<=5){
+    if (mesAtual >= 3 || mesAtual <= 5) {
         estacao = "Primavera"
-    }else if(mesAtual>=6|| mesAtual<=8){
+    } else if (mesAtual >= 6 || mesAtual <= 8) {
         estacao = "Verão"
-    }else if(mesAtual>=9 || mesAtual<=11){
+    } else if (mesAtual >= 9 || mesAtual <= 11) {
         estacao = "Outono"
-    }else{
+    } else {
         estacao = "Inverno"
     }
-    estacao = "Primavera"
+    estacao = "Outono"
     console.log(estacao)
-    fetch(`/animes/listarPorEstacao/${estacao}`,{
+    fetch(`/animes/listarPorEstacao/${estacao}`, {
         method: "GET",
         headers: {
-            "Content-Type" : 'application/json'
+            "Content-Type": 'application/json'
         }
     }
-        
+
     ).then(resposta => resposta.json())
-    .then(resposta =>{
-         var controle = 0;
-    for(var i =0;i<resposta.length;i++){
-        id = resposta[i].id
-        console.log(resposta[i]);
-        controle +=1;
-            if(controle<5){
+        .then(resposta => {
+            for (var i = 0; i < resposta.length; i++) {
+                console.log(resposta)
+                id = resposta[i].id
                 h1Estacao.innerHTML = `
                     Conheça os melhores animes da temporada de ${estacao}
                 `;
-                 div_container_anime.innerHTML +=
-            `
+                div_container_anime.innerHTML +=
+                    `
+             <div class="swiper-slide listar">
                 <div class="boxAnime">
                     <div class="imgAnime">
                          <img src="../assets/img/fotoAnime/${resposta[i].foto}">
@@ -108,35 +105,51 @@ function selectEstacao(){
                         <div class="traducao">${resposta[i].traducao}</div>
                     </div>
                 </div>
+             </div>
             `
             }
-        }
-        selectAnimesFavoritosByUsuario();
-    })
-    .catch(erro => {
-        console.error('Deu erro:', erro);
-    });
+            new Swiper(".mySwiperEstacao", {
+                loop: true,
+                slidesPerView: 6,
+                spaceBetween: 20,
+                slidesPerGroup: 3,  
+                navigation: {
+                    nextEl: ".mySwiperEstacao .swiper-button-next",
+                    prevEl: ".mySwiperEstacao .swiper-button-prev"
+                },
+                pagination: {
+                    clickable: true
+                },
+                autoplay: {
+                    delay: 6000,
+                    disableOnInteraction: false
+                }
+            });
+
+            selectAnimesFavoritosByUsuario();
+        })
+        .catch(erro => {
+            console.error('Deu erro:', erro);
+        });
 }
 
-function selectPopulares(){
-    fetch(`/animes/listarPopulares`,{
+function selectPopulares() {
+    fetch(`/animes/listarPopulares`, {
         method: "GET",
         headers: {
-            "Content-Type" : 'application/json'
+            "Content-Type": 'application/json'
         }
     }).then(resposta => resposta.json())
-    .then(resposta =>{
-        var controle = 0;
-        for(var i =0;i<resposta.length;i++){
-        id = resposta[i].id
-        console.log(resposta[i])
-        controle +=1;
-            if(controle<5){
+        .then(resposta => {
+            for (var i = 0; i < resposta.length; i++) {
+                id = resposta[i].id
+                console.log(resposta[i])
                 h1Popularidade.innerHTML = `
                     Conheça os animes mais populares entre nossos usuarios
                 `;
-                 div_container_anime_popularidade.innerHTML +=
-            `
+                div_container_anime_popularidade.innerHTML +=
+                    `
+             <div class="swiper-slide listar">
                 <div class="boxAnime">
                     <div class="imgAnime">
                          <img src="../assets/img/fotoAnime/${resposta[i].foto}">
@@ -163,26 +176,42 @@ function selectPopulares(){
                         <div class="traducao">${resposta[i].traducao}</div>
                     </div>
                 </div>
+            </div>    
             `
             }
-        }
-    })
-    .catch(erro => {
-        console.error('Deu erro:', erro);
-    });
+            new Swiper(".mySwiperPopularidade", {
+                loop: true,
+                slidesPerView: 6,
+                spaceBetween: 20,
+                navigation: {
+                    nextEl: ".mySwiperPopularidade .swiper-button-next",
+                    prevEl: ".mySwiperPopularidade .swiper-button-prev"
+                },
+                pagination: {
+                    clickable: true
+                },
+                autoplay: {
+                    delay: 6000,
+                    disableOnInteraction: false
+                }
+            });
+        })
+        .catch(erro => {
+            console.error('Deu erro:', erro);
+        });
 }
-function selectIdAnime(id){
-    fetch(`/animes/listarIdAnime/${id}`,{
+function selectIdAnime(id) {
+    fetch(`/animes/listarIdAnime/${id}`, {
         method: "GET",
         headers: {
-            "Content-Type" : 'application/json'
+            "Content-Type": 'application/json'
         }
     }).then(funciona => funciona.json())
-    .then(funciona =>{
-    console.log(funciona)
-    funciona.forEach( item => {
-        div_sobre_anime.innerHTML =
-        `
+        .then(funciona => {
+            console.log(funciona)
+            funciona.forEach(item => {
+                div_sobre_anime.innerHTML =
+                    `
             <div class="boxConteudo">
             <div class="cabecalho_anime">
                 <div class="boxAnime">
@@ -259,77 +288,76 @@ function selectIdAnime(id){
             
             </div>
         `
-    }
-    
-    );
-    
-    })
-    .catch(erro => {
-        console.error('Deu erro:', erro);
-    });
+            }
+
+            );
+
+        })
+        .catch(erro => {
+            console.error('Deu erro:', erro);
+        });
 }
-function sobre_animeid(id){
+function sobre_animeid(id) {
     sessionStorage.ID_ANIME = id;
-        window.location.href = `sobre_anime.html`
+    window.location.href = `sobre_anime.html`
 }
 
 
-function zerarId()
-{
+function zerarId() {
     sessionStorage.ID_ANIME = undefined;
     window.location.href = `catalogo.html`;
 }
-function getCategoriasAnime(){
+function getCategoriasAnime() {
     var id = sessionStorage.ID_ANIME;
-     fetch(`/categoria_anime/listarAnimeCategoria/${id}`).then(funciona => funciona.json())
-    .then(funciona =>{
-        console.log(funciona)
-        for(var i=0;i<funciona.length;i++){
-            console.log(funciona[i].nome_categoria)
-            categoria.innerHTML += 
-        `
+    fetch(`/categoria_anime/listarAnimeCategoria/${id}`).then(funciona => funciona.json())
+        .then(funciona => {
+            console.log(funciona)
+            for (var i = 0; i < funciona.length; i++) {
+                console.log(funciona[i].nome_categoria)
+                categoria.innerHTML +=
+                    `
              <a onclick="redirecionaAnimeCategoria(${funciona[i].fk_categoria})"><span>${funciona[i].nome_categoria}</span></a>
         `
-        }
-    })
-    .catch(erro => {
-        console.error('Deu erro:', erro);
-    });
+            }
+        })
+        .catch(erro => {
+            console.error('Deu erro:', erro);
+        });
 }
-function redirecionaAnimeEstacao(estacao){
+function redirecionaAnimeEstacao(estacao) {
     window.location.href = "catalogo_estacao.html";
     sessionStorage.ESTACAO = estacao;
 }
-function getEstacoesAll(){
+function getEstacoesAll() {
     fetch("/animes/listaTodasEstacoes", {
-            method: "GET",
-            headers: {
-                "Content-Type" : 'application/json'
-            }
+        method: "GET",
+        headers: {
+            "Content-Type": 'application/json'
         }
-    ).then(resposta => resposta.json())
-    .then( resposta => {
-        var html = `<div class="rowEs">`;
-        for(var i=0; i<resposta.length;i++){
-            console.log(resposta[i])
-        html += `<a onclick="redirecionaAnimeEstacao('${resposta[i].estacao}')">${resposta[i].estacao}</a>`;
     }
-    html += `</div>`;
-    estacoes.innerHTML = html; 
-    })
+    ).then(resposta => resposta.json())
+        .then(resposta => {
+            var html = `<div class="rowEs">`;
+            for (var i = 0; i < resposta.length; i++) {
+                console.log(resposta[i])
+                html += `<a onclick="redirecionaAnimeEstacao('${resposta[i].estacao}')">${resposta[i].estacao}</a>`;
+            }
+            html += `</div>`;
+            estacoes.innerHTML = html;
+        })
 }
 
-function selectAnimebyEstacao(){
+function selectAnimebyEstacao() {
     console.log("olha eu ai ")
     var estacao = sessionStorage.ESTACAO;
-     fetch(`/animes/listaPorEstacao/${estacao}`).then(resposta => resposta.json())
-    .then(resposta =>{
-        if(resposta.length>0){
-               for(var i=0;i<resposta.length;i++){
-                console.log(resposta[i])
-                h1estacao.innerHTML = `Animes com a estação ${resposta[i].estacao}`;
-              div_container_anime.innerHTML +=
-                `
+    fetch(`/animes/listaPorEstacao/${estacao}`).then(resposta => resposta.json())
+        .then(resposta => {
+            if (resposta.length > 0) {
+                for (var i = 0; i < resposta.length; i++) {
+                    console.log(resposta[i])
+                    h1estacao.innerHTML = `Animes com a estação ${resposta[i].estacao}`;
+                    div_container_anime.innerHTML +=
+                        `
                      <div class="boxAnime">
                         <div class="imgAnime">
                              <img src="../assets/img/fotoAnime/${resposta[i].foto}">
@@ -362,10 +390,10 @@ function selectAnimebyEstacao(){
                         </div>
                     </div>
                     `
-            }
-        }else{
-          
-            div_container_anime.innerHTML += `
+                }
+            } else {
+
+                div_container_anime.innerHTML += `
             <div class="noAnimeMessage">
                 <section class="mostrar_tudo">
                     <div class="container">
@@ -383,10 +411,10 @@ function selectAnimebyEstacao(){
                     </div>
                 </section>
             </div>`;
-        }
-    })
-    .catch(erro => {
-        console.error('Deu erro:', erro);
-    });
+            }
+        })
+        .catch(erro => {
+            console.error('Deu erro:', erro);
+        });
 }
 

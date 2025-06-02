@@ -222,62 +222,7 @@ nav ul li a{
     font-weight: 600;
 }
 
-.principal{
-    height: 130%;
-    width: 100%;
-    background-image: 
-    linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)),
-    linear-gradient(to top, rgba(0, 0, 0, 1), transparent),
-    url(../img/FundoNaruto2.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-direction: column;
-}
-.principal2{
-    height: 130%;
-    width: 100%;
-    background-image: 
-    linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)),
-    linear-gradient(to top, rgba(0, 0, 0, 1), transparent),
-    url(../img/fundoDarling.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-direction: column;
-}
-.principal3{
-    height: 130%;
-    width: 100%;
-    background-image: 
-    linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)),
-    linear-gradient(to top, rgba(0, 0, 0, 1), transparent),
-    url(../img/FundoShingeki.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-direction: column;
-}
-.principal4{
-    height: 130%;
-    width: 100%;
-    background-image: 
-    linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)),
-    linear-gradient(to top, rgba(0, 0, 0, 1), transparent),
-    url(../img/fundoDeath.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-direction: column;
-}
+
 .container .logo img{
     width: 160px;
     height: 25px;
@@ -441,19 +386,6 @@ nav ul li a{
     width: 100%;
     z-index: 0;
 }
-.imgAnime {
-     background-image: url(../img/image.png);
-     }
-.imgAnime1 { 
-    background-image: url(../img/darling.jpg);
- }
-.imgAnime2 { 
-    background-image: url(../img/shingeki.jpg); 
-}
-.imgAnime3 { 
-    background-image: url(../img/capa_death_note_01_g.jpg);
- }
-
 .blur {
     position: absolute;
     top: 0;
@@ -486,11 +418,11 @@ nav ul li a{
     flex-direction: column;
 }
 
-.boxAnime:hover .blur, .boxAnime1:hover .blur, .boxAnime2:hover .blur, .boxAnime3:hover .blur {
+.boxAnime:hover .blur {
     opacity: 0.9;
 }
 
-.boxAnime:hover .conteudoOculto, .boxAnime1:hover .conteudoOculto, .boxAnime2:hover .conteudoOculto, .boxAnime3:hover .conteudoOculto1 {
+.boxAnime:hover .conteudoOculto{
     display: flex;
     width: 100%;
     height: 100%;
@@ -696,4 +628,25 @@ footer .informacoes a{
     width: 15%;
     background-color: blue;
     cursor: pointer;
+}
+
+.swiper {
+  width: 100%;
+  padding: 20px 0;
+}
+
+.swiper-wrapper {
+  display: flex;
+}
+
+.listar {
+margin-left: 40px;
+}
+.swiper-slide {
+  width: 200px;
+  display: flex;
+
+}
+.boxAnime{
+    width: 100%;
 }

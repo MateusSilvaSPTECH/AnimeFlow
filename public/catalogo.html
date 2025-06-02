@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <title>Document</title>
 </head>
 
@@ -13,7 +15,7 @@
     <header>
         <div class="container">
             <nav>
-                <a onclick="zerarId()"><img src="assets/img/logoBrancaSemFundo.png" class="logo" ></a>
+                <a onclick="zerarId()"><img src="assets/img/logoBrancaSemFundo.png" class="logo"></a>
                 <ul>
                     <li><a onclick="mostrarCategorias()">Categorias</a></li>
                     <li><a onclick="mostrarestacoes()">Temporadas</a></li>
@@ -46,141 +48,68 @@
                         </a>
                     </div>
                 </div>
-                
+
                 <div class="sub_menu_categoria" id="drop_menu_categoria">
                     <div class="sub_menu">
                         <div class="tittle">
-                        <h3>Categorias:</h3>
+                            <h3>Categorias:</h3>
                         </div>
                         <div class="categoria_info" id="categorias">
-                            
+
                         </div>
                     </div>
                 </div>
                 <div class="sub_menu_estacao" id="drop_menu_estacao">
                     <div class="sub_menu">
                         <div class="tittle">
-                        <h3>Estações:</h3>
+                            <h3>Estações:</h3>
                         </div>
                         <div class="estacao_info" id="estacoes">
-                            
+
                         </div>
                     </div>
                 </div>
             </nav>
     </header>
-    <div class="slider" class="modal-overlay" onclick="fecharDropDown()">
-        <div class="slides">
-            <input type="radio" name="radio-btn" id="input_radio1">
-            <input type="radio" name="radio-btn" id="input_radio2">
-            <input type="radio" name="radio-btn" id="input_radio3">
-            <input type="radio" name="radio-btn" id="input_radio4">
-            <div class="slide first">
-                <section class="principal">
-                    <div class="boxConteudo">
-                        <div class="logo">
-                            <img src="assets/img/logonaruto.png">
-                        </div>
-                        <div class="legendado">14 Dublado | Legendado</div>
-                        <div class="descricao" id="div_descricao0">Uzumaki Naruto quer ser o melhor ninja de todos. Ele está indo muito bem,
-                            mas com o perigo iminente imposto pela misteriosa Akatsuki, Naruto percebe que ele deve
-                            treinar mais que nunca e deixa sua vila para um intenso treinamento que o pressiona contra
-                            seus limites.</div>
-                        <div class="box_btn">
-                            <a onclick="sobre_animeid(1)" class="btnConhecer">Conheça tudo sobre o anime</a> 
-                            <a onclick="verificarFavorito(1)" class="btnSalvar"><i class="bi bi-bookmark" id="favorito1"></i></a> 
-                        </div>
-                    </div>
-
-                </section>
-            </div>
-            <div class="slide">
-                <section class="principal2">
-                    <div class="boxConteudo">
-                        <div class="logo">
-                            <img src="assets/img/logodarling.png">
-                        </div>
-                        <div class="legendado">12 Dublado | Legendado</div>
-                        <div class="descricao" id="div_descricao1">Os sobreviventes de uma guerra catastrófica contra monstros aglomeram-se
-                            em cidades-fortaleza móveis e treinam jovens para defender a humanidade pilotando grandes
-                            robôs de batalha chamados Franxx.</div>
-                        <div class="box_btn">
-                            <a onclick="sobre_animeid(18)"class="btnConhecer">Conheça tudo sobre o anime</a> 
-                            <a onclick="verificarFavorito(18)" class="btnSalvar"><i class="bi bi-bookmark" id="favorito18"></i></a> 
-                        </div>
-                    </div>
-                </section>
-            </div>
-            <div class="slide">
-                <section class="principal3">
-                    <div class="boxConteudo">
-                        <div class="logo">
-                            <img src="assets/img/LogoShingekinoKyojin.png">
-                        </div>
-                        <div class="legendado">18 Dublado | Legendado</div>
-                        <div class="descricao" id="div_descricao2">Eren Jaeger jurou eliminar todos os Titãs, mas em uma batalha desesperada
-                            ele se torna aquilo que mais odeia. Com seus novos poderes, ele luta pela liberdade da
-                            humanidade, combatendo os monstros que ameaçam seu lar. Mesmo depois de derrotar a Titã
-                            Fêmea, Eren não consegue descansar - uma horda de Titãs se aproximam da Muralha Rose e a
-                            batalha em nome da humanidade continua!</div>
-                        <div class="box_btn">
-                            <a onclick="sobre_animeid(11)" class="btnConhecer">Conheça tudo sobre o anime</a> 
-                            <a onclick="verificarFavorito(11)" class="btnSalvar"><i class="bi bi-bookmark" id="favorito11"></i></a> 
-                        </div>
-                    </div>
-
-                </section>
-            </div>
-            <div class="slide">
-                <section class="principal4">
-                    <div class="boxConteudo">
-                        <div class="logo">
-                            <img src="assets/img/logoDeath.png">
-                        </div>
-                        <div class="legendado">18 Dublado | Legendado</div>
-                        <div class="descricao" id="div_descricao3">Um inteligente estudante do ensino médio embarca em uma cruzada secreta
-                            para eliminar os criminosos do mundo depois de descobrir um caderno capaz de matar qualquer
-                            pessoa cujo nome está escrito nele.</div>
-                        <div class="box_btn">
-                            <a onclick="sobre_animeid(2)" class="btnConhecer">Conheça tudo sobre o anime</a> 
-                            <a onclick="verificarFavorito(2)" class="btnSalvar"><i class="bi bi-bookmark" id="favorito2"></i></a> 
-                        </div>
-                    </div>
-                </section>
-            </div>
-            <div class="navegacao_automatica">
-                <div class="auto_btn1"></div>
-                <div class="auto_btn2"></div>
-                <div class="auto_btn3"></div>
-                <div class="auto_btn4"></div>
-            </div>
+    <!-- Slider principal -->
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper" id="slides-container">
+            <!-- Os slides serão inseridos via JS aqui -->
         </div>
-        <div class="manual_navegacao">
-            <label for="input_radio1" class="manual_btn"></label>
-            <label for="input_radio2" class="manual_btn"></label>
-            <label for="input_radio3" class="manual_btn"></label>
-            <label for="input_radio4" class="manual_btn"></label>
-        </div>
+
+        <!-- Botões de navegação -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+
+        <!-- Paginação -->
+        <div class="swiper-pagination"></div>
     </div>
     <section class="catalogo">
         <div class="tittle">
             <h1 id="h1Estacao"></h1>
         </div>
-        <div class="container" id="div_container_anime">
-            
-
+        <div class="swiper mySwiperEstacao">
+            <div class="swiper-wrapper" id="div_container_anime"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
         </div>
+
         <div class="espaco"></div>
+
         <div class="tittle">
             <h1 id="h1Popularidade"></h1>
         </div>
-        <div class="container" id="div_container_anime_popularidade">
-            
-
+        <div class="swiper mySwiperPopularidade">
+            <div class="swiper-wrapper" id="div_container_anime_popularidade"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
         </div>
+
         <div class="espaco"></div>
     </section>
-        
+
     <section class="mostrar_tudo">
         <div class="container">
             <div class="img">
@@ -199,7 +128,7 @@
     <footer>
         <div class="container">
             <div class="logo_footer">
-                <a href="catalogo.html"><img src="assets/img/logoBrancaSemFundo.png" class="logo" ></a>
+                <a href="catalogo.html"><img src="assets/img/logoBrancaSemFundo.png" class="logo"></a>
             </div>
             <hr>
             <div class="informacoes">
@@ -210,18 +139,20 @@
         </div>
     </footer>
 </body>
+
 </html>
-<script src="assets/js/carrosel.js"></script>
 <script src="assets/js/menudropdown.js"></script>
 <script src="assets/js/animes.js"></script>
 <script src="assets/js/usuario.js"></script>
 <script src="assets/js/categoria.js"></script>
 <script src="assets/js/favoritar.js"></script>
+<script src="assets/js/catalogo.js"></script>
 <script>
+    document.addEventListener("DOMContentLoaded", slidesAleatorios);
     var nomeUsuario = sessionStorage.NOME_USUARIO;
     console.log(nomeUsuario)
-    
-    window.onload = ()=>{
+
+    window.onload = () => {
         const foto = sessionStorage.FOTO_USUARIO;
         img_user_session.src = `assets/img/imgUpload/${foto}`;
         img_user_session2.src = `assets/img/imgUpload/${foto}`;

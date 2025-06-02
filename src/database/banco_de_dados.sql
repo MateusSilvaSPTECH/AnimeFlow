@@ -8,6 +8,7 @@ CREATE TABLE anime(
  descricao VARCHAR(255),
  foto VARCHAR(255),
  logo VARCHAR(255),
+ fundo VARCHAR(255),
  classificacao INT,
  traducao VARCHAR(20),
  estacao VARCHAR(20),
@@ -84,109 +85,108 @@ VALUES
 ('Shoujo'),
 ('Isekai');
 
-INSERT INTO anime (titulo, descricao, foto, logo, classificacao, traducao, estacao, dataLancamento, episodeo, temporada)
+INSERT INTO anime (titulo, descricao, foto, logo, fundo, classificacao, traducao, estacao, dataLancamento, episodeo, temporada)
 VALUES 
 ('Naruto', 
  'Naruto Uzumaki é um jovem ninja que sonha em se tornar o Hokage da Vila da Folha. Com a raposa de nove caudas selada dentro de si, ele enfrenta desafios intensos e busca o reconhecimento dos outros.',
- 'naruto.png', 'naruto_logo.png', 12, 'Dublado', 'Outono', '2002-10-03', 220, 1),
+ 'naruto.png', 'naruto_logo.png', 'naruto_fundo.png', 12, 'Dublado', 'Outono', '2002-10-03', 220, 1),
 
 ('Death Note', 
- 'Light Yagami encontra um caderno sobrenatural que permite matar qualquer pessoa ao escrever seu nome. Ele inicia uma cruzada contra o crime, mas é confrontado pelo brilhante detetive L.',
- 'death_note.jpg', 'death_note_logo.png', 16, 'Legendado | Dublado', 'Outono', '2006-10-04', 37, 1),
+ 'Light Yagami encontra um caderno sobrenatural que permitFe matar qualquer pessoa ao escrever seu nome. Ele inicia uma cruzada contra o crime, mas é confrontado pelo brilhante detetive L.',
+ 'death_note.jpg', 'death_note_logo.png', 'death_note_fundo.png', 16, 'Legendado | Dublado', 'Outono', '2006-10-04', 37, 1),
 
 ('Fullmetal Alchemist: Brotherhood', 
  'Após uma tentativa fracassada de alquimia proibida, os irmãos Edward e Alphonse Elric buscam a Pedra Filosofal para restaurar seus corpos. Uma trama profunda sobre sacrifício e redenção.',
- 'fma_brotherhood.jpg', 'fma_brotherhood_logo.png', 16, 'Legendado | Dublado', 'Primavera', '2009-04-05', 64, 1),
+ 'fma_brotherhood.jpg', 'fma_brotherhood_logo.png', 'fma_brotherhood_fundo.jpg', 16, 'Legendado | Dublado', 'Primavera', '2009-04-05', 64, 1),
 
 ('One Punch Man', 
  'Saitama é um herói tão poderoso que derrota qualquer inimigo com um único soco, mas sofre com o tédio por não encontrar desafios à altura. Uma sátira cômica e cheia de ação sobre o gênero shounen.',
- 'one_punch_man.jpg', 'one_punch_man_logo.png', 14, 'Legendado', 'Outono', '2015-10-05', 12, 1),
+ 'one_punch_man.jpg', 'one_punch_man_logo.png', 'one_punch_man_fundo.jpg', 14, 'Legendado', 'Outono', '2015-10-05', 12, 1),
 
 ('Tokyo Ghoul', 
  'Ken Kaneki se torna meio-ghoul após um acidente, entrando em um mundo sombrio de criaturas que se alimentam de humanos. Ele luta para manter sua humanidade e sobreviver nesse novo ambiente cruel.',
- 'tokyo_ghoul.jpg', 'tokyo_ghoul_logo.png', 18, 'Legendado | Dublado', 'Verão', '2014-07-04', 12, 1),
+ 'tokyo_ghoul.jpg', 'tokyo_ghoul_logo.png', 'tokyo_ghoul_fundo.png', 18, 'Legendado | Dublado', 'Verão', '2014-07-04', 12, 1),
 
 ('Bleach', 
  'Ichigo Kurosaki adquire os poderes de um Shinigami e passa a lutar contra espíritos malignos chamados Hollows. Com arcos emocionantes e batalhas épicas, Bleach é um dos pilares dos animes de ação.',
- 'bleach.jpg', 'bleach_logo.png', 14, 'Dublado', 'Outono', '2004-10-05', 366, 1),
+ 'bleach.jpg', 'bleach_logo.png', 'bleach_fundo.jpg', 14, 'Dublado', 'Outono', '2004-10-05', 366, 1),
 
 ('Dragon Ball Z', 
  'Goku e seus amigos enfrentam inimigos poderosos em batalhas épicas para proteger a Terra e o universo. Um dos animes mais icônicos da história, cheio de energia, transformação e superação.',
- 'dragon_ball_z.jpg', 'dragon_ball_z_logo.png', 10, 'Legendado | Dublado', 'Primavera', '1989-04-26', 291, 1),
+ 'dragon_ball_z.jpg', 'dragon_ball_z_logo.png', 'dragon_ball_z_fundo.jpg', 10, 'Legendado | Dublado', 'Primavera', '1989-04-26', 291, 1),
 
 ('Sword Art Online', 
  'Em 2022, jogadores ficam presos em um jogo de realidade virtual mortal. Kirito, um jogador solo habilidoso, deve vencer os 100 andares do castelo flutuante para libertar todos os prisioneiros.',
- 'sao.jpg', 'sao_logo.png', 14, 'Legendado | Dublado', 'Verão', '2012-07-08', 25, 1),
+ 'sao.jpg', 'sao_logo.png', 'sao_fundo.png', 14, 'Legendado | Dublado', 'Verão', '2012-07-08', 25, 1),
 
 ('Fairy Tail', 
  'Lucy se junta à guilda Fairy Tail, onde conhece o mago de fogo Natsu. Juntos, vivem aventuras intensas, enfrentam dragões e salvam o mundo, tudo com muita amizade, magia e determinação.',
- 'fairy_tail.jpg', 'fairy_tail_logo.png', 12, 'Dublado', 'Outono', '2009-10-12', 175, 1),
+ 'fairy_tail.jpg', 'fairy_tail_logo.png', 'fairy_tail_fundo.png', 12, 'Dublado', 'Outono', '2009-10-12', 175, 1),
 
 ('Black Clover', 
  'Asta nasceu sem magia em um mundo onde ela é tudo. Mesmo assim, ele sonha em se tornar o Rei Mago. Com seu grimório raro, enfrenta desafios constantes para provar seu valor e proteger o reino.',
- 'black_clover.jpg', 'black_clover_logo.png', 12, 'Legendado | Dublado', 'Outono', '2017-10-03', 170, 1),
+ 'black_clover.jpg', 'black_clover_logo.png', 'black_clover_fundo.jpg', 12, 'Legendado | Dublado', 'Outono', '2017-10-03', 170, 1),
 
 ('Attack on Titan', 
  'Em um mundo onde a humanidade vive cercada por muralhas para se proteger de titãs devoradores de humanos, Eren Yeager se junta à Tropa de Exploração para combater essas criaturas e descobrir a verdade por trás de sua existência.',
- 'attack_on_titan.jpg', 'attack_on_titan_logo.png', 16, 'Legendado | Dublado', 'Primavera', '2013-04-07', 25, 1),
+ 'attack_on_titan.jpg', 'attack_on_titan_logo.png', 'attack_on_titan_fundo.png', 16, 'Legendado | Dublado', 'Primavera', '2013-04-07', 25, 1),
 
 ('My Hero Academia', 
  'Em um mundo onde a maioria das pessoas possui superpoderes chamados "quirks", Izuku Midoriya, um jovem sem poderes, sonha em se tornar um herói e é escolhido pelo maior herói de todos para ser seu sucessor.',
- 'my_hero_academia.jpeg', 'my_hero_academia_logo.png', 14, 'Legendado | Dublado', 'Primavera', '2016-04-03', 13, 1),
+ 'my_hero_academia.jpeg', 'my_hero_academia_logo.png', 'my_hero_academia_fundo.jpg', 14, 'Legendado | Dublado', 'Primavera', '2016-04-03', 13, 1),
 
 ('Demon Slayer', 
  'Tanjiro Kamado se torna um caçador de demônios após sua família ser massacrada e sua irmã Nezuko transformada em um demônio. Ele busca uma cura para sua irmã e vingança contra o demônio responsável.',
- 'demon_slayer.jpeg', 'demon_slayer_logo.png', 16, 'Legendado | Dublado', 'Primavera', '2019-04-06', 26, 1),
+ 'demon_slayer.jpeg', 'demon_slayer_logo.png', 'demon_slayer_fundo.jpg', 16, 'Legendado | Dublado', 'Primavera', '2019-04-06', 26, 1),
 
 ('Jujutsu Kaisen', 
  'Yuji Itadori, um estudante do ensino médio, se envolve no mundo do ocultismo ao engolir um objeto amaldiçoado para proteger seus amigos, tornando-se o hospedeiro de uma poderosa maldição.',
- 'jujutsu_kaisen.jpeg', 'jujutsu_kaisen_logo.png', 16, 'Legendado | Dublado', 'Outono', '2020-10-03', 24, 1),
+ 'jujutsu_kaisen.jpeg', 'jujutsu_kaisen_logo.png', 'jujutsu_kaisen_fundo.png', 16, 'Legendado | Dublado', 'Outono', '2020-10-03', 24, 1),
 
 ('One Piece', 
  'Monkey D. Luffy parte em uma jornada para se tornar o Rei dos Piratas, reunindo uma tripulação diversa e enfrentando inúmeros desafios em busca do lendário tesouro One Piece.',
- 'one_piece.jpeg', 'one_piece_logo.png', 12, 'Legendado | Dublado', 'Outono', '1999-10-20', 1000, 1),
+ 'one_piece.jpeg', 'one_piece_logo.png', 'one_piece_fundo.jpg', 12, 'Legendado | Dublado', 'Outono', '1999-10-20', 1000, 1),
 
 ('Hunter x Hunter', 
  'Gon Freecss embarca em uma jornada para se tornar um Hunter e encontrar seu pai desaparecido, enfrentando desafios perigosos e fazendo amizades ao longo do caminho.',
- 'hunter_x_hunter.jpeg', 'hunter_x_hunter_logo.png', 14, 'Legendado | Dublado', 'Outono', '2011-10-02', 148, 1),
+ 'hunter_x_hunter.jpeg', 'hunter_x_hunter_logo.png', 'hunter_x_hunter_fundo.png', 14, 'Legendado | Dublado', 'Outono', '2011-10-02', 148, 1),
 
 ('Code Geass: Lelouch of the Rebellion', 
  'Lelouch vi Britannia adquire um poder misterioso chamado Geass e lidera uma rebelião contra o Império de Britannia para criar um mundo melhor para sua irmã.',
- 'code_geass.jpeg', 'code_geass_logo.png', 16, 'Legendado | Dublado', 'Outono', '2006-10-06', 25, 1),
+ 'code_geass.jpeg', 'code_geass_logo.png', 'code_geass_fundo.jpg', 16, 'Legendado | Dublado', 'Outono', '2006-10-06', 25, 1),
 
-( 
-  'Darling in the Franxx',
-  'Em um futuro distante, jovens pilotos chamados Parasitas pilotam robôs Franxx para lutar contra monstros gigantes. Hiro encontra Zero Two, uma misteriosa parceira com quem formará um laço especial.',
-  'darling.jpg','logo_darling.png',16,'Legendado','Inverno','2018-01-13',24,1
-),
+('Darling in the Franxx',
+ 'Em um futuro distante, jovens pilotos chamados Parasitas pilotam robôs Franxx para lutar contra monstros gigantes. Hiro encontra Zero Two, uma misteriosa parceira com quem formará um laço especial.',
+ 'darling.jpg','logo_darling.png','darling_fundo.jpg',16,'Legendado','Inverno','2018-01-13',24,1),
 
 ('Mob Psycho 100', 
  'Shigeo "Mob" Kageyama é um adolescente com poderes psíquicos incríveis que luta para manter suas emoções sob controle enquanto enfrenta espíritos malignos e desafios pessoais.',
- 'mob_psycho_100.jpg', 'mob_psycho_100_logo.png', 14, 'Legendado | Dublado', 'Verão', '2016-07-12', 12, 1),
+ 'mob_psycho_100.jpg', 'mob_psycho_100_logo.png', 'mob_psycho_100_fundo.jpg', 14, 'Legendado | Dublado', 'Verão', '2016-07-12', 12, 1),
 
 ('Re:Zero − Starting Life in Another World', 
  'Subaru Natsuki é transportado para um mundo de fantasia onde descobre que tem a habilidade de voltar no tempo após a morte, usando isso para proteger aqueles que ama.',
- 're_zero.jpg', 're_zero_logo.png', 16, 'Legendado | Dublado', 'Primavera', '2016-04-04', 25, 1),
+ 're_zero.jpg', 're_zero_logo.png', 're_zero_fundo.png', 16, 'Legendado | Dublado', 'Primavera', '2016-04-04', 25, 1),
 
 ('Vinland Saga', 
  'Thorfinn, um jovem guerreiro viking, busca vingança contra o assassino de seu pai enquanto se envolve nas guerras e políticas da Europa medieval.',
- 'vinland_saga.jpeg', 'vinland_saga_logo.png', 16, 'Legendado | Dublado', 'Verão', '2019-07-08', 24, 1),
+ 'vinland_saga.jpeg', 'vinland_saga_logo.png', 'vinland_saga_fundo.jpeg', 16, 'Legendado | Dublado', 'Verão', '2019-07-08', 24, 1),
 
 ('The Promised Neverland', 
  'Em um orfanato aparentemente perfeito, crianças descobrem um segredo sombrio sobre seu destino e elaboram um plano para escapar e sobreviver no mundo exterior.',
- 'the_promised_neverland.jpeg', 'the_promised_neverland_logo.png', 16, 'Legendado | Dublado', 'Inverno', '2019-01-11', 12, 1),
+ 'the_promised_neverland.jpeg', 'the_promised_neverland_logo.png', 'the_promised_neverland_fundo.jpg', 16, 'Legendado | Dublado', 'Inverno', '2019-01-11', 12, 1),
 
 ('Hajime no Ippo',
-'Ippo Makunouchi, um estudante tímido, entra no mundo do boxe e busca se tornar o melhor pugilista do Japão.',
-'hajime_no_ippo.jpeg','hajime_no_ippo_logo.png',12,'Legendado','Outono','2000-10-04',75,1),
+ 'Ippo Makunouchi, um estudante tímido, entra no mundo do boxe e busca se tornar o melhor pugilista do Japão.',
+ 'hajime_no_ippo.jpeg','hajime_no_ippo_logo.png','hajime_no_ippo_fundo.png',12,'Legendado','Outono','2000-10-04',75,1),
 
 ('Oregairu',
-'Hikigaya Hachiman, um cínico estudante do ensino médio, é forçado a participar do Clube de Serviço, onde lida com problemas sociais ao lado de Yukino e Yui.',
-'oregairu.jpg','oregairu_logo.png',14,'Legendado | Dublado','Primavera','2013-04-05',13,1),
+ 'Hikigaya Hachiman, um cínico estudante do ensino médio, é forçado a participar do Clube de Serviço, onde lida com problemas sociais ao lado de Yukino e Yui.',
+ 'oregairu.jpg','oregairu_logo.png','oregairu_fundo.jpg',14,'Legendado | Dublado','Primavera','2013-04-05',13,1),
 
 ('Solo Leveling',
  'Sung Jin-Woo, o caçador mais fraco da humanidade, ganha habilidades únicas após um misterioso evento e busca se tornar o caçador mais forte.',
-  'solo_leveling.jpg', 'solo_leveling_logo.png', 16, 'Legendado', 'Inverno', '2024-01-06', 12, 1);
+  'solo_leveling.jpg', 'solo_leveling_logo.png', 'solo_leveling_fundo.jpg', 16, 'Legendado', 'Inverno', '2024-01-06', 12, 1);
+
 alter table comentario MODIFY column dataComentario DATETIME DEFAULT CURRENT_TIMESTAMP();
 
 CREATE TABLE anime_categoria(
@@ -316,26 +316,4 @@ INSERT INTO comentario (descricao, fk_usuario, fk_anime) VALUES
 ('Fraco, mas teve algumas cenas boas.', 5, 5);
 
 
-use animeFlow;
- -- kpi 1
-SELECT TRUNCATE(AVG(valor),2) FROM avaliacao where fk_usuario = 6;
- -- kpi 2
-SELECT COUNT(id) FROM comentario where fk_usuario = 6;
--- kpi 3
-SELECT COUNT(id) FROM favoritar where fk_usuario = 6 AND status_favorito = 1;
--- grafico de pizza
-SELECT c.nome_categoria,AVG(av.valor) as media FROM categoria as c
-JOIN anime_categoria as ac ON c.id = ac.fk_categoria
-JOIN anime as a ON ac.fk_anime = a.id
-JOIN avaliacao as av ON av.fk_anime = a.id
-JOIN usuario as u ON u.id = av.fk_usuario
-WHERE u.id = 1 
-GROUP BY c.nome_categoria 
-ORDER BY media DESC LIMIT 5;
 
--- grafico de linha
-
-SELECT * FROM categoria;
-use animeFlow;
-select * from favoritar;
-SELECT * FROM anime;

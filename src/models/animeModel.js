@@ -3,11 +3,13 @@ var database = require("../database/config")
 function selectAll(){
     console.log("acessei o selctall")
     var instrucaoSql = `
-    SELECT a.id,
+    SELECT 
+        a.id,
         a.titulo,
         a.descricao,
         a.foto,
         a.logo,
+        a.fundo,
         a.classificacao,
         a.traducao,
         a.estacao,
@@ -19,7 +21,7 @@ function selectAll(){
         FROM anime as a 
         LEFT JOIN avaliacao as ac 
         ON ac.fk_anime = a.id
-        GROUP BY a.id,a.titulo,a.descricao,a.foto,a.logo,a.classificacao,a.traducao,a.estacao,a.dataLancamento,a.episodeo,a.temporada
+        GROUP BY a.id,a.titulo,a.descricao,a.foto,a.logo,a.fundo,a.classificacao,a.traducao,a.estacao,a.dataLancamento,a.episodeo,a.temporada
         
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
@@ -55,6 +57,7 @@ function selectAllPorEstacao(estacao){
         a.descricao,
         a.foto,
         a.logo,
+        a.fundo,
         a.classificacao,
         a.traducao,
         a.estacao,
@@ -67,7 +70,7 @@ function selectAllPorEstacao(estacao){
         JOIN categoria as c
         ON c.id = ac.fk_categoria
         WHERE a.estacao = '${estacao}'
-        GROUP BY a.id,a.titulo,a.descricao,a.foto,a.logo,
+        GROUP BY a.id,a.titulo,a.descricao,a.foto,a.logo,a.fundo,
         a.classificacao,a.traducao,a.estacao,a.dataLancamento,a.episodeo,a.temporada
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
@@ -82,6 +85,7 @@ SELECT a.id,
         a.descricao,
         a.foto,
         a.logo,
+        a.fundo,
         a.classificacao,
         a.traducao,
         a.estacao,
@@ -94,7 +98,7 @@ SELECT a.id,
         LEFT JOIN avaliacao as ac 
         ON ac.fk_anime = a.id
         WHERE a.estacao = '${estacao}'
-        GROUP BY a.id,a.titulo,a.descricao,a.foto,a.logo,a.classificacao,a.traducao,a.estacao,a.dataLancamento,a.episodeo,a.temporada
+        GROUP BY a.id,a.titulo,a.descricao,a.foto,a.logo,a.fundo,a.classificacao,a.traducao,a.estacao,a.dataLancamento,a.episodeo,a.temporada
         
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
@@ -116,6 +120,7 @@ function selectPopulares(){
         a.descricao,
         a.foto,
         a.logo,
+        a.fundo,
         a.classificacao,
         a.traducao,
         a.estacao,
@@ -127,7 +132,7 @@ function selectPopulares(){
         SUM(ac.valor) AS "Valor_popularidade" FROM anime as a 
         JOIN avaliacao as ac 
         ON ac.fk_anime = a.id
-        GROUP BY a.id,a.titulo,a.descricao,a.foto,a.logo,a.classificacao,a.traducao,a.estacao,a.dataLancamento,a.episodeo,a.temporada
+        GROUP BY a.id,a.titulo,a.descricao,a.foto,a.logo,a.fundo,a.classificacao,a.traducao,a.estacao,a.dataLancamento,a.episodeo,a.temporada
         ORDER BY SUM(ac.valor) DESC;
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);

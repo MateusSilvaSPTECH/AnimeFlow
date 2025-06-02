@@ -209,32 +209,36 @@ nav ul li a{
 .dashboard-container {
       display: flex;
       flex-direction: column;
-      gap: 30px;
 }
 .kpis {
     padding: 10px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
 }
 .boxKpi {
-  width:200px;
+  width:150px;
+  height: 100px;
   background-color: white;
   border-radius: 12px;
-  padding: 20px;
+  padding: 10px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 .boxKpi h4 {
   font-size: 14px;
-  color: #777;
+  color: #000000;
   margin-bottom: 10px;
 }
 .boxKpi span {
-  font-size: 24px;
+  font-size: 36px;
   font-weight: bold;
-  color: #333;
+  color: #333333;
 }
 .graficos {
   padding: 10px;
