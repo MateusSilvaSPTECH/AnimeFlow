@@ -418,3 +418,128 @@ function selectAnimebyEstacao() {
         });
 }
 
+function tabela_anime() {
+    fetch("/animes/listarTodos").then(resposta => resposta.json())
+        .then(resposta => {
+            var controle = 0;
+            for (var i = 0; i < resposta.length; i++) {
+                id = resposta[i].id
+                controle += 1;
+
+                console.log(resposta[i].foto)
+
+                tabela.innerHTML +=
+                    `
+                     <tr>
+                        <td>${resposta[i].id}</td>
+                        <td>${resposta[i].titulo}</td>
+                        <td><button onclick="deleteEspecie(${resposta[i].id})"><i class="bi bi-trash-fill"></i></button></td>
+                        <td><button onclick="selectIdAnime_adm(${resposta[i].id})"><i class="bi bi-gear-fill"></i></button></td>
+                    </tr>
+                `
+            }
+        })
+        .catch(erro => {
+            console.error('Deu erro:', erro);
+        });
+
+}
+
+function selectIdAnime_adm(id) {
+    fetch(`/animes/listarIdAnime/${id}`, {
+        method: "GET",
+        headers: {
+            "Content-Type": 'application/json'
+        }
+    }).then(funciona => funciona.json())
+        .then(funciona => {
+            console.log(funciona)
+            for(var i=0;i<funciona.length;i++){
+                 modal_container_editar.innerHTML = `
+        <div class="modal-container show">
+            <div class="modal-overlay" onclick="fecharModal()"></div>
+            <div class="modal">
+                <h1>Editando</h1>
+                    <div class="especie-form">
+                        <div class="form-group">
+                            <label for="nome">Titulo do anime:</label>
+                            <input type="text" id="input_nome" value="${funciona[i].titulo}">
+                        </div>
+                        <div class="form-group">
+                            <label for="lux-max">descricao:</label>
+                            <textarea name="" id="">${funciona[i].descricao}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Selecione o tipo de tradução:</label>
+                            <select id="">
+                                <option value="">
+                                    Legendado
+                                </option>
+                                <option>
+                                    Dublado
+                                </option>
+                                <option>
+                                    Legendado | Dublado
+                                </option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Selecione o tipo de estação:</label>
+                            <select id="">
+                                <option value="">
+                                    Primavera
+                                </option>
+                                <option>
+                                    Verão
+                                </option>
+                                <option>
+                                    Outono
+                                </option>
+                                <option>
+                                    Inverno
+                                </option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Escreva a classificação ideal para o anime:</label>
+                            <input type="text" id="input_lux_min" value="${funciona[i].classificacao}">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Escreva quantidade de episodeos:</label>
+                             <input type="text" id="input_lux_min" value="${funciona[i].temporada}">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Escreva quantidade de episodeos:</label>
+                             <input type="text" id="input_lux_min" value="${funciona[i].episodeo}">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Selecione a logo em png do anime:</label>
+                             <input type="file" id="input_lux_min" value="${funciona[i].logo}">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Selecione a imagem de fundo do anime:</label>
+                             <input type="file" id="input_lux_min" value="${funciona[i].fundo}">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Selecione a capa do anime:</label>
+                             <input type="file" id="input_lux_min" value="${funciona[i].foto}">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Escreva quantidade de episodeos:</label>
+                             <input type="date" id="input_lux_min" value="${funciona[i].dataLancamento}">
+                        </div>
+                        <div class="boxButton">
+                            <button  class="btnSalvar" onclick="editar()">Salvar</button>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        `
+            }
+
+        })
+        .catch(erro => {
+            console.error('Deu erro:', erro);
+        });
+}
+

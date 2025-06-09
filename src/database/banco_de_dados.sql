@@ -317,3 +317,4 @@ INSERT INTO comentario (descricao, fk_usuario, fk_anime) VALUES
 
 
 
+

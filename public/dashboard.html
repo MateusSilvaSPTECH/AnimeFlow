@@ -144,11 +144,11 @@
   
         const ctx = document.getElementById('graficoPizza').getContext('2d');
         const meuGraficoPizza = new Chart(ctx, {
-        type: 'pie',
+        type: 'bar',
         data: {
             labels: lista_categoria,
             datasets: [{
-            label: 'Estrelas na categoria',
+            label: 'Estrelas por categoria',
             data: lista_media,  
             backgroundColor: [
                 '#4E79A7',
