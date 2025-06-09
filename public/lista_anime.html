@@ -42,7 +42,11 @@
             </div>
         </aside>
         <main class="conteudo">
-            <h2>Lista de Animes</h2>
+            <div class="boxAdd">
+                 <h2>Lista de Animes</h2>
+                <button onclick="adicionarAnime()"><i class="bi bi-bookmark-plus-fill"></i></button>
+            </div>
+           
             <table class="tabela-animes" id="tabela">
                 <thead>
                     <tr>
@@ -68,10 +72,28 @@
         var barra_navegacao = document.querySelector('#barra_expandir');
         barra_navegacao.classList.toggle('expandir');
     }
+    function fecharModal() {
+        modal_container_editar.innerHTML = ``;
+        tabela_anime();
+    }
     window.onload = () => {
         tabela_anime();
     }
-    function fecharModal() {
-        modal_container_editar.innerHTML = ``;
+    function modalDelete(id){
+        modal_container_editar.innerHTML = 
+        `
+          <div class="modal-container show">
+            <div class="modal-overlay" onclick="fecharModal()"></div>
+            <div class="modal">
+                <div class="box">
+                    <h1>Você realmente deseja apagar esse animes ?</h1>
+                        <div class="btn">
+                            <button onclick="deletarAnime(${id})">Sim</button>
+                            <button onclick="fecharModal()">Não</button>
+                        </div>
+                </div>
+            </div>
+            </div>
+            `;
     }
 </script>

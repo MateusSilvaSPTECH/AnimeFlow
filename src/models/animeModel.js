@@ -138,6 +138,36 @@ function selectPopulares(){
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
+function atualizarAnime(id,titulo,descricao,foto,logo,fundo,classificacao,traducao,estacao,dataLancamento,episodeo,temporada,id_anime){
+    console.log("acessei o select populares")
+    var instrucaoSql = `
+        UPDATE anime 
+        SET 
+        titulo = '${titulo}',
+        descricao = '${descricao}',
+        foto = '${foto}',
+        logo = '${logo}',
+        fundo = '${fundo}',
+        classificacao = '${classificacao}',
+        traducao = '${traducao}',
+        estacao = '${estacao}',
+        dataLancamento = '${dataLancamento}',
+        episodeo = '${episodeo}',
+        temporada = '${temporada}'
+        WHERE id = ${id};
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function deletarAnime(id){
+    console.log("acessei o delete")
+    var instrucaoSql = `
+    DELETE FROM anime WHERE id = ${id};  
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
 module.exports = {
     selectAll,
     selectEstacao,
@@ -145,5 +175,7 @@ module.exports = {
     selectAllPorCategoria,
     selectPopulares,
     selectAllEstacao,
-    selectAllPorEstacao
+    selectAllPorEstacao,
+    atualizarAnime,
+    deletarAnime
 };

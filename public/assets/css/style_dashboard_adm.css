@@ -182,13 +182,90 @@ p{
     pointer-events: auto;
     display: flex;
 }
+.form_animes{
+    height: 80%;
+    width: 100%;
+    display: flex;
+    align-items: start;
+    justify-content: space-evenly;
+    flex-direction: row;
+}
 .form-group{
      display: flex;
     align-items: center;
     justify-content: center;
 }
+textarea{
+    width: 400px;
+    height: 80px;
+    resize: none;
+    color: #000;
+}
 .boxButton{
     display: flex;
     align-items: center;
     justify-content: center;
+}
+.boxAdd{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.boxAdd i{
+    font-size: 2rem;
+    cursor: pointer;
+}
+.imagens_anime{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: start;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+.imagens_anime img{
+    height: 120px;
+    width: 120px;
+}
+.informacoes_anime{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: start;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+
+.modal .box{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.modal .box .btn{
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.btn button{
+    height: 40px;
+    width: 120px;
+    background-color: navy;
+    color: #fff;
+    font-weight: bolder;
+    border-radius: 12px ;
+    border: 1px solid black;
+    cursor: pointer;
+}
+.btn button:hover{
+    transition: 1s;
+    background-color: #fff;
+    color: navy;
+    font-weight: bolder;
+    border: 1px solid navy;
+    cursor: pointer;
 }

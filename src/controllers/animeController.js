@@ -103,6 +103,47 @@ function selectPopulares(req, res){
                 }
             );
     }
+function atualizarAnime(req, res){
+                const id = req.body.id;
+                const titulo = req.body.titulo;
+                const descricao = req.body.descricao;
+                const traducao = req.body.traducao;
+                const estacao = req.body.estacao;
+                const classificacao = req.body.classificacao;
+                const temporada = req.body.temporada;
+                const episodeo = req.body.episodeo;
+                const dataLancamento = req.body.dataLancamento;
+                const foto = req.body.foto;
+                const logo = req.body.logo;
+                const fundo = req.body.fundo;
+    animeModel.atualizarAnime(id,titulo,descricao,foto,logo,fundo,classificacao,traducao,estacao,dataLancamento,episodeo,temporada).then(
+        function (resultadoAutenticar) {
+            console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
+            console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`); // transforma JSON em String
+            res.json(resultadoAutenticar)
+        }).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log("\nHouve um erro ao atualizar anime! Erro: ", erro.sqlMessage);
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+function deletarAnime(req, res){
+    const id = req.params.id;
+    animeModel.deletarAnime(id).then(
+        function (resultadoAutenticar) {
+            console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
+            console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`); // transforma JSON em String
+            res.json(resultadoAutenticar)
+        }).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log("\nHouve um erro ao atualizar anime! Erro: ", erro.sqlMessage);
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
 
 module.exports = {
     selectAll,
@@ -111,5 +152,7 @@ module.exports = {
     selectAllPorCategoria,
     selectPopulares,
     selectAllEstacao,
-    selectAllPorEstacao
+    selectAllPorEstacao,
+    atualizarAnime,
+    deletarAnime
 }

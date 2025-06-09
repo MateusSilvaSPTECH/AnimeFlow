@@ -50,7 +50,7 @@
     function enviar() {
         const formData = new FormData();
 
-        var fotoFile = foto.files[0]
+        var fotoFile = foto.files[0];
         var fotoAtual = sessionStorage.FOTO_USUARIO;
         formData.append('foto', fotoFile ? fotoFile : fotoAtual)
         formData.append('nome', nome.value)

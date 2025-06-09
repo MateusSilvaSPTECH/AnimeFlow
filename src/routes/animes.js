@@ -24,4 +24,13 @@ router.get("/listarIdAnime/:id", function(req, res) {
 router.get("/listarPopulares", function(req, res) {
     animeController.selectPopulares(req, res);
 });
+router.get("/listarPopulares", function(req, res) {
+    animeController.selectPopulares(req, res);
+});
+router.put("/atualizarAnime", function(req, res) {
+    animeController.atualizarAnime(req, res);
+});
+router.delete("/deletarAnime/:id", function(req, res) {
+    animeController.deletarAnime(req, res);
+});
 module.exports = router;

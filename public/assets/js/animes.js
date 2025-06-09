@@ -227,7 +227,7 @@ function selectIdAnime(id) {
                     <div class="avaliacao_anime">
                         <span class="boxSistema">
                             <div class="estrelas">
-                                <input type="radio" name="estrela" id="input_vazio" value="" checked>
+                                <input type="radio" name="estrela" id="input_vazio"  checked>
 
                                 <label for="estrela_1"><i class="bi opcao bi-star-fill"></i></label>
                                 <input type="radio" name="estrela" id="estrela_1" value="1" onclick="verEstrelas()">
@@ -419,23 +419,30 @@ function selectAnimebyEstacao() {
 }
 
 function tabela_anime() {
+    console.log('chamou')
     fetch("/animes/listarTodos").then(resposta => resposta.json())
         .then(resposta => {
-            var controle = 0;
+            tabela.innerHTML = `
+            <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Apagar</th>
+                        <th>Editar</th>
+                    </tr>
+                </thead>
+            `;
             for (var i = 0; i < resposta.length; i++) {
-                id = resposta[i].id
-                controle += 1;
-
-                console.log(resposta[i].foto)
-
                 tabela.innerHTML +=
                     `
+                <tbody>
                      <tr>
                         <td>${resposta[i].id}</td>
                         <td>${resposta[i].titulo}</td>
-                        <td><button onclick="deleteEspecie(${resposta[i].id})"><i class="bi bi-trash-fill"></i></button></td>
+                        <td><button onclick="modalDelete(${resposta[i].id})"><i class="bi bi-trash-fill"></i></button></td>
                         <td><button onclick="selectIdAnime_adm(${resposta[i].id})"><i class="bi bi-gear-fill"></i></button></td>
                     </tr>
+                </tbody>
                 `
             }
         })
@@ -460,86 +467,239 @@ function selectIdAnime_adm(id) {
             <div class="modal-overlay" onclick="fecharModal()"></div>
             <div class="modal">
                 <h1>Editando</h1>
-                    <div class="especie-form">
-                        <div class="form-group">
-                            <label for="nome">Titulo do anime:</label>
-                            <input type="text" id="input_nome" value="${funciona[i].titulo}">
+                    <div class="form_animes">
+                        <div class="informacoes_anime">
+                                <div class="form-group">
+                                <label for="nome">Titulo do anime:</label>
+                                <input type="text" id="input_nome" value="${funciona[i].titulo}">
+                            </div>
+                            <div class="form-group">
+                                <label for="">descricao:</label>
+                                <textarea name="" id="textarea_descricao">${funciona[i].descricao}</textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="select_traducao">Selecione o tipo de tradução:</label>
+                                <select id="select_traducao">
+                                    <option>
+                                        Legendado
+                                    </option>
+                                    <option>
+                                        Dublado
+                                    </option>
+                                    <option>
+                                        Legendado | Dublado
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Selecione o tipo de estação:</label>
+                                <select id="select_estacao">
+                                    <option>
+                                        Primavera
+                                    </option>
+                                    <option>
+                                        Verão
+                                    </option>
+                                    <option>
+                                        Outono
+                                    </option>
+                                    <option>
+                                        Inverno
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Escreva a classificação ideal para o anime:</label>
+                                <input type="text" id="input_classificacao" value="${funciona[i].classificacao}">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Escreva quantidade de temporadas:</label>
+                                <input type="text" id="input_temporada" value="${funciona[i].temporada}">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Escreva quantidade de episodeos:</label>
+                                <input type="text" id="input_episodeo" value="${funciona[i].episodeo}">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Escreva a data de lançamento:</label>
+                                <input type="date" id="input_dataLancamento" value="${funciona[i].dataLancamento}">
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="lux-max">descricao:</label>
-                            <textarea name="" id="">${funciona[i].descricao}</textarea>
+                        <div class="imagens_anime">
+                                <div class="form-group">
+                                <label for="">Selecione a logo em png do anime:</label>
+                                <input type="file" accept="image/*" id="input_logo">
+                                <img src="../assets/img/logoAnime/${funciona[i].logo}">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Selecione a imagem de fundo do anime:</label>
+                                <input type="file" accept="image/*" id="input_fundo">
+                                <img src="../assets/img/imgFundo/${funciona[i].fundo}">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Selecione a capa do anime:</label>
+                                <input type="file" accept="image/*" id="input_foto">
+                                <img src="../assets/img/fotoAnime/${funciona[i].foto}" >
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="">Selecione o tipo de tradução:</label>
-                            <select id="">
-                                <option value="">
-                                    Legendado
-                                </option>
-                                <option>
-                                    Dublado
-                                </option>
-                                <option>
-                                    Legendado | Dublado
-                                </option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="">Selecione o tipo de estação:</label>
-                            <select id="">
-                                <option value="">
-                                    Primavera
-                                </option>
-                                <option>
-                                    Verão
-                                </option>
-                                <option>
-                                    Outono
-                                </option>
-                                <option>
-                                    Inverno
-                                </option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="">Escreva a classificação ideal para o anime:</label>
-                            <input type="text" id="input_lux_min" value="${funciona[i].classificacao}">
-                        </div>
-                        <div class="form-group">
-                            <label for="">Escreva quantidade de episodeos:</label>
-                             <input type="text" id="input_lux_min" value="${funciona[i].temporada}">
-                        </div>
-                        <div class="form-group">
-                            <label for="">Escreva quantidade de episodeos:</label>
-                             <input type="text" id="input_lux_min" value="${funciona[i].episodeo}">
-                        </div>
-                        <div class="form-group">
-                            <label for="">Selecione a logo em png do anime:</label>
-                             <input type="file" id="input_lux_min" value="${funciona[i].logo}">
-                        </div>
-                        <div class="form-group">
-                            <label for="">Selecione a imagem de fundo do anime:</label>
-                             <input type="file" id="input_lux_min" value="${funciona[i].fundo}">
-                        </div>
-                        <div class="form-group">
-                            <label for="">Selecione a capa do anime:</label>
-                             <input type="file" id="input_lux_min" value="${funciona[i].foto}">
-                        </div>
-                        <div class="form-group">
-                            <label for="">Escreva quantidade de episodeos:</label>
-                             <input type="date" id="input_lux_min" value="${funciona[i].dataLancamento}">
                         </div>
                         <div class="boxButton">
-                            <button  class="btnSalvar" onclick="editar()">Salvar</button>
+                            <button  class="btnSalvar" onclick="editarAnime(${funciona[i].id},'${funciona[i].logo}','${funciona[i].fundo}','${funciona[i].foto}')">Editar</button>
                         </div>
-                    </div>
             </div>
         </div>
-        `
-            }
+        `   
+        }
+        
 
         })
         .catch(erro => {
             console.error('Deu erro:', erro);
         });
 }
+ function editarAnime(id_anime,logoP,fundoP,fotoP){
+                const id =  id_anime;
+                const titulo = input_nome.value;
+                const descricao = textarea_descricao.value;
+                const traducao = select_traducao.value;
+                const estacao = select_estacao.value;
+                const classificacao = input_classificacao.value;
+                const temporada = input_temporada.value;
+                const episodeo = input_episodeo.value;
+                const dataLancamento = input_dataLancamento.value;
+                let novaFoto = input_foto.files[0];
+                let novoFundo = input_fundo.files[0];
+                let novaLogo = input_logo.files[0];
+                const foto = novaFoto ? novaFoto : fotoP;
+                const logo = novaLogo ? novaLogo : logoP;
+                const fundo = novoFundo ? novoFundo : fundoP;
+                
+                      fetch("/animes/atualizarAnime", {
+                    method: "PUT",
+                    headers:{
+                        "Content-Type" : "application/json"
+                    },
+                    body: JSON.stringify({
+                        id : id,
+                        titulo : titulo,
+                        descricao : descricao,
+                        traducao : traducao,
+                        estacao : estacao,
+                        classificacao : classificacao,
+                        temporada : temporada,
+                        episodeo : episodeo,
+                        dataLancamento : dataLancamento,
+                        foto : foto,
+                        logo : logo,
+                        fundo : fundo
+                    })
+                }).then(resposta => {
+                   fecharModal();
+                })
+                    .catch(err => {
+                        console.log(err);
+                })
+}
 
+
+function deletarAnime(id){
+    console.log('deletar em pae');
+    fetch(`/animes/deletarAnime/${id}`,{
+        method: "DELETE",
+        headers: {
+            "Content-Type" : 'application/json'
+        }
+    }).then(()=>{
+        fecharModal(); 
+            });
+}
+
+function adicionarAnime() {
+    modal_container_editar.innerHTML = `
+        <div class="modal-container show">
+            <div class="modal-overlay" onclick="fecharModal()"></div>
+            <div class="modal">
+                <h1>Editando</h1>
+                    <div class="form_animes">
+                        <div class="informacoes_anime">
+                                <div class="form-group">
+                                <label for="nome">Titulo do anime:</label>
+                                <input type="text" id="input_nome" >
+                            </div>
+                            <div class="form-group">
+                                <label for="">descricao:</label>
+                                <textarea name="" id="textarea_descricao"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="select_traducao">Selecione o tipo de tradução:</label>
+                                <select id="select_traducao">
+                                    <option>
+                                        Legendado
+                                    </option>
+                                    <option>
+                                        Dublado
+                                    </option>
+                                    <option>
+                                        Legendado | Dublado
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Selecione o tipo de estação:</label>
+                                <select id="select_estacao">
+                                    <option>
+                                        Primavera
+                                    </option>
+                                    <option>
+                                        Verão
+                                    </option>
+                                    <option>
+                                        Outono
+                                    </option>
+                                    <option>
+                                        Inverno
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Escreva a classificação ideal para o anime:</label>
+                                <input type="text" id="input_classificacao" >
+                            </div>
+                            <div class="form-group">
+                                <label for="">Escreva quantidade de temporadas:</label>
+                                <input type="text" id="input_temporada" >
+                            </div>
+                            <div class="form-group">
+                                <label for="">Escreva quantidade de episodeos:</label>
+                                <input type="text" id="input_episodeo" >
+                            </div>
+                            <div class="form-group">
+                                <label for="">Escreva a data de lançamento:</label>
+                                <input type="date" id="input_dataLancamento" >
+                            </div>
+                        </div>
+                        <div class="imagens_anime">
+                                <div class="form-group">
+                                <label for="">Selecione a logo em png do anime:</label>
+                                <input type="file" accept="image/*" id="input_logo">
+                                <img src="../assets/img/logoAnime/">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Selecione a imagem de fundo do anime:</label>
+                                <input type="file" accept="image/*" id="input_fundo">
+                                <img src="../assets/img/imgFundo/">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Selecione a capa do anime:</label>
+                                <input type="file" accept="image/*" id="input_foto">
+                                <img src="../assets/img/fotoAnime/" >
+                            </div>
+                        </div>
+                        </div>
+                        <div class="boxButton">
+                            <button  class="btnSalvar" onclick="editarAnime()">Editar</button>
+                        </div>
+            </div>
+        </div>
+        `   
+}

@@ -85,6 +85,7 @@ VALUES
 ('Shoujo'),
 ('Isekai');
 
+select dataLancamento from anime;
 INSERT INTO anime (titulo, descricao, foto, logo, fundo, classificacao, traducao, estacao, dataLancamento, episodeo, temporada)
 VALUES 
 ('Naruto', 
