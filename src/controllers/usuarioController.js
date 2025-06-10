@@ -81,7 +81,7 @@ function atualizar(req, res) {
   const {nome, email,senha,id} = req.body
   const usuario = { nome, email,senha, foto,id }
    usuarioModel.atualizar(usuario)
-  .then(resultado => {
+  .then(res => {
     res.status(201).send("Usuario atualizado com sucesso");
   }).catch(err => {
     res.status(500).send(err);

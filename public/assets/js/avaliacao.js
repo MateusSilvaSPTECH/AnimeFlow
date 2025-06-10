@@ -33,18 +33,23 @@ function updateAvaliacao(valorAvalicao) {
  var fks_usuarios = [];
 function selectAvaliacao(){
     var id_anime = sessionStorage.ID_ANIME;
-   
     fetch(`avaliacao/selectAvaliacao/${id_anime}`).then(dados => dados.json())
     .then(dados =>{
         console.log(dados)
         var qtdAvaliacao = 0;
         var media = 0;
+        var numeroEstrela = 0;
         for(var i=0;i<dados.length;i++){
             media += Number(dados[i].soma);
             qtdAvaliacao += Number(dados[i].quantidade);
             fks_usuarios[i] = dados[i].fk_usuario;
+            if(dados[i].fk_usuario == sessionStorage.ID_USUARIO){
+                numeroEstrela = Number(dados[i].soma);
+                console.log(`estrela_${numeroEstrela}`);
+                document.getElementById(`estrela_${numeroEstrela}`).checked = true;
+            }
         }
-               if(isNaN(media)){
+            if(isNaN(media)){
             media = 0;
          }
         media = media/qtdAvaliacao;

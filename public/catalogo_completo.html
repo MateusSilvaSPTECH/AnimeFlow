@@ -4,25 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style_catalogoCompleto.css">
+    <link rel="stylesheet" href="assets/css/navbar.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <title>Document</title>
 </head>
 <body>
     <header>
         <div class="container">
-            <nav>
-                <a onclick="zerarId()"><img src="assets/img/logoBrancaSemFundo.png" class="logo" ></a>
+             <nav>
+                <a onclick="zerarId()"><img src="assets/img/logoBrancaSemFundo.png" class="logo"></a>
                 <ul>
-                    <li><a href="#">Categorias</a></li>
-                    <li><a href="#">Temporadas</a></li>
-                    <li><a href="#">Populares</a></li>
+                    <li><a onclick="mostrarCategorias()">Categorias</a></li>
+                    <li><a onclick="mostrarestacoes()">Temporadas</a></li>
+                    <li><a href="painel_controle.html">Populares</a></li>
                 </ul>
-                  <img src="" id="img_user_session" class="user_pic" onclick="mostrarDropDown()" width="60" height="40">
+                <img src="" id="img_user_session" class="user_pic" onclick="mostrarDropDown()" width="60" height="40">
 
                 <div class="sub_menu_wrap" id="drop_menu">
                     <div class="sub_menu">
                         <div class="user_info">
-                          <img src="assets/img/d13cb6118a0cbc4eadb8360446927cb9.png" id="img_user_session2">
+                            <img src="assets/img/d13cb6118a0cbc4eadb8360446927cb9.png" id="img_user_session2">
                             <h2 id="nome_usuario"></h2>
                         </div>
                         <hr>
@@ -37,11 +39,32 @@
                             <p>Editar Perfil</p>
                             <span>></span>
                         </a>
-                        <a href="login.html" class="sub_menu_link">
+                        <a onclick="limparSessao()" class="sub_menu_link">
                             <img src="assets/img/images/logout.png" alt="">
                             <p>Logout</p>
                             <span>></span>
                         </a>
+                    </div>
+                </div>
+
+                <div class="sub_menu_categoria" id="drop_menu_categoria">
+                    <div class="sub_menu">
+                        <div class="tittle">
+                            <h3>Categorias:</h3>
+                        </div>
+                        <div class="categoria_info" id="categorias">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="sub_menu_estacao" id="drop_menu_estacao">
+                    <div class="sub_menu">
+                        <div class="tittle">
+                            <h3>Estações:</h3>
+                        </div>
+                        <div class="estacao_info" id="estacoes">
+
+                        </div>
                     </div>
                 </div>
             </nav>
@@ -83,6 +106,8 @@
     var nomeUsuario = sessionStorage.NOME_USUARIO;
     window.onload = ()=>{
         chamarAnime();
+        getCategoriasAll();
+            getEstacoesAll();
          const foto = sessionStorage.FOTO_USUARIO;
          img_user_session.src = `assets/img/imgUpload/${foto}`;
          img_user_session2.src = `assets/img/imgUpload/${foto}`;

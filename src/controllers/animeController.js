@@ -113,10 +113,7 @@ function atualizarAnime(req, res){
                 const temporada = req.body.temporada;
                 const episodeo = req.body.episodeo;
                 const dataLancamento = req.body.dataLancamento;
-                const foto = req.body.foto;
-                const logo = req.body.logo;
-                const fundo = req.body.fundo;
-    animeModel.atualizarAnime(id,titulo,descricao,foto,logo,fundo,classificacao,traducao,estacao,dataLancamento,episodeo,temporada).then(
+    animeModel.atualizarAnime(id,titulo,descricao,classificacao,traducao,estacao,dataLancamento,episodeo,temporada).then(
         function (resultadoAutenticar) {
             console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
             console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`); // transforma JSON em String

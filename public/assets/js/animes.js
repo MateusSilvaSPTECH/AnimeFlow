@@ -208,20 +208,19 @@ function selectIdAnime(id) {
         }
     }).then(funciona => funciona.json())
         .then(funciona => {
-            console.log(funciona)
-            funciona.forEach(item => {
+            for (var i = 0; i < funciona.length; i++) {
                 div_sobre_anime.innerHTML =
                     `
             <div class="boxConteudo">
             <div class="cabecalho_anime">
                 <div class="boxAnime">
                     <div class="imgAnime">
-                         <img src="../assets/img/fotoAnime/${item.foto}">
+                         <img src="../assets/img/fotoAnime/${funciona[i].foto}">
                     </div>
                     </div>
                 <div class="informacoes_anime">
                     <div class="tittle_anime">
-                        <h1>${item.titulo}</h1>
+                        <h1>${funciona[i].titulo}</h1>
                         <span>2025</span>
                     </div>
                     <div class="avaliacao_anime">
@@ -254,19 +253,16 @@ function selectIdAnime(id) {
             </div>
             <div class="descricao_anime">
                 <span>
-                    ${item.descricao}
+                    ${funciona[i].descricao}
                 </span>
             </div>
-                        <div class="trailer_episodeos">
+            <div class="trailer_episodeos">
                 <div class="trailer">
-                    <!-- <iframe src="https://www.youtube.com/embed/f8NOmzN788w?si=iKgb17iQfjo3eo4h"
-                        title="YouTube video player" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> -->
+                    <img src="../assets/img/LogoAnime/${funciona[i].logo}">
                 </div>
                 <div class="episodiosTemps">
-                    <h1>${item.episodeo} Episodios</h1>
-                    <h1>${item.temporada} Temporada</h1>
+                    <h1>${funciona[i].episodeo} Episodios</h1>
+                    <h1>${funciona[i].temporada} Temporada</h1>
                 </div>
             </div>
            
@@ -289,9 +285,6 @@ function selectIdAnime(id) {
             </div>
         `
             }
-
-            );
-
         })
         .catch(erro => {
             console.error('Deu erro:', erro);
@@ -468,7 +461,6 @@ function selectIdAnime_adm(id) {
             <div class="modal">
                 <h1>Editando</h1>
                     <div class="form_animes">
-                        <div class="informacoes_anime">
                                 <div class="form-group">
                                 <label for="nome">Titulo do anime:</label>
                                 <input type="text" id="input_nome" value="${funciona[i].titulo}">
@@ -525,26 +517,8 @@ function selectIdAnime_adm(id) {
                                 <input type="date" id="input_dataLancamento" value="${funciona[i].dataLancamento}">
                             </div>
                         </div>
-                        <div class="imagens_anime">
-                                <div class="form-group">
-                                <label for="">Selecione a logo em png do anime:</label>
-                                <input type="file" accept="image/*" id="input_logo">
-                                <img src="../assets/img/logoAnime/${funciona[i].logo}">
-                            </div>
-                            <div class="form-group">
-                                <label for="">Selecione a imagem de fundo do anime:</label>
-                                <input type="file" accept="image/*" id="input_fundo">
-                                <img src="../assets/img/imgFundo/${funciona[i].fundo}">
-                            </div>
-                            <div class="form-group">
-                                <label for="">Selecione a capa do anime:</label>
-                                <input type="file" accept="image/*" id="input_foto">
-                                <img src="../assets/img/fotoAnime/${funciona[i].foto}" >
-                            </div>
-                        </div>
-                        </div>
                         <div class="boxButton">
-                            <button  class="btnSalvar" onclick="editarAnime(${funciona[i].id},'${funciona[i].logo}','${funciona[i].fundo}','${funciona[i].foto}')">Editar</button>
+                            <button  class="btnSalvar" onclick="editarAnime(${funciona[i].id})">Editar</button>
                         </div>
             </div>
         </div>
@@ -557,7 +531,7 @@ function selectIdAnime_adm(id) {
             console.error('Deu erro:', erro);
         });
 }
- function editarAnime(id_anime,logoP,fundoP,fotoP){
+ function editarAnime(id_anime){
                 const id =  id_anime;
                 const titulo = input_nome.value;
                 const descricao = textarea_descricao.value;
@@ -567,13 +541,6 @@ function selectIdAnime_adm(id) {
                 const temporada = input_temporada.value;
                 const episodeo = input_episodeo.value;
                 const dataLancamento = input_dataLancamento.value;
-                let novaFoto = input_foto.files[0];
-                let novoFundo = input_fundo.files[0];
-                let novaLogo = input_logo.files[0];
-                const foto = novaFoto ? novaFoto : fotoP;
-                const logo = novaLogo ? novaLogo : logoP;
-                const fundo = novoFundo ? novoFundo : fundoP;
-                
                       fetch("/animes/atualizarAnime", {
                     method: "PUT",
                     headers:{
@@ -589,9 +556,6 @@ function selectIdAnime_adm(id) {
                         temporada : temporada,
                         episodeo : episodeo,
                         dataLancamento : dataLancamento,
-                        foto : foto,
-                        logo : logo,
-                        fundo : fundo
                     })
                 }).then(resposta => {
                    fecharModal();
@@ -600,8 +564,6 @@ function selectIdAnime_adm(id) {
                         console.log(err);
                 })
 }
-
-
 function deletarAnime(id){
     console.log('deletar em pae');
     fetch(`/animes/deletarAnime/${id}`,{

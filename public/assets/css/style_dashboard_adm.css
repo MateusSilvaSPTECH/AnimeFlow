@@ -186,9 +186,9 @@ p{
     height: 80%;
     width: 100%;
     display: flex;
-    align-items: start;
+    align-items: center;
     justify-content: space-evenly;
-    flex-direction: row;
+    flex-direction: column;
 }
 .form-group{
      display: flex;
@@ -244,6 +244,16 @@ textarea{
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+.modal .box span{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+   font-weight: bolder;
+   color: #c51c1c;
 }
 .modal .box .btn{
     width: 50%;

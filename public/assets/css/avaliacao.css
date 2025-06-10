@@ -7,7 +7,8 @@ display: none;
 }
 .estrelas label i.opcao.bi-star-fill:before{
     content: "\F586";
-color: var(--amarelo);
+    color: var(--amarelo);
+    cursor: pointer;
 }
 .estrelas input[type=radio]:checked~label i.bi-star-fill:before{
     color: var(--cinza);

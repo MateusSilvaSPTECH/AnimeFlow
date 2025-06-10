@@ -107,53 +107,50 @@ function inputResposta(id_comentario){
     `
 }
 
-function exibirComentarios(funciona){
-     console.log(funciona)
+function exibirComentarios(dados){
+     console.log(dados)
      var id_usuario = sessionStorage.ID_USUARIO;
     
-       if(funciona.length == 0){
+       if(dados.length <= 0){
         comentarios.innerHTML = `
- <div class="comentario-container">
-  <h3>Nenhum comentário ainda</h3>
-  <p>Seja o primeiro a compartilhar sua opinião ou deixar uma mensagem!</p>
-  <span class="icone-comentario">💬</span>
-</div>
-
-`;
+        <div class="comentario-container">
+        <h3>Nenhum comentário ainda</h3>
+        <p>Seja o primeiro a compartilhar sua opinião ou deixar uma mensagem!</p>
+        <span class="icone-comentario">💬</span>
+        </div>
+        `;
        }else{
            comentarios.innerHTML = ``;
-         funciona.forEach( async item => {  
-            var id_comentario = item.id;
-            console.log(item.id)
-        const dataParaFormatar = item.dataComentario;
-        const date = new Date(dataParaFormatar);
-        const formatter = new Intl.DateTimeFormat('pt-BR', {
-            day: '2-digit',
-            month: '2-digit',
-            year: 'numeric',
-            hour: '2-digit',
-            minute: '2-digit',
-            timeZone: 'America/Sao_Paulo'
-        });
+          for(var i=0;i<dados.length;i++){
+            console.log(dados[i].id)
+            const dataParaFormatar = dados[i].dataComentario;
+            const date = new Date(dataParaFormatar);
+            const formatter = new Intl.DateTimeFormat('pt-BR', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                timeZone: 'America/Sao_Paulo'
+            });
          const formattedDate = formatter.format(date);
-         var donoComentario = item.fk_usuario == id_usuario;
-         console.log(item)
-    comentarios.innerHTML += 
+         var donoComentario = dados[i].fk_usuario == id_usuario;
+         console.log(dados[i])
+        comentarios.innerHTML += 
         `
                 <div class="boxComentarios">
                     <div >
-                         <img src="../assets/img/imgUpload/${item.foto}" class="imgUser">
+                         <img src="../assets/img/imgUpload/${dados[i].foto}" class="imgUser">
                     </div>
                     <div class="barra_img"></div>
                     <div class="descricao_comentario">
                         <div class="informacoes_usuario">
-                            <span>${item.nome}</span>
+                            <span>${dados[i].nome}</span>
                             <span>${formattedDate}</span>
-                            <button class="btn_responder" onclick="inputResposta(${id_comentario})">Responder</button>
-                            <div id="lixeira">${donoComentario ?`<button onclick="deletarComentario(${item.id_comentario})"><i class="bi bi-trash3-fill"></i></button>`:`Nao fui eu q comentei`}</div>
+                            <div id="lixeira">${donoComentario ?`<button onclick="deletarComentario(${dados[i].id_comentario})"><i class="bi bi-trash3-fill"></i></button>`:``}</div>
                         </div>
                         <div class="comentario">
-                            <span>${item.descricao_comentario}</span>
+                            <span>${dados[i].descricao_comentario}</span>
                             <div class="respostaComentario" id="inputResp"></div>
                             <div class="barra_comentario"></div>
                         </div>
@@ -161,7 +158,7 @@ function exibirComentarios(funciona){
                     </div>
                 </div>
         `
-        ;})
+        ;}
        }
   
 } 

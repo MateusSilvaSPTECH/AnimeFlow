@@ -23,6 +23,7 @@ function slidesAleatorios() {
                 slide.innerHTML = `
                 <section  style="background-image: 
                     linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)),
+                    linear-gradient(to top, rgba(0, 0, 0, 1), transparent),
                     url('../assets/img/imgFundo/${dados[aleatorio].fundo || ''}');
                     background-size: cover;
                     background-repeat: no-repeat;
