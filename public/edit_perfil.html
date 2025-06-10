@@ -72,17 +72,17 @@
                 console.log(err);
             })
     }
-foto.addEventListener('change', function () {
-  const arquivo = foto.files[0];
+// foto.addEventListener('change', function () {
+//   const arquivo = foto.files[0];
 
-  if (arquivo) {
-    const reader = new FileReader();
+//   if (arquivo) {
+//     const reader = new FileReader();
 
-    reader.onload = function (e) {
-      img.src = e.target.result;
-    };
+//     reader.onload = function (e) {
+//       img.src = e.target.result;
+//     };
 
-    reader.readAsDataURL(arquivo);
-  }
-});
+//     reader.readAsDataURL(arquivo);
+//   }
+// });
 </script>

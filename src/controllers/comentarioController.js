@@ -112,11 +112,70 @@ function cadastrarResposta(req, res) {
                 }
             );
 }
+function cadastrarCurtida(req, res) {
+        var fk_usuario = req.body.id_usuario;
+        var id_comentario = req.body.id_comentario;
+        comentarioModel.cadastrarCurtida(fk_usuario,id_comentario)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o comentario! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+}
+function atualizarCurtida(req, res) {
+        var status = req.body.statusAtual;
+        var fk_usuario = req.body.fk_usuario;
+        var id_comentario = req.body.id_comentario;
+        comentarioModel.atualizarCurtida(status,fk_usuario,id_comentario)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o comentario! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+}
+
+function verificarCurtidaById(req, res) {
+    var id_usuario = req.params.id_usuario;
+    var id_comentario = req.params.id_comentario;
+    comentarioModel.verificarCurtidaById(id_usuario,id_comentario).then(
+        function (resultadoAutenticar) {
+            console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
+            console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`); // transforma JSON em String
+            res.json(resultadoAutenticar);
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("\nHouve um erro ao trazer dados do usuario por id! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+                   }
+               );
+}
 module.exports = {
     cadastrar,
     selectAllComentarios,
     countComentarios,
     deletarComentario,
     cadastrarResposta,
-    countComentariosUsuario
+    countComentariosUsuario,
+    cadastrarCurtida,
+    atualizarCurtida,
+    verificarCurtidaById 
 }

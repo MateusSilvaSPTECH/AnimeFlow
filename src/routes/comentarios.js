@@ -19,5 +19,15 @@ router.delete("/deletarComentario/:id", function(req, res) {
 
 router.post("/cadastrarRespostaComentario", function(req,res){
     comentarioController.cadastrarResposta(req,res);
-})
+});
+
+router.post("/cadastrarCurtidaComentario", function(req,res){
+    comentarioController.cadastrarCurtida(req,res);
+});
+router.put("/atualizarCurtidaComentario", function(req,res){
+    comentarioController.atualizarCurtida(req,res);
+});
+router.get("/verificarCurtidaByUsuario/:id_usuario/:id_comentario", function(req,res){
+    comentarioController.verificarCurtidaById(req,res);
+});
 module.exports = router;

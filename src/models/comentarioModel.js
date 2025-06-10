@@ -68,11 +68,41 @@ function cadastrarResposta(descricao, fk_anime, fk_usuario,id_comentario) {
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
+function cadastrarCurtida(fk_usuario,id_comentario) {
+    console.log("ACESSEI O Comentario MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", fk_usuario,id_comentario);
+    
+    var instrucaoSql = `
+        INSERT INTO curtida_comentario (status_curtida, fk_usuario, fk_comentario) VALUES (true, '${fk_usuario}', '${id_comentario}');
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+function atualizarCurtida(status,fk_usuario,id_comentario) {
+    console.log("ACESSEI O Comentario MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function update():", status,fk_usuario,id_comentario);
+    
+    var instrucaoSql = `
+      UPDATE curtida_comentario SET status_curtida = ${id_comentario} WHERE fk_usuario = ${fk_usuario} AND fk_comentario = ${status};
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+function verificarCurtidaById(fk_usuario,id_comentario) {
+    console.log("ACESSEI O Comentario MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", fk_usuario,id_comentario);
+    
+    var instrucaoSql = `
+      SELECT * FROM curtida_comentario WHERE fk_usuario = ${fk_usuario} AND fk_comentario = ${id_comentario};
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
 module.exports = {
     cadastrar,
     selectAllComentarios,
     countComentarios,
     deletarComentario,
     cadastrarResposta,
-    countComentariosUsuario
+    countComentariosUsuario,
+    cadastrarCurtida,
+    atualizarCurtida,
+    verificarCurtidaById
 };

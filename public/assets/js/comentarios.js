@@ -106,6 +106,25 @@ function inputResposta(id_comentario){
        </div>
     `
 }
+function verificarCurtida(id_comentario,id_usuario){
+   fetch(`/comentarios/verificarCurtidaByUsuario/${id_usuario}/${id_comentario}`)
+   .then(dados => dados.json())
+   .then(dados =>{
+       if(dados.length > 0){
+        console.log('vou atualizar')
+        if(dados[0].status_curtida == 1){
+            var statusAtual = false;
+        }else{
+            var statusAtual = true;
+        }
+        console.log('vou passar o status '+statusAtual);
+            atualizarCurtida(id_usuario, id_comentario, statusAtual);
+       } else {
+        console.log('vou cadastrar')
+           curtirComentario(id_usuario,id_comentario);
+       }
+   });
+}
 
 function exibirComentarios(dados){
      console.log(dados)
@@ -148,6 +167,7 @@ function exibirComentarios(dados){
                             <span>${dados[i].nome}</span>
                             <span>${formattedDate}</span>
                             <div id="lixeira">${donoComentario ?`<button onclick="deletarComentario(${dados[i].id_comentario})"><i class="bi bi-trash3-fill"></i></button>`:``}</div>
+                            <div id="lixeira"><button onclick="verificarCurtida(${dados[i].id_comentario},${id_usuario})"><i class="bi bi-hand-thumbs-up"></i></button></div>
                         </div>
                         <div class="comentario">
                             <span>${dados[i].descricao_comentario}</span>
@@ -173,3 +193,42 @@ function exibirCountComentarios(resposta){
         `
         }  
 }
+
+function curtirComentario(fk_usuario,id_comentario){
+    fetch("comentarios/cadastrarCurtidaComentario",
+        {
+            method : "POST",
+            headers : {
+                "Content-type" : "application/json"
+            },
+            body : JSON.stringify({
+                id_usuario : fk_usuario,
+                id_comentario : id_comentario
+            })
+        }
+
+    ).then(resposta => resposta.json())
+    .then(
+      resposta => console.log(resposta)
+    )
+}
+function atualizarCurtida(statusAtual,fk_usuario,id_comentario){
+    fetch("comentarios/atualizarCurtidaComentario",
+        {
+            method : "PUT",
+            headers : {
+                "Content-type" : "application/json"
+            },
+            body : JSON.stringify({
+                statusAtual : statusAtual,
+                fk_usuario : fk_usuario,
+                id_comentario : id_comentario
+            })
+        }
+
+    ).then(resposta => resposta.json())
+    .then(
+      resposta => console.log(resposta)
+    )
+}
+

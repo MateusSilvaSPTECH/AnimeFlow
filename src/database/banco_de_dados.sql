@@ -1,5 +1,9 @@
-DROP DATABASE animeFlow;
+CREATE DATABASE animeFlow;
 USE animeFlow;
+select * from curtida_comentario;
+select * from comentario;
+select * from usuario;
+TRUNCATE curtida_comentario;
 
 CREATE TABLE anime(
  id INT PRIMARY KEY AUTO_INCREMENT,
@@ -64,6 +68,17 @@ CREATE TABLE comentario(
     FOREIGN KEY(fk_usuario) REFERENCES usuario(id),
     CONSTRAINT chkFkRespostaComentario
     FOREIGN KEY(id_resposta) REFERENCES comentario(id)
+);
+CREATE TABLE curtida_comentario(
+	id INT PRIMARY KEY AUTO_INCREMENT,
+    status_curtida BOOLEAN,
+    data_curtida DATETIME ,
+    fk_comentario INT,
+    fk_usuario INT,
+    CONSTRAINT chkFkUsuario_curtida
+    FOREIGN KEY(fk_usuario) REFERENCES usuario(id),
+    CONSTRAINT chkComentario_curtida
+    FOREIGN KEY(fk_comentario) REFERENCES comentario(id) ON DELETE CASCADE
 );
 
 INSERT INTO categoria(nome_categoria) 
@@ -287,7 +302,9 @@ INSERT INTO avaliacao (valor, fk_usuario, fk_anime) VALUES
 (3, 5, 4),
 (2, 5, 5);
 
+
 -- Comentarios
+
 INSERT INTO comentario (descricao, fk_usuario, fk_anime) VALUES
 ('Simplesmente incrível, do início ao fim!', 1, 1),
 ('Muito bom, só achei o final um pouco corrido.', 1, 2),
