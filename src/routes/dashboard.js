@@ -17,6 +17,12 @@ router.get("/selectCountFavoritosUsuario/:id_usuario", function (req, res) {
 });
 router.get("/listaCategoriasFavoritas/:id_usuario",function(req,res){
     categoriaController.selectCategoriaFavoritas(req,res);
-})
+});
+router.get("/selectCountCurtidasUsuario/:id_usuario",function(req,res){
+    comentarioController.selectCountCurtidasUsuario(req,res);
+});
+router.get("/selectAnimesFavoritosByUsuario/:id_usuario",function(req,res){
+    favoritorController.selectAnimesFavoritosByUsuario(req,res);
+});
 
 module.exports = router;

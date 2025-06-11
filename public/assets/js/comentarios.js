@@ -118,13 +118,23 @@ function verificarCurtida(id_comentario,id_usuario){
             var statusAtual = true;
         }
         console.log('vou passar o status '+statusAtual);
-            atualizarCurtida(id_usuario, id_comentario, statusAtual);
+            atualizarCurtida(statusAtual, id_usuario, id_comentario);
        } else {
         console.log('vou cadastrar')
            curtirComentario(id_usuario,id_comentario);
        }
    });
 }
+function countCurtida(id_comentario){
+   fetch(`/comentarios/selectCountCurtidabyCurtida/${id_comentario}`)
+   .then(dados => dados.json())
+   .then(dados =>{
+       if(dados.length > 0){
+            curtidas.innerHTML = dados[0].curtida;
+        }
+   });
+}
+
 
 function exibirComentarios(dados){
      console.log(dados)
@@ -143,8 +153,8 @@ function exibirComentarios(dados){
           for(var i=0;i<dados.length;i++){
             console.log(dados[i].id)
             const dataParaFormatar = dados[i].dataComentario;
-            const date = new Date(dataParaFormatar);
-            const formatter = new Intl.DateTimeFormat('pt-BR', {
+            const data = new Date(dataParaFormatar);
+            const formato = new Intl.DateTimeFormat('pt-BR', {
                 day: '2-digit',
                 month: '2-digit',
                 year: 'numeric',
@@ -152,7 +162,7 @@ function exibirComentarios(dados){
                 minute: '2-digit',
                 timeZone: 'America/Sao_Paulo'
             });
-         const formattedDate = formatter.format(date);
+         const dataFormatada = formato.format(data);
          var donoComentario = dados[i].fk_usuario == id_usuario;
          console.log(dados[i])
         comentarios.innerHTML += 
@@ -165,9 +175,12 @@ function exibirComentarios(dados){
                     <div class="descricao_comentario">
                         <div class="informacoes_usuario">
                             <span>${dados[i].nome}</span>
-                            <span>${formattedDate}</span>
+                            <span>${dataFormatada}</span>
                             <div id="lixeira">${donoComentario ?`<button onclick="deletarComentario(${dados[i].id_comentario})"><i class="bi bi-trash3-fill"></i></button>`:``}</div>
-                            <div id="lixeira"><button onclick="verificarCurtida(${dados[i].id_comentario},${id_usuario})"><i class="bi bi-hand-thumbs-up"></i></button></div>
+                            <div id="curtida">
+                            <button onclick="verificarCurtida(${dados[i].id_comentario},${id_usuario})"><i class="bi bi-hand-thumbs-up"></i></button>
+                            <span>${dados[i].curtidas}</span>
+                            </div>
                         </div>
                         <div class="comentario">
                             <span>${dados[i].descricao_comentario}</span>
@@ -207,10 +220,9 @@ function curtirComentario(fk_usuario,id_comentario){
             })
         }
 
-    ).then(resposta => resposta.json())
-    .then(
-      resposta => console.log(resposta)
-    )
+    ).then(function(){
+        selectAllComentarios();
+    });
 }
 function atualizarCurtida(statusAtual,fk_usuario,id_comentario){
     fetch("comentarios/atualizarCurtidaComentario",
@@ -226,9 +238,8 @@ function atualizarCurtida(statusAtual,fk_usuario,id_comentario){
             })
         }
 
-    ).then(resposta => resposta.json())
-    .then(
-      resposta => console.log(resposta)
-    )
+    ).then(function(){
+        selectAllComentarios();
+    });
 }
 

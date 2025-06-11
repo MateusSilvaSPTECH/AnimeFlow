@@ -28,7 +28,28 @@ function selectAnimesFavoritosByUsuario(id_usuario) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarAvaliacao():");
     
     var instrucaoSql = `
-        select * from favoritar WHERE fk_usuario = ${id_usuario};
+        SELECT 
+        a.id,
+        a.titulo,
+        a.descricao,
+        a.foto,
+        a.logo,
+        a.fundo,
+        a.classificacao,
+        a.traducao,
+        a.estacao,
+        a.dataLancamento,
+        a.episodeo,
+        a.temporada
+        FROM 
+        anime AS a
+        JOIN 
+        favoritar AS f ON f.fk_anime = a.id AND f.status_favorito = 1
+        WHERE 
+        f.fk_usuario = ${id_usuario}
+         GROUP BY 
+        a.id, a.titulo, a.descricao, a.foto, a.logo, a.fundo, a.classificacao, a.traducao, 
+        a.estacao, a.dataLancamento, a.episodeo, a.temporada LIMIT 5;
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);

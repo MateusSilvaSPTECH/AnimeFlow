@@ -168,6 +168,21 @@ function verificarCurtidaById(req, res) {
                    }
                );
 }
+function selectCountCurtidasUsuario(req, res) {
+    var id_usuario = req.params.id_usuario;
+    comentarioModel.selectCountCurtidasUsuario(id_usuario).then(
+        function (resultadoAutenticar) {
+            console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
+            console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`); // transforma JSON em String
+            res.json(resultadoAutenticar);
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("\nHouve um erro ao trazer dados do usuario por id! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+                   }
+               );
+}
 module.exports = {
     cadastrar,
     selectAllComentarios,
@@ -177,5 +192,6 @@ module.exports = {
     countComentariosUsuario,
     cadastrarCurtida,
     atualizarCurtida,
-    verificarCurtidaById 
+    verificarCurtidaById,
+    selectCountCurtidasUsuario
 }

@@ -1,9 +1,7 @@
 CREATE DATABASE animeFlow;
 USE animeFlow;
-select * from curtida_comentario;
-select * from comentario;
-select * from usuario;
-TRUNCATE curtida_comentario;
+
+select * from favoritar where fk_usuario = 6;
 
 CREATE TABLE anime(
  id INT PRIMARY KEY AUTO_INCREMENT,
@@ -45,6 +43,7 @@ CREATE TABLE avaliacao(
 CREATE TABLE favoritar(
 	id INT PRIMARY KEY AUTO_INCREMENT,
     status_favorito BOOLEAN,
+    data_salvo DATETIME DEFAULT CURRENT_TIMESTAMP(),
     fk_anime INT,
     fk_usuario INT,
     CONSTRAINT chkFkAnime_favoritar
@@ -58,7 +57,7 @@ UPDATE favoritar set status_favorito = false WHERE fk_usuario = 6 and fk_anime =
 CREATE TABLE comentario(
 	id INT PRIMARY KEY AUTO_INCREMENT,
     descricao VARCHAR(255),
-    dataComentario DATETIME ,
+    dataComentario DATETIME,
     fk_anime INT,
     fk_usuario INT,
     id_resposta INT,

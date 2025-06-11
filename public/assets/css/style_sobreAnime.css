@@ -328,3 +328,13 @@ html, body {
     cursor: pointer;
     background-color: transparent;
 }
+#curtida{
+    display: flex;
+    flex-direction: column;
+}
+#curtida button{
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+    background-color: transparent;
+}

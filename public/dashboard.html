@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style_dashboard.css">
       <link rel="stylesheet" href="assets/css/navbar.css">
+       <link rel="stylesheet" href="assets/css/style_tabela.css">
     <title>Document</title>
 </head>
 <body>
@@ -15,7 +16,6 @@
                 <ul>
                     <li><a onclick="mostrarCategorias()">Categorias</a></li>
                     <li><a onclick="mostrarestacoes()">Temporadas</a></li>
-                    <li><a href="#">Populares</a></li>
                 </ul>
                 <img src="" id="img_user_session" class="user_pic" onclick="mostrarDropDown()" width="60" height="40">
 
@@ -83,7 +83,7 @@
       </div>
       <div class="boxKpi">
         <h4>Quantidade de Likes</h4>
-        <span>87</span>
+        <span id="kpi_contagemCurtidas">0</span>
       </div>
     </div>
 
@@ -93,14 +93,23 @@
         <canvas id="graficoPizza"></canvas>
       </div>
       <div class="graficoLinha">
-        <h4>Tempo de Login</h4>
-        <canvas id="graficoLinha"></canvas>
+        <h4>Animes favoritados</h4>
+            <table class="tabela-animes" id="tabela">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+            </table>
       </div>
     </div>
   </div>
 </body>
 </html>
-<script src="assets/js/carrosel.js"></script>
 <script src="assets/js/menudropdown.js"></script>
 <script src="assets/js/dashboard.js"></script>
 <script src="assets/js/animes.js"></script>
@@ -122,10 +131,13 @@
         countComentariosUser();
         countFavoritosUser();
         categoriasFavoritos();
-        sessaoAtual();
+        countCurtidasUser();
+        animeFavoritados();
+        listarAnimes();
         nome_usuario.innerHTML = `${nomeUsuario}`;
     }
 
+    
     function categoriasFavoritos(){
     var lista_media = [];
     var lista_categoria = [];
@@ -160,15 +172,62 @@
             ]
             }]
         },
-        plugins: [ChartDataLabels],
-        datalabels: {
-        color: 'white'
+        options: {
+    plugins: {
+      datalabels: {
+        color: 'white',
+        font: {
+          weight: 'bold',
+          size: 24
+        }
       }
+    }
+  },
+  plugins: [ChartDataLabels]
         });
     });
 }
+function listarAnimes() {
+   var id_usuario = sessionStorage.ID_USUARIO;
+    fetch(`/dashboard/selectAnimesFavoritosByUsuario/${id_usuario}`, {
+        method: "GET",
+        headers: {
+            "Content-Type": 'application/json'
+        }
+    }
+    ).then(resposta => resposta.json())
+        .then(resposta => {
+           tabela.innerHTML = `
+            <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>estacao</th>
+                        <th>traducao</th>
+                    </tr>
+                </thead>
+            `;
+            for (var i = 0; i < resposta.length; i++) {
+                tabela.innerHTML +=
+                    `
+                <tbody>
+                     <tr>
+                        <td>${resposta[i].titulo}</td>
+                        <td>${resposta[i].estacao}</td>
+                        <td>${resposta[i].traducao}</td>
+                    </tr>
+                </tbody>
+                `
+            }
+        })
+}
     
-function sessaoAtual(){
+
+
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.0/dist/chart.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+
+<!-- function sessaoAtual(){
   var lista = [];
   var sessao1 = sessionStorage.TEMPO_COMECO;
   lista = sessao1.split(',');
@@ -222,8 +281,4 @@ const ctx2 = document.getElementById('graficoLinha').getContext('2d');
        ]
      }]
    }
- }); 
-
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.0/dist/chart.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+ });  -->

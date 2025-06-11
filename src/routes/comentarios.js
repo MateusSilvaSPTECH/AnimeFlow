@@ -30,4 +30,7 @@ router.put("/atualizarCurtidaComentario", function(req,res){
 router.get("/verificarCurtidaByUsuario/:id_usuario/:id_comentario", function(req,res){
     comentarioController.verificarCurtidaById(req,res);
 });
+router.get("/selectCountCurtidabyCurtida/:id_comentario", function(req,res){
+    comentarioController.selectCountCurtidabyCurtida(req,res);
+});
 module.exports = router;

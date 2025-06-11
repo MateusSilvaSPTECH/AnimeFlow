@@ -22,10 +22,15 @@ function selectAllComentarios(fk_anime) {
     c.id_resposta,
     c.fk_usuario,
     u.nome,
-    u.foto
+    u.foto,
+    COUNT(ac.id) AS curtidas
     FROM comentario c
     JOIN usuario u ON c.fk_usuario = u.id
-    WHERE c.fk_anime = ${fk_anime};
+    LEFT JOIN curtida_comentario ac 
+    ON ac.fk_comentario = c.id AND ac.status_curtida = 1
+    WHERE c.fk_anime = ${fk_anime}
+    GROUP BY c.id, c.descricao, c.dataComentario, c.id_resposta, c.fk_usuario, u.nome, u.foto
+    ORDER BY c.dataComentario DESC;
 
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
@@ -77,12 +82,15 @@ function cadastrarCurtida(fk_usuario,id_comentario) {
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
-function atualizarCurtida(status,fk_usuario,id_comentario) {
-    console.log("ACESSEI O Comentario MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function update():", status,fk_usuario,id_comentario);
+function atualizarCurtida(status, fk_usuario, id_comentario) {
+    console.log("ACESSEI O Comentario MODEL\nFunção update:", status, fk_usuario, id_comentario);
     
     var instrucaoSql = `
-      UPDATE curtida_comentario SET status_curtida = ${id_comentario} WHERE fk_usuario = ${fk_usuario} AND fk_comentario = ${status};
+        UPDATE curtida_comentario 
+        SET status_curtida = ${status ? 1 : 0} 
+        WHERE fk_usuario = ${fk_usuario} AND fk_comentario = ${id_comentario};
     `;
+
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
@@ -91,6 +99,19 @@ function verificarCurtidaById(fk_usuario,id_comentario) {
     
     var instrucaoSql = `
       SELECT * FROM curtida_comentario WHERE fk_usuario = ${fk_usuario} AND fk_comentario = ${id_comentario};
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+function selectCountCurtidasUsuario(id_usuario) {
+    console.log("ACESSEI O Comentario MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():",id_usuario);
+    
+    var instrucaoSql = `
+      select u.nome,COUNT(*) as curtida from curtida_comentario cc 
+    JOIN comentario as c ON cc.fk_comentario = c.id
+    JOIN usuario as u ON u.id = c.fk_usuario
+    WHERE u.id = ${id_usuario}
+    GROUP BY u.nome;
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -104,5 +125,6 @@ module.exports = {
     countComentariosUsuario,
     cadastrarCurtida,
     atualizarCurtida,
-    verificarCurtidaById
+    verificarCurtidaById,
+    selectCountCurtidasUsuario
 };
